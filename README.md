@@ -2,9 +2,10 @@
 
 ### Command line scripts to support the NexGen development flow on *Developer Forks*.
 
-<br>Check out the wiki for a detailed description of how to use these scripts in your *Developer Fork*.
+<br><font color=blue>Check out the wiki for a detailed description of how to use these scripts in your *Developer Fork*.</font>
+<br>"https://github.com/SiliconValleyOffice/GitHelp/wiki"
 
-<br><br><br>
+<br><br>
 
 ### Except during a release cycle...
 #ALL PULL REQUESTS SHOULD BE AGAINST
