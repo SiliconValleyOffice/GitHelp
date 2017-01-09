@@ -3,7 +3,7 @@
 ### Command line scripts to support the NexGen development flow on *Developer Forks*.
 
 <br><font color=blue>Check out the wiki for a detailed description of how to use these scripts in your *Developer Fork*.
-<link rel="Check out the wiki" href="theme.css">
+<link rel="Check out the wiki" href="https://github.com/SiliconValleyOffice/GitHelp/wiki">
 
 <br><br><br>
 
