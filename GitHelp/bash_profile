@@ -1,0 +1,88 @@
+#!/bin/bash
+
+export GRADLE_HOME=~/AndroidTechnology/gradle-2.6
+export PATH=$PATH:$GRADLE_HOME/bin
+
+export GITHELP_HOME=~/GitHelp
+
+if [ -a ~/.githelp_profile ] ; then
+    source ~/.githelp_profile
+else
+    printf "\nGitHelp installation:\n"
+    printf "    No Forks have been cloned.\n"
+    printf "    Use ghCF to Clone your first Fork.\n\n"
+fi
+
+alias gh="$GITHELP_HOME/ghHELP.sh"
+alias ghROOT="cd $GIT_ROOT; pwd; git branch"
+alias ghCONFIG="$GITHELP_HOME/ghCONFIG.sh"
+alias ghEDITOR="$GITHELP_HOME/ghEDITOR.sh"
+alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
+###  Convenience Commands  ######
+alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
+alias ghS="git status"
+alias ghAA="git add -A"
+alias ghACP="$GITHELP_HOME/ghAddCommitPush.sh"
+alias ghCM="git commit -m"
+alias ghP="git push"
+alias ghL="git log"
+alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
+alias ghB="git branch"
+###  A  ######
+alias ghNMB="$GITHELP_HOME/ghNewMiscBranch.sh"
+alias ghNDMB="$GITHELP_HOME/ghNewDerivedMiscBranch.sh"
+alias ghDMB="$GITHELP_HOME/ghDestroyMiscBranch.sh"
+alias ghDCB="$GITHELP_HOME/ghDestroyCurrentBranch.sh"
+###  B  ######
+alias ghNJB="$GITHELP_HOME/ghNewJiraBranch.sh"
+alias ghNDJB="$GITHELP_HOME/ghNewDerivedJiraBranch.sh"
+alias ghRJT="$GITHELP_HOME/ghReviewJiraTicket.sh"
+alias ghCJB="$GITHELP_HOME/ghCheckoutJiraBranch.sh"
+alias ghDJB="$GITHELP_HOME/ghDestroyJiraBranch.sh"
+###  C  ######
+alias ghUBUD="$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh"
+alias ghUBUR="$GITHELP_HOME/ghUpdateBranchWithUpstreamRelease.sh"
+alias ghRSHA="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
+###  D  ######
+alias ghNPRD="$GITHELP_HOME/ghNewPullRequestForDevelopment.sh"
+alias ghNPRR="$GITHELP_HOME/ghNewPullRequestForRelease.sh"
+alias ghNPRF="$GITHELP_HOME/ghNewPullRequestForFork.sh"
+alias ghRPRU="$GITHELP_HOME/ghReviewPullRequestsForUpstream.sh"
+alias ghRPRF="$GITHELP_HOME/ghReviewPullRequestsForFork.sh"
+alias ghFPRB="$GITHELP_HOME/ghFetchPullRequestBranch.sh"
+###  E  ######
+alias ghLOB="$GITHELP_HOME/ghListOriginBranches.sh"
+alias ghFOB="$GITHELP_HOME/ghFetchOriginBranch.sh"
+alias ghLUB="$GITHELP_HOME/ghListUpstreamBranches.sh"
+###  F  ######
+alias ghLFB="$GITHELP_HOME/ghListForkBranches.sh"
+alias ghFFJB="$GITHELP_HOME/ghFetchForkJiraBranch.sh"
+alias ghFFMB="$GITHELP_HOME/ghFetchForkMiscBranch.sh"
+alias ghUBFB="$GITHELP_HOME/ghUpdateBranchWithForkBranch.sh"
+###  G  ######
+alias ghFUDB="$GITHELP_HOME/ghFetchUpstreamDevelopmentBranch.sh"
+alias ghLRB="$GITHELP_HOME/ghListReleaseBranches.sh"
+###  H  ######
+alias ghCUF="$GITHELP_HOME/ghCleanUntrackedFiles.sh"
+alias ghCUCB="$GITHELP_HOME/ghCleanUntrackedFilesAndCheckoutBranch.sh"
+alias ghSCDC="$GITHELP_HOME/ghStashChangesAndDropAndClean.sh"
+###  J  ######
+alias ghCMTF="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
+alias ghCPOB="$GITHELP_HOME/ghCherryPickOriginBranch.sh"
+alias ghLMC="$GITHELP_HOME/ghListMergeConflicts.sh"
+###  K  ######
+alias ghCW="$GITHELP_HOME/ghCloneWiki.sh"
+alias ghPW="$GITHELP_HOME/ghPullWiki.sh"
+alias ghUW="$GITHELP_HOME/ghUpdateWiki.sh"
+###  M  ######
+alias ghREMOTE="git remote -v"
+alias ghDLBNOO="$GITHELP_HOME/ghDeleteLocalBranchesNotOnOrigin.sh"
+alias ghDAOBED="$GITHELP_HOME/ghDestroyAllOriginBranchesExceptDevelopment.sh"
+alias ghDOBNOL="$GITHELP_HOME/ghDestroyOriginBranchesNotOnLocalExceptDevelopment.sh"
+alias ghCF="$GITHELP_HOME/ghCloneFork.sh"
+
+###  SILENT
+alias ghIBP="cp $GITHELP_HOME/bash_profile ~/.bash_profile"
+alias ghSBP="cp ~/.bash_profile $GITHELP_HOME/bash_profile"
+alias ghCUR="$GITHELP_HOME/ghCloneUpstreamRepo.sh"
+alias ghCGR="$GITHELP_HOME/ghCopyGitHelpToRepo.sh"
