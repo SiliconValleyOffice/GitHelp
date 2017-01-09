@@ -2,7 +2,8 @@
 
 ### Command line scripts to support the NexGen development flow on *Developer Forks*.
 
-<br>Check out the wiki for a detailed description of how to use these scripts in your *Developer Fork*.
+<br><font color=blue>Check out the wiki for a detailed description of how to use these scripts in your *Developer Fork*.
+<link rel="Check out the wiki" href="theme.css">
 
 <br><br><br>
 
