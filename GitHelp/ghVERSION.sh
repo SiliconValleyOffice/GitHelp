@@ -1,0 +1,3 @@
+GITHELP_VERSION="1.52"
+
+echo "GitHelp - Version $GITHELP_VERSION"
