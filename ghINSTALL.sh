@@ -16,7 +16,7 @@ fi
 
 if [[ -a ~/.bash_profile ]]; then
     BACKUP_NAME=".bash_profile-"`date '+%Y-%m-%d-%R'`
-    cp ~/.bash_profile $BACKUP_NAME
+    cp ~/.bash_profile ~/$BACKUP_NAME
     printf "\nYour current .bash_profile has been backed up to $BACKUP_NAME\n\n"
     rm ~/.bash_profile
 fi
@@ -27,4 +27,4 @@ if [[ -d ~/GitHelp ]]; then
 fi
 cp -rf GitHelp ~/
 
-printf "\nWARNING:\n    Don't forget to update environment variables by running\n    source ~/.bash_profile\n\n"
+printf "WARNING:\n    Don't forget to update environment variables by running\n    source ~/.bash_profile\n\n"
