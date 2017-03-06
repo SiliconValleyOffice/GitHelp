@@ -6,14 +6,17 @@
 <br>"https://github.com/SiliconValleyOffice/GitHelp/wiki"
 
 <br><br>
+Send suggestions and feedback to GitHelp.SVO@gmail.com
+<br>
 
-### Except during a release cycle...
 #ALL PULL REQUESTS SHOULD BE AGAINST
 #THE development BRANCH !!!
 
+### ...except during a release cycle.
+
 Use *development* branch for development.
 
-Use the appropriate *Release* branch for:
+During a _Release Cycle_, use the appropriate *Release* branch for:
 - Release Candidates
 - hardening
 - deployment
