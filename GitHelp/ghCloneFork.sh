@@ -89,7 +89,7 @@ git fetch origin &> /dev/null
 PROFILE_ENTRY="$GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
 echo
-read -p "Run gitCONFIG to make this your active REPO ?  (y/n)   " -n 1 -r
+read -p "Run ghCONFIG to make this your active REPO ?  (y/n)   " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
