@@ -7,9 +7,10 @@
 
 Send suggestions and feedback to GitHelp.SVO@gmail.com
 <br><br>
-
-#ALL PULL REQUESTS SHOULD BE AGAINST
-#THE development BRANCH !!!
+```
+ALL PULL REQUESTS SHOULD BE AGAINST
+THE development BRANCH !!!
+```
 
 ### ...except during a release cycle.
 
