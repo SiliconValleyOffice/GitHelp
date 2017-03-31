@@ -35,7 +35,9 @@ if [ $? -ne 0 ] ; then
     exit 1;
 fi
 
+IS_RELEASE_BRANCH="NO"
 if [ $# -eq 1 ]; then
+    IS_RELEASE_BRANCH="YES"
     UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseReleaseBranch.sh $1`
     if [ $? -ne 0 ] ; then
       printf "Bad upstream_release_branch_number.${UPSTREAM_BRANCH}"
@@ -68,8 +70,7 @@ printf "Create a Pull Request (PR) from \"origin\\$CURRENT_BRANCH\"\n into \"ups
 printf "    Note:  If you are not already logged into GitHub in the browser,\n           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
 echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
+if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
     printf "\nOperation canceled.\n\n"
     exit 1
 fi
@@ -77,11 +78,21 @@ fi
 printf "\n"
 # ToDo - provide option to collapse commits into a single, and provide a message for that commit
 UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${UPSTREAM_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
-if which google-chrome > /dev/null
-then
+if which google-chrome > /dev/null ; then
   google-chrome "$UPSTREAM_URL"
 else
   open "$UPSTREAM_URL"
 fi
 
 printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
+
+if [[ "$IS_RELEASE_BRANCH" == "YES" ]] ; then
+  printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
+  read -p "Continue?  (y/n)   " -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
+      printf "\nOperation canceled.\n\n"
+      exit 1
+  fi
+  $GITHELP_HOME/ghNewPullRequestForDevelopment.sh
+fi
