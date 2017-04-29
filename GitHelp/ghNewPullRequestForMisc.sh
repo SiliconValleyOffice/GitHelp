@@ -1,11 +1,11 @@
 #!/bin/bash
-# Create a Pull Request
-# alias = ghNPR
+# Create a Pull Request for a Misc branch
+# alias = ghNPRM
 
 if [ "$#" -gt 1 ]; then
-  printf "\nUsage: ghNPR [upstream_release_branch_number]\n"
+  printf "\nUsage: ghNPRM [upstream_misc_branch]\n"
   printf "    create a Pull Request for the current branch\n"
-  printf "    default upstream_branch = development\n\n"
+  printf "    default upstream_branch = master\n\n"
   exit
 fi
 
@@ -35,17 +35,10 @@ if [ $? -ne 0 ] ; then
     exit 1;
 fi
 
-IS_RELEASE_BRANCH="NO"
 if [ $# -eq 1 ]; then
-    IS_RELEASE_BRANCH="YES"
-    UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseReleaseBranch.sh $1`
-    if [ $? -ne 0 ] ; then
-      printf "Bad upstream_release_branch_number.${UPSTREAM_BRANCH}"
-      printf "\n\n"
-      exit 1;
-    fi
+    UPSTREAM_BRANCH="$1"
 else
-    UPSTREAM_BRANCH="development"
+    UPSTREAM_BRANCH="master"
 fi
 
 $GITHELP_HOME/ghUpstreamBranchExists.sh ${UPSTREAM_BRANCH} &> /dev/null
@@ -85,14 +78,3 @@ else
 fi
 
 printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
-
-if [[ "$IS_RELEASE_BRANCH" == "YES" ]] ; then
-  printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
-  read -p "Continue?  (y/n)   " -n 1 -r
-  echo
-  if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
-      printf "\nOperation canceled.\n\n"
-      exit 1
-  fi
-  $GITHELP_HOME/ghNewPullRequestForDevelopment.sh
-fi
