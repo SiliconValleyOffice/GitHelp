@@ -31,6 +31,7 @@ alias ghB="git branch"
 ###  A  ######
 alias ghNMB="$GITHELP_HOME/ghNewMiscBranch.sh"
 alias ghNDMB="$GITHELP_HOME/ghNewDerivedMiscBranch.sh"
+alias ghCMB="$GITHELP_HOME/ghCheckoutMiscBranch.sh"
 alias ghDMB="$GITHELP_HOME/ghDestroyMiscBranch.sh"
 alias ghDCB="$GITHELP_HOME/ghDestroyCurrentBranch.sh"
 ###  B  ######
