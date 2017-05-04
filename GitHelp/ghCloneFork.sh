@@ -5,7 +5,8 @@
 
 if [ "$#" -ne 3 ]; then
   printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix\n"
-  printf "    Clone a fork.\n\n"
+  printf "    Clone a fork.\n"
+  printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
   exit
 fi
 
@@ -23,7 +24,7 @@ if [ -z $GITHUB_USER -o -z $REPO_NAME ]; then
   exit
 fi
 
-if [ $GITHUB_USER = $UPSTREAM_OWNER ]; then
+if [ $UPSTREAM_OWNER != "NONE" ] && [ $GITHUB_USER = $UPSTREAM_OWNER ]; then
   printf "\nYou copied the clone string from an upstream repository,\n    not a Fork.\n"
   printf "Copy this string from the GitHub page for the Fork.\n\n"
   exit
@@ -53,15 +54,21 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-git ls-remote --exit-code $UPSTREAM &> /dev/null
-if [ $? -ne 0 ]; then
-    printf "\n$UPSTREAM does not exist.\nEnter valid parameters and try again.\nOperation canceled.\n\n"
-    exit 1
+if [ $UPSTREAM_OWNER != "NONE" ]; then
+    git ls-remote --exit-code $UPSTREAM &> /dev/null
+    if [ $? -ne 0 ]; then
+        printf "\n$UPSTREAM does not exist.\nEnter valid parameters and try again.\nOperation canceled.\n\n"
+        exit 1
+    fi
 fi
 
 printf "\nClone Fork\n    from\n        $ORIGIN\n    into\n        $REPO_ROOT\n"
-printf "    setting upstream to\n        $UPSTREAM.\n"
-printf "    and the JIRA ticket prefix to\n        $JIRA_TICKET_PREFIX\n\n"
+if [ $UPSTREAM_OWNER != "NONE" ]; then
+    printf "    setting upstream to\n        $UPSTREAM\n"
+else
+  printf "    with no upstream upstream repository\n"
+fi
+printf "    and the JIRA ticket prefix will be\n        $JIRA_TICKET_PREFIX\n\n"
 
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
@@ -82,8 +89,10 @@ cd $REPO_NAME
 git config --global push.default simple
 git config credential.helper store
 
-git remote add upstream $UPSTREAM
-git fetch upstream &> /dev/null
+if [ $UPSTREAM_OWNER != "NONE" ]; then
+    git remote add upstream $UPSTREAM
+    git fetch upstream &> /dev/null
+fi
 git fetch origin &> /dev/null
 
 PROFILE_ENTRY="$GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
