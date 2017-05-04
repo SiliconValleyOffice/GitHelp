@@ -5,6 +5,10 @@ printf "\nInstall GitHelp?\n"
 if [[ -d ~/GitHelp ]]; then
     printf "    Existing installation will be upgraded.\n"
     printf "    GitHelp repository configurations will be preserved.\n"
+    printf "    Note:\n"
+    printf "      If you are upgrading from a version that is earlier than 1.57\n"
+    printf "      you should manually delete the GitHelp lines from ~/.bash_profile\n"
+    printf "      before proceeding with this upgrade.\n"
 fi
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
