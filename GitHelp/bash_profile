@@ -1,8 +1,4 @@
-#!/bin/bash
-
-export GRADLE_HOME=~/AndroidTechnology/gradle-2.6
-export PATH=$PATH:$GRADLE_HOME/bin
-
+=====  GitHelp - START  =====
 export GITHELP_HOME=~/GitHelp
 
 if [ -a ~/.githelp_profile ] ; then
@@ -89,3 +85,4 @@ alias ghIBP="cp $GITHELP_HOME/bash_profile ~/.bash_profile"
 alias ghSBP="cp ~/.bash_profile $GITHELP_HOME/bash_profile"
 alias ghCUR="$GITHELP_HOME/ghCloneUpstreamRepo.sh"
 alias ghCGR="$GITHELP_HOME/ghCopyGitHelpToRepo.sh"
+=====  GitHelp - END  =======
