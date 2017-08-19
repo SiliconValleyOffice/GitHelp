@@ -6,7 +6,7 @@
 
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghCW upstream_owner\n\n"
+  printf "\nUsage: ghUW upstream_owner\n\n"
   exit
 fi
 
