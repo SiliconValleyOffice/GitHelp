@@ -2,19 +2,16 @@
 # Clone wiki for current upstream repo
 # alias = ghCW
 
-# SPECIFIC TO BreakthroughBehavioralInc FOR NOW !!!
-# Should be entirely driven by current githelp_profile
-
 # Assumption - we are cloning the wiki for the current githelp repo
 
 
-if [ "$#" -ne 0 ]; then
-  printf "\nUsage: ghCW\n\n"
+if [ "$#" -ne 1 ]; then
+  printf "\nUsage: ghCW upstream_owner\n\n"
   exit
 fi
 
 GITHUB_URL="github.com"
-UPSTREAM_OWNER="BreakthroughBehavioralInc"
+UPSTREAM_OWNER="$1"
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 REPO_NAME="${GIT_ROOT##*/}.wiki"
 REPO_ROOT=${GIT_ROOT}.wiki
