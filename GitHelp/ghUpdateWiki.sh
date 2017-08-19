@@ -1,6 +1,6 @@
 #!/bin/bash
-# Pull latest changes from upstream wiki
-# alias = ghPW
+# Push latest changes to upstream wiki
+# alias = ghUW
 
 # Assumption - we are working with the wiki for the current githelp repo
 
