@@ -3,16 +3,20 @@
 # alias = ghCF
 
 
+
 if [ "$#" -ne 3 ]; then
-  printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix\n"
-  printf "    Clone a fork.\n"
-  printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
-  exit
+  if [ "$2" != "PRUNE" ] && [ "$#" -ne 4 ]; then
+    printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix PRUNE\n"
+    printf "    Clone a fork.\n"
+    printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
+    exit
+  fi
 fi
 
 CLONE_STRING=$1
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
+PRUNE="$4"
 
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
@@ -117,4 +121,9 @@ if [ $? -eq 1 ]; then
   echo -n "printf \"   "  >> ~/.githelp_profile_list
   echo -n "$PROFILE_ENTRY" >> ~/.githelp_profile_list
   echo " \n\"" >> ~/.githelp_profile_list
+fi
+
+if [ ! -z "$PRUNE" ]; then
+   $GITHELP_HOME/ghPruneOriginAfterClone.sh 
+fi
 fi
