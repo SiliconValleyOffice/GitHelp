@@ -7,17 +7,10 @@
 
 Send suggestions and feedback to GitHelp.SVO@gmail.com
 <br><br>
-```
-ALL PULL REQUESTS SHOULD BE AGAINST
-THE development BRANCH !!!
-```
 
-### ...except during a release cycle.
 
-Use *development* branch for development.
+Use *development* branch for most Pull Requests.
 
-During a _Release Cycle_, use the appropriate *Release* branch for:
-- Release Candidates
-- hardening
-- deployment
-- hot fixes
+During a _Release Cycle_, make Pull Requests against the appropriate *Release* branch for:
+- final iterations of Release Candidates
+- Release Hardening (regression testing / debug)
