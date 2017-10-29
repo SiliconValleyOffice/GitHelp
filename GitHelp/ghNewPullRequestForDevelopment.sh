@@ -47,21 +47,18 @@ if [ $# -eq 1 ]; then
     fi
 else
     UPSTREAM_BRANCH="development"
-#!/bin/bash
-# Verify Clean Branch
-
-CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-RESULTS=`git status`
-if [[ "$RESULTS"  != *"working directory clean"* ]] && [[ "$RESULTS"  != *"working tree clean"* ]] ; then
-    printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "clean".\n"
-    printf "    Commit/push your changes and try again.\n\n"
-    exit 1;
-fi
-if [[ "$RESULTS" = *"Your branch is ahead"* ]] ; then
-    printf "\nERROR:  You forgot to push your changes in branch \"${CURRENT_BRANCH}\".\n"
-    printf "    Run \"git push\" and try again.\n\n"
-    exit 1;
-fi
+    CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
+    RESULTS=`git status`
+    if [[ "$RESULTS"  != *"working directory clean"* ]] && [[ "$RESULTS"  != *"working tree clean"* ]] ; then
+        printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "clean".\n"
+        printf "    Commit/push your changes and try again.\n\n"
+        exit 1;
+    fi
+    if [[ "$RESULTS" = *"Your branch is ahead"* ]] ; then
+        printf "\nERROR:  You forgot to push your changes in branch \"${CURRENT_BRANCH}\".\n"
+        printf "    Run \"git push\" and try again.\n\n"
+        exit 1;
+    fi
 fi
 
 $GITHELP_HOME/ghUpstreamBranchExists.sh ${UPSTREAM_BRANCH} &> /dev/null
@@ -72,18 +69,19 @@ fi
 
 MERGE_RESULTS="$(git merge upstream/${UPSTREAM_BRANCH})"
 if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
-  git push
-  MERGE_RESULTS="$(git merge upstream/${UPSTREAM_BRANCH})"
-  if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
-      printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "up-to-date" with upstream/${UPSTREAM_BRANCH}.\n"
-      printf "    Run \"ghUBUB ${UPSTREAM_BRANCH}\" and try again.\n\n"
-      exit 1;
-  fi
+    git push
+    MERGE_RESULTS="$(git merge upstream/${UPSTREAM_BRANCH})"
+    if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
+        printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "up-to-date" with upstream/${UPSTREAM_BRANCH}.\n"
+        printf "    Run \"ghUBUB ${UPSTREAM_BRANCH}\" and try again.\n\n"
+        exit 1;
+    fi
 fi
 
-printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"upstream\\${UPSTREAM_BRANCH}\".\n\n"
+printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"${UPSTREAM_BRANCH}\" in upstream.\n\n"
 printf "Create a Pull Request (PR) from \"origin\\$CURRENT_BRANCH\"\n into \"upstream\\${UPSTREAM_BRANCH}\".\n"
-printf "    Note:  If you are not already logged into GitHub in the browser,\n           do that before proceeding.\n"
+printf "    Note:  If you are not already logged into GitHub in the browser,\n"
+printf "           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
@@ -95,31 +93,27 @@ printf "\n"
 # ToDo - provide option to collapse commits into a single, and provide a message for that commit
 UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${UPSTREAM_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
 if which google-chrome > /dev/null ; then
-  google-chrome "$UPSTREAM_URL"
+    google-chrome "$UPSTREAM_URL"
 else
-  open "$UPSTREAM_URL"
+    open "$UPSTREAM_URL"
 fi
 
 printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
 
 if [[ "$IS_RELEASE_BRANCH" == "YES" ]] ; then
-  printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
-  read -p "Continue?  (y/n)   " -n 1 -r
-  echo
-  if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
-      printf "\nOperation canceled.\n\n"
-      exit 1
-  fi
-  $GITHELP_HOME/ghNewPullRequestForDevelopment.sh
+    printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
+    read -p "Continue?  (y/n)   " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]] ; then
+        $GITHELP_HOME/ghNewPullRequestForDevelopment.sh
+    fi
 fi
-# New Pull Request for a Development branch
-# alias = ghNPRD
 
 if [ $# -ne 0 ]; then
-  printf "\nUsage: ghNPRD\n"
-  printf "    Create a Pull Request for the current branch\n"
-  printf "    against development.\n\n"
-  exit
+    printf "\nUsage: ghNPRD\n"
+    printf "    Create a Pull Request for the current branch\n"
+    printf "    against development.\n\n"
+    exit
 fi
 
 $GITHELP_HOME/ghNewPullRequest.sh
