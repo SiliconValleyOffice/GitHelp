@@ -79,8 +79,7 @@ printf "\n"
 # ToDo - provide option to collapse commits into a single, and provide a message for that commit
 UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${UPSTREAM_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
 if which google-chrome > /dev/null ; then
-  export BROWSER=google-chrome
-  google-chrome "$UPSTREAM_URL"
+  google-chrome "$UPSTREAM_URL" 2> /dev/null
 else
   open "$UPSTREAM_URL"
 fi
