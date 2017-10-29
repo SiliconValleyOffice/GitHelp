@@ -40,7 +40,7 @@ alias ghDJB="$GITHELP_HOME/ghDestroyJiraBranch.sh"
 alias ghUBUD="$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh"
 alias ghUBUR="$GITHELP_HOME/ghUpdateBranchWithUpstreamRelease.sh"
 alias ghUBUM="$GITHELP_HOME/ghUpdateBranchWithUpstreamMisc.sh"
-alias ghRSHA="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
+alias ghR2SHA="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
 ###  D  ######
 alias ghNPRD="$GITHELP_HOME/ghNewPullRequestForDevelopment.sh"
 alias ghNPRR="$GITHELP_HOME/ghNewPullRequestForRelease.sh"
