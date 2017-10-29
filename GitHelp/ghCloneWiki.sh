@@ -10,7 +10,6 @@ if [ "$#" -ne 1 ]; then
   exit
 fi
 
-GITHUB_URL="github.com"
 UPSTREAM_OWNER="$1"
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 REPO_NAME="${GIT_ROOT##*/}.wiki"
@@ -22,7 +21,7 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-eval UPSTREAM="${GITHUB_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+eval UPSTREAM="${GIT_HOST_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
 
 printf "\nClone WIKI from $UPSTREAM\n    into $REPO_ROOT\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r

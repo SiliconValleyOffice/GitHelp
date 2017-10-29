@@ -14,6 +14,10 @@ if [ "$#" -ne 3 ]; then
 fi
 
 CLONE_STRING=$1
+GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
+GIT_URL="https://"+$GIT_HOST
+echo $GIT_URL
+exit
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
 PRUNE="$4"
@@ -45,9 +49,8 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-GITHUB_URL="https://github.com"
-eval ORIGIN="${GITHUB_URL}/${GITHUB_USER}/${REPO_NAME}.git"
-eval UPSTREAM="${GITHUB_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+eval ORIGIN="${GIT_HOST}/${GITHUB_USER}/${REPO_NAME}.git"
+eval UPSTREAM="${GIT_HOST}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
 
 git config --global credential.helper cache
 
@@ -99,7 +102,7 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-PROFILE_ENTRY="$GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
+PROFILE_ENTRY="$GIT_HOST  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
 echo
 read -p "Run ghCONFIG to make this your active REPO ?  (y/n)   " -n 1 -r
@@ -125,5 +128,4 @@ fi
 
 if [ ! -z "$PRUNE" ]; then
    $GITHELP_HOME/ghPruneOriginAfterClone.sh 
-fi
 fi
