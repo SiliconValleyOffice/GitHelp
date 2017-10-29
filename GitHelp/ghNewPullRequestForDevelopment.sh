@@ -80,7 +80,7 @@ fi
 
 printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"${UPSTREAM_BRANCH}\" in upstream.\n\n"
 printf "Create a Pull Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n"
-printf "into the branch \"${UPSTREAM_BRANCH}\" in upstream?\n"
+printf "into the upstream branch \"${UPSTREAM_BRANCH}\"?\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n"
 printf "           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
