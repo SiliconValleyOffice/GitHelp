@@ -5,7 +5,7 @@
 
 
 if [ "$#" -ne 3 ]; then
-  if [ "$2" != "PRUNE" ] && [ "$#" -ne 4 ]; then
+  if [ "$#" -ne 4 ] && [ "$4" != "PRUNE" ] ; then
     printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix PRUNE\n"
     printf "    Clone a fork.\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
@@ -15,9 +15,7 @@ fi
 
 CLONE_STRING=$1
 GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
-GIT_URL="https://"+$GIT_HOST
-echo $GIT_URL
-exit
+GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
 PRUNE="$4"
@@ -49,13 +47,12 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-eval ORIGIN="${GIT_HOST}/${GITHUB_USER}/${REPO_NAME}.git"
-eval UPSTREAM="${GIT_HOST}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}.git"
+eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
 
 git config --global credential.helper cache
 
 git ls-remote --exit-code $ORIGIN &> /dev/null
-
 if [ $? -ne 0 ]; then
     printf "\n$ORIGIN does not exist.\nOperation canceled.\n\n"
     exit 1
@@ -102,15 +99,10 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-PROFILE_ENTRY="$GIT_HOST  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
+PROFILE_ENTRY="$GIT_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
-echo
-read -p "Run ghCONFIG to make this your active REPO ?  (y/n)   " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY
-fi
+printf "\nRunning ghCONFIG to make this your active REPO...\n\n"
+${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY
 
 if [ ! -f ~/.githelp_profile_list ]; then
     echo -n 'printf "GitHelp Configurations:\n"' > ~/.githelp_profile_list
@@ -127,5 +119,5 @@ if [ $? -eq 1 ]; then
 fi
 
 if [ ! -z "$PRUNE" ]; then
-   $GITHELP_HOME/ghPruneOriginAfterClone.sh 
+   $GITHELP_HOME/ghPruneOriginAfterClone.sh
 fi
