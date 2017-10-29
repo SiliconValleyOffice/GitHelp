@@ -10,7 +10,6 @@ if [ "$#" -ne 1 ]; then
   exit
 fi
 
-GITHUB_URL="github.com"
 UPSTREAM_OWNER="$1"
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 REPO_NAME="${GIT_ROOT##*/}.wiki"
