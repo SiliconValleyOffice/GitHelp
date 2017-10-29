@@ -75,7 +75,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghCPOB    -  Cherry Pick sha from Origin Branch into the current branch\n"
     printf "$HELP_MESSAGE    ghLMC     -  List Merge Conflicts\n"
     printf "$HELP_MESSAGE    ======= J =========  SHAs  ==========================\n"
-    printf "$HELP_MESSAGE    ghRSHA    -  Revert current branch to SHA\n"
+    printf "$HELP_MESSAGE    ghR2SHA   -  Revert current branch to SHA\n"
     printf "$HELP_MESSAGE    ghCPOB    -  Cherry Pick sha from Origin Branch into the current branch\n"
     printf "$HELP_MESSAGE    ======= K =========  Wiki  ==========================\n"
     printf "$HELP_MESSAGE    ghCW      -  Clone Wiki\n"
