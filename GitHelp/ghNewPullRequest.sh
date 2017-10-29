@@ -65,8 +65,8 @@ if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
   fi
 fi
 
-printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"upstream\\${UPSTREAM_BRANCH}\".\n\n"
-printf "Create a Pull Request (PR) from \"origin\\$CURRENT_BRANCH\"\n into \"upstream\\${UPSTREAM_BRANCH}\".\n"
+printf "\nLocal branch \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with upstream branch \"${UPSTREAM_BRANCH}\".\n\n"
+printf "Create a Pull Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n into the upstream branch \"${UPSTREAM_BRANCH}\"?\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
 echo
