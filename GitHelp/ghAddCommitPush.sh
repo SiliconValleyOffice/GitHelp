@@ -33,6 +33,6 @@ printf "\n"
 
 git add -A
 git commit -m "$COMMIT_MESSAGE"
-git push
+git push origin
 
 printf "\n"
