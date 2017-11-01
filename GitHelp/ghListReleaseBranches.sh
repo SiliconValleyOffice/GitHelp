@@ -4,4 +4,4 @@
 
 git remote update upstream --prune &> /dev/null
 
-git branch -r | grep 'Release/' | sed 's/  upstream\///'
+git branch -r | grep 'release/' | sed 's/  upstream\///'

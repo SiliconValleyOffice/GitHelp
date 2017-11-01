@@ -46,4 +46,4 @@ if [ "$OCCURRENCES" -gt 2 ] ; then
     exit 1
 fi
 
-echo "Release/$1"
+echo "release/$1"
