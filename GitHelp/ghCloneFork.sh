@@ -119,5 +119,5 @@ if [ $? -eq 1 ]; then
 fi
 
 if [ ! -z "$PRUNE" ]; then
-   $GITHELP_HOME/ghPruneOriginAfterClone.sh
+   $GITHELP_HOME/ghPruneOriginBranches.sh
 fi

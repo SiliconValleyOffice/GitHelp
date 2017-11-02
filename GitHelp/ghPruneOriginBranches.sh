@@ -17,6 +17,14 @@ then
     exit 1
 fi
 
+IFS=" "
+BRANCH_ARRAY=($ORIGIN_DELETE_LIST)
+printf "\nOrigin branches to be deleted:\n"
+for BRANCH in "${BRANCH_ARRAY[@]}"; do
+    printf "    ${BRANCH}\n"
+done
+printf "\n"
+
 printf "\nDESTROY all branches on origin, except development:\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
@@ -28,7 +36,7 @@ fi
 
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
 
-for BRANCH in "$ORIGIN_DELETE_LIST"; do
+for BRANCH in "${BRANCH_ARRAY[@]}"; do
     git push origin --delete $BRANCH
 done
 
