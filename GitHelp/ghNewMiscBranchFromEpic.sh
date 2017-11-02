@@ -13,7 +13,7 @@ if ! [[ $2 =~ $REGULAR_EXPRESSION ]] ; then
     exit 1
 fi
 
-MISC_BRANCH="${JIRA_TICKET_PREFIX}-${1}"
+MISC_BRANCH="${1}"
 UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseEpicBranch.sh $2`
 
 $GITHELP_HOME/ghOriginBranchExists.sh ${MISC_BRANCH}  &> /dev/null

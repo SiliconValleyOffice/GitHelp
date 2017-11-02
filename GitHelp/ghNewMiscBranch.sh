@@ -27,12 +27,7 @@ if [[ $? -ne 1 ]] ; then
 fi
 
 if [ $# -eq 2 ]; then
-    UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseReleaseBranch.sh $2`
-    if [ $? -ne 0 ] ; then
-      printf "Bad upstream_release_branch_number.${UPSTREAM_BRANCH}"
-      printf "\n\n"
-      exit 1;
-    fi
+    UPSTREAM_BRANCH=$2
 else
     UPSTREAM_BRANCH="development"
 fi
