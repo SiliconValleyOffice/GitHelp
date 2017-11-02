@@ -35,15 +35,10 @@ if [ $? -ne 0 ] ; then
     exit 1;
 fi
 
-IS_RELEASE_BRANCH="NO"
+IS_DEVELOPMENT_BRANCH="YES"
 if [ $# -eq 1 ]; then
-    IS_RELEASE_BRANCH="YES"
-    UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseReleaseBranch.sh $1`
-    if [ $? -ne 0 ] ; then
-      printf "Bad upstream_release_branch_number.${UPSTREAM_BRANCH}"
-      printf "\n\n"
-      exit 1;
-    fi
+    IS_DEVELOPMENT_BRANCH="NO"
+    UPSTREAM_BRANCH=`$GITHELP_HOME/$1`
 else
     UPSTREAM_BRANCH="development"
 fi
@@ -86,7 +81,7 @@ fi
 
 printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
 
-if [[ "$IS_RELEASE_BRANCH" == "YES" ]] ; then
+if [[ "$IS_DEVELOPMENT_BRANCH" == "NO" ]] ; then
   printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
   read -p "Continue?  (y/n)   " -n 1 -r
   echo
