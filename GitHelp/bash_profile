@@ -39,11 +39,13 @@ alias ghDJB="$GITHELP_HOME/ghDestroyJiraBranch.sh"
 ###  C  ######
 alias ghUBUD="$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh"
 alias ghUBUR="$GITHELP_HOME/ghUpdateBranchWithUpstreamRelease.sh"
+alias ghUBUE="$GITHELP_HOME/ghUpdateBranchWithUpstreamEpic.sh"
 alias ghUBUM="$GITHELP_HOME/ghUpdateBranchWithUpstreamMisc.sh"
 alias ghR2SHA="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
 ###  D  ######
 alias ghNPRD="$GITHELP_HOME/ghNewPullRequestForDevelopment.sh"
 alias ghNPRR="$GITHELP_HOME/ghNewPullRequestForRelease.sh"
+alias ghNPRE="$GITHELP_HOME/ghNewPullRequestForEpic.sh"
 alias ghNPRM="$GITHELP_HOME/ghNewPullRequestForMisc.sh"
 alias ghNPRF="$GITHELP_HOME/ghNewPullRequestForFork.sh"
 alias ghRPRU="$GITHELP_HOME/ghReviewPullRequestsForUpstream.sh"
@@ -61,6 +63,7 @@ alias ghUBFB="$GITHELP_HOME/ghUpdateBranchWithForkBranch.sh"
 ###  G  ######
 alias ghFUDB="$GITHELP_HOME/ghFetchUpstreamDevelopmentBranch.sh"
 alias ghLRB="$GITHELP_HOME/ghListReleaseBranches.sh"
+alias ghLEB="$GITHELP_HOME/ghListEpicBranches.sh"
 ###  H  ######
 alias ghCUF="$GITHELP_HOME/ghCleanUntrackedFiles.sh"
 alias ghCUCB="$GITHELP_HOME/ghCleanUntrackedFilesAndCheckoutBranch.sh"
