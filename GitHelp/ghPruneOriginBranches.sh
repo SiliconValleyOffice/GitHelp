@@ -13,7 +13,7 @@ then
     exit 1
 fi
 
-IFS=" "
+IFS=$'\n'
 BRANCH_ARRAY=($ORIGIN_DELETE_LIST)
 printf "\nOrigin branches to be deleted:\n"
 for BRANCH in "${BRANCH_ARRAY[@]}"; do

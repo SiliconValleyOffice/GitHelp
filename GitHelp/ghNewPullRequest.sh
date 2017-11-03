@@ -38,7 +38,7 @@ fi
 IS_DEVELOPMENT_BRANCH="YES"
 if [ $# -eq 1 ]; then
     IS_DEVELOPMENT_BRANCH="NO"
-    UPSTREAM_BRANCH=`$GITHELP_HOME/$1`
+    UPSTREAM_BRANCH=`$1`
 else
     UPSTREAM_BRANCH="development"
 fi

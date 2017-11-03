@@ -20,7 +20,7 @@ then
 fi
 
 printf "\nDESTROY branches on origin that are not local, except master and development:\n"
-printf "    WARNING:  NO RECOVERY\n    The following origin branches will be deleted.\n"
+printf "    WARNING:  NO RECOVERY\n"
 IFS=" "
 BRANCH_ARRAY=($DELETE_LIST)
 printf "\nOrigin branches to be deleted:\n"
