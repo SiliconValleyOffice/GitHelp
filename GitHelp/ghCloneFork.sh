@@ -5,12 +5,10 @@
 
 
 if [ "$#" -ne 3 ]; then
-  if [ "$#" -ne 4 ] && [ "$4" != "PRUNE" ] ; then
-    printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix PRUNE\n"
+    printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix\n"
     printf "    Clone a fork.\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
     exit
-  fi
 fi
 
 CLONE_STRING=$1
@@ -18,7 +16,6 @@ GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
 GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
-PRUNE="$4"
 
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
@@ -118,6 +115,4 @@ if [ $? -eq 1 ]; then
   echo " \n\"" >> ~/.githelp_profile_list
 fi
 
-if [ ! -z "$PRUNE" ]; then
-   $GITHELP_HOME/ghPruneOriginBranches.sh
-fi
+$GITHELP_HOME/ghPruneOriginBranches.sh
