@@ -31,6 +31,12 @@ then
 fi
 
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+    git checkout development
+    printf "\nOperation canceled.\n\n"
+    exit 1
+fi
 
 for BRANCH in "$DELETE_LIST"; do
     git push origin --delete $BRANCH
