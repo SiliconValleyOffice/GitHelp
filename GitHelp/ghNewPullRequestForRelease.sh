@@ -11,9 +11,9 @@ fi
 
 RELEASE=$1
 
-UPSTREAM_BRANCH=$GITHELP_HOME/ghParseReleaseBranch.sh ${RELEASE}
+UPSTREAM_BRANCH="$GITHELP_HOME/ghParseReleaseBranch.sh ${RELEASE}"
 if [[ $? -ne 0 ]] ; then
     exit 1;
 fi
 
-$GITHELP_HOME/ghNewPullRequest.sh $UPSTREAM_BRANCH
+$GITHELP_HOME/ghNewPullRequest.sh "$UPSTREAM_BRANCH"

@@ -2,6 +2,4 @@
 # list upstream release branches
 # alias = ghLRB
 
-git remote update upstream --prune &> /dev/null
-
-git branch -r | grep 'release/' | sed 's/  upstream\///'
+$GITHELP_HOME/ghListUpstreamBranches.sh | grep "release/"
