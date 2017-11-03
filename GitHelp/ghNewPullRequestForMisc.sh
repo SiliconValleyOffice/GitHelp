@@ -1,11 +1,11 @@
 #!/bin/bash
-# Create a Pull Request
-# alias = ghNPR
+# Create a Pull Request for a Misc branch
+# alias = ghNPRM
 
 if [ "$#" -gt 1 ]; then
-  printf "\nUsage: ghNPR [upstream_release_branch_number]\n"
+  printf "\nUsage: ghNPRM [upstream_misc_branch]\n"
   printf "    create a Pull Request for the current branch\n"
-  printf "    default upstream_branch = development\n\n"
+  printf "    default upstream_branch = master\n\n"
   exit
 fi
 
@@ -35,12 +35,10 @@ if [ $? -ne 0 ] ; then
     exit 1;
 fi
 
-IS_DEVELOPMENT_BRANCH="YES"
 if [ $# -eq 1 ]; then
-    IS_DEVELOPMENT_BRANCH="NO"
-    UPSTREAM_BRANCH=`$1`
+    UPSTREAM_BRANCH="$1"
 else
-    UPSTREAM_BRANCH="development"
+    UPSTREAM_BRANCH="master"
 fi
 
 $GITHELP_HOME/ghUpstreamBranchExists.sh ${UPSTREAM_BRANCH} &> /dev/null
@@ -60,8 +58,8 @@ if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
   fi
 fi
 
-printf "\nLocal branch \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with upstream branch \"${UPSTREAM_BRANCH}\".\n\n"
-printf "Create a Pull Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n into the upstream branch \"${UPSTREAM_BRANCH}\"?\n"
+printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"upstream\\${UPSTREAM_BRANCH}\".\n\n"
+printf "Create a Pull Request (PR) from \"origin\\$CURRENT_BRANCH\"\n into \"upstream\\${UPSTREAM_BRANCH}\".\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
 echo
@@ -80,14 +78,3 @@ else
 fi
 
 printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
-
-if [[ "$IS_DEVELOPMENT_BRANCH" == "NO" ]] ; then
-  printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
-  read -p "Continue?  (y/n)   " -n 1 -r
-  echo
-  if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
-      printf "\nOperation canceled.\n\n"
-      exit 1
-  fi
-  $GITHELP_HOME/ghNewPullRequestForDevelopment.sh
-fi

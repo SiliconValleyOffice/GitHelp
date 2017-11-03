@@ -3,7 +3,7 @@
 
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 RESULTS=`git status`
-if [[ "$RESULTS"  != *"nothing to commit, working directory clean"* ]] ; then
+if [[ "$RESULTS"  != *"working directory clean"* ]] && [[ "$RESULTS"  != *"working tree clean"* ]] ; then
     printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "clean".\n"
     printf "    Commit/push your changes and try again.\n\n"
     exit 1;

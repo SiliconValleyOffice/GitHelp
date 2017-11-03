@@ -1,8 +1,4 @@
-#!/bin/bash
-
-export GRADLE_HOME=~/AndroidTechnology/gradle-2.6
-export PATH=$PATH:$GRADLE_HOME/bin
-
+#=====  GitHelp - START  =====
 export GITHELP_HOME=~/GitHelp
 
 if [ -a ~/.githelp_profile ] ; then
@@ -30,11 +26,18 @@ alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 ###  A  ######
 alias ghNMB="$GITHELP_HOME/ghNewMiscBranch.sh"
+alias ghNMBFE="$GITHELP_HOME/ghNewMiscBranchFromEpic.sh"
+alias ghNMBFR="$GITHELP_HOME/ghNewMiscBranchFromRelease.sh"
+alias ghNJBFSHA="$GITHELP_HOME/ghNewMiscBranchFromSHA.sh"
 alias ghNDMB="$GITHELP_HOME/ghNewDerivedMiscBranch.sh"
+alias ghCMB="$GITHELP_HOME/ghCheckoutMiscBranch.sh"
 alias ghDMB="$GITHELP_HOME/ghDestroyMiscBranch.sh"
 alias ghDCB="$GITHELP_HOME/ghDestroyCurrentBranch.sh"
 ###  B  ######
 alias ghNJB="$GITHELP_HOME/ghNewJiraBranch.sh"
+alias ghNJBFE="$GITHELP_HOME/ghNewJiraBranchFromEpic.sh"
+alias ghNJBFR="$GITHELP_HOME/ghNewJiraBranchFromRelease.sh"
+alias ghNJBFSHA="$GITHELP_HOME/ghNewJiraBranchFromSHA.sh"
 alias ghNDJB="$GITHELP_HOME/ghNewDerivedJiraBranch.sh"
 alias ghRJT="$GITHELP_HOME/ghReviewJiraTicket.sh"
 alias ghCJB="$GITHELP_HOME/ghCheckoutJiraBranch.sh"
@@ -42,10 +45,14 @@ alias ghDJB="$GITHELP_HOME/ghDestroyJiraBranch.sh"
 ###  C  ######
 alias ghUBUD="$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh"
 alias ghUBUR="$GITHELP_HOME/ghUpdateBranchWithUpstreamRelease.sh"
-alias ghRSHA="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
+alias ghUBUE="$GITHELP_HOME/ghUpdateBranchWithUpstreamEpic.sh"
+alias ghUBUM="$GITHELP_HOME/ghUpdateBranchWithUpstreamMisc.sh"
+alias ghR2SHA="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
 ###  D  ######
 alias ghNPRD="$GITHELP_HOME/ghNewPullRequestForDevelopment.sh"
 alias ghNPRR="$GITHELP_HOME/ghNewPullRequestForRelease.sh"
+alias ghNPRE="$GITHELP_HOME/ghNewPullRequestForEpic.sh"
+alias ghNPRM="$GITHELP_HOME/ghNewPullRequestForMisc.sh"
 alias ghNPRF="$GITHELP_HOME/ghNewPullRequestForFork.sh"
 alias ghRPRU="$GITHELP_HOME/ghReviewPullRequestsForUpstream.sh"
 alias ghRPRF="$GITHELP_HOME/ghReviewPullRequestsForFork.sh"
@@ -62,6 +69,7 @@ alias ghUBFB="$GITHELP_HOME/ghUpdateBranchWithForkBranch.sh"
 ###  G  ######
 alias ghFUDB="$GITHELP_HOME/ghFetchUpstreamDevelopmentBranch.sh"
 alias ghLRB="$GITHELP_HOME/ghListReleaseBranches.sh"
+alias ghLEB="$GITHELP_HOME/ghListEpicBranches.sh"
 ###  H  ######
 alias ghCUF="$GITHELP_HOME/ghCleanUntrackedFiles.sh"
 alias ghCUCB="$GITHELP_HOME/ghCleanUntrackedFilesAndCheckoutBranch.sh"
@@ -86,3 +94,4 @@ alias ghIBP="cp $GITHELP_HOME/bash_profile ~/.bash_profile"
 alias ghSBP="cp ~/.bash_profile $GITHELP_HOME/bash_profile"
 alias ghCUR="$GITHELP_HOME/ghCloneUpstreamRepo.sh"
 alias ghCGR="$GITHELP_HOME/ghCopyGitHelpToRepo.sh"
+#=====  GitHelp - END  =======

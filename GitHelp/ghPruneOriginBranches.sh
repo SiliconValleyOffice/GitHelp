@@ -5,11 +5,7 @@
 cd $GIT_ROOT
 
 git remote update origin --prune &> /dev/null
-ORIGIN_DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/Fetching/d' | sed '/HEAD/d' | sed 's/ //g')"
-
-ORIGIN_DELETE_LIST="$(eval echo $ORIGIN_DELETE_LIST | sed "s/development//")"
-
-echo $ORIGIN_DELETE_LIST
+ORIGIN_DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/development/d')"
 
 if [[ -z $ORIGIN_DELETE_LIST ]]
 then
@@ -17,13 +13,16 @@ then
     exit 1
 fi
 
-IFS=" "
-BRANCH_ARRAY=($DELETE_LIST)
+IFS=$'\n'
+BRANCH_ARRAY=($ORIGIN_DELETE_LIST)
 printf "\nOrigin branches to be deleted:\n"
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
     printf "    ${BRANCH}\n"
 done
+printf "\n"
 
+printf "NOTE: It is highly recommended that you start with a clean origin,\n"
+printf "      leaving only the development branch.\n\n"
 printf "\nDESTROY all branches on origin, except development:\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
@@ -34,16 +33,9 @@ then
 fi
 
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
-RESULT=$?
-if [ $RESULT -ne 0 ]; then
-    git checkout development
-    printf "\nOperation canceled.\n\n"
-    exit 1
-fi
 
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
     git push origin --delete $BRANCH
-    git branch -D $BRANCH
 done
 
 printf "\nOrigin branch state:\n"

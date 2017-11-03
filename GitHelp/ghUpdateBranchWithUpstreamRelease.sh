@@ -1,5 +1,5 @@
 #!/bin/bash
-# update current branch with upstream/Release/x.x branch
+# update current branch with upstream/release/x.x branch
 # alias = ghUBUR
 
 if [ ! $# -eq 1 ]; then

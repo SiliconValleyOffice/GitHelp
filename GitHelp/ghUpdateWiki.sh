@@ -1,20 +1,16 @@
 #!/bin/bash
-# Pull latest changes from upstream wiki
-# alias = ghPW
-
-# SPECIFIC TO BreakthroughBehavioralInc FOR NOW !!!
-# Should be entirely driven by current githelp_profile
+# Push latest changes to upstream wiki
+# alias = ghUW
 
 # Assumption - we are working with the wiki for the current githelp repo
 
 
-if [ "$#" -ne 0 ]; then
-  printf "\nUsage: ghPW\n\n"
+if [ "$#" -ne 1 ]; then
+  printf "\nUsage: ghUW upstream_owner\n\n"
   exit
 fi
 
-GITHUB_URL="github.com"
-UPSTREAM_OWNER="BreakthroughBehavioralInc"
+UPSTREAM_OWNER="$1"
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 BASE_REPO=${GIT_ROOT##*/}
 REPO_NAME="${BASE_REPO}.wiki"
