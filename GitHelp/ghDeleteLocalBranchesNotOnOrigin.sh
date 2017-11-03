@@ -8,7 +8,7 @@ cd $GIT_ROOT
 
 git remote update origin --prune &> /dev/null
 REMOTE_LIST=`$GITHELP_HOME/ghListOriginBranches.sh`
-DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/development/d')"
+DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/^development$/d')"
 
 for REMOTE in $REMOTE_LIST; do
    DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/$REMOTE//")"
