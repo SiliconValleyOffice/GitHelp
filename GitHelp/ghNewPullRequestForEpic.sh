@@ -16,4 +16,4 @@ if [[ $? -ne 0 ]] ; then
     exit 1;
 fi
 
-$GITHELP_HOME/ghNewPullRequest.sh $UPSTREAM_BRANCH
+$GITHELP_HOME/ghNewPullRequest.sh "$UPSTREAM_BRANCH"
