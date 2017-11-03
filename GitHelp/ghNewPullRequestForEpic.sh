@@ -11,7 +11,7 @@ fi
 
 EPIC=$1
 
-UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseEpicBranch.sh "${EPIC}"`
+UPSTREAM_BRANCH="$GITHELP_HOME/ghParseEpicBranch.sh ${EPIC}"
 if [[ $? -ne 0 ]] ; then
     exit 1;
 fi
