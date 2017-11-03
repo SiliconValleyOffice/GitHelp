@@ -53,12 +53,17 @@ fi
 
 $GITHELP_HOME/ghCleanUntrackedFiles.sh
 
+# git fetch upstream &> /dev/null
+# git remote prune upstream &> /dev/null
+# git checkout upstream/${UPSTREAM_BRANCH} &> /dev/null
+# git checkout -b ${ORIGIN_BRANCH}
+# git fetch origin &> /dev/null
+# git remote prune origin &> /dev/null
+
 git fetch upstream &> /dev/null
-git remote prune upstream &> /dev/null
 git checkout upstream/${UPSTREAM_BRANCH} &> /dev/null
 git checkout -b ${ORIGIN_BRANCH}
-git fetch origin &> /dev/null
-git remote prune origin &> /dev/null
+git remote prune upstream &> /dev/null
 git push origin ${ORIGIN_BRANCH} &> /dev/null
 echo
 git branch -u "origin/${ORIGIN_BRANCH}"
