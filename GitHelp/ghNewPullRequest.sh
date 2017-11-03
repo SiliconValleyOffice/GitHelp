@@ -86,7 +86,6 @@ if [[ "$IS_DEVELOPMENT_BRANCH" == "NO" ]] ; then
   read -p "Continue?  (y/n)   " -n 1 -r
   echo
   if [[ ! $REPLY =~ ^[Yy]$ ]] ; then
-      printf "\nOperation canceled.\n\n"
       exit 1
   fi
   $GITHELP_HOME/ghNewPullRequestForDevelopment.sh
