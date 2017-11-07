@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create a New Misc branch from upstream release branch
-# alias = ghNMBFR
+# alias = ghNMBR
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNMBFR misc_branch_name release_number\n"
+  printf "\nUsage: ghNMBR misc_branch_name release_number\n"
   printf "  create New Misc Branch from upstream release.\n\n"
   exit
 fi

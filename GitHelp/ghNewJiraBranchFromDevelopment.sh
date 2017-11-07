@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create a new git branch to work on a JIRA feature/bug
-# alias = ghNJBFD
+# alias = ghNJBD
 
 if [ "$#" -lt 1 ]; then
-  printf "\nUsage: ghNJBFD JIRA_number [upstream_release_branch_number]\n"
+  printf "\nUsage: ghNJBD JIRA_number [upstream_release_branch_number]\n"
   printf "  default upstream_branch = 'development'\n"
   printf "  Create new origin branch from upstream branch.\n\n"
   exit

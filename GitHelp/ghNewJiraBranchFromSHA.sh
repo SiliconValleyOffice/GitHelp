@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create a new JIRA branch from a SHA
-# alias = ghNJBFSHA
+# alias = ghNJBS
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNJBFSHA JIRA_number SHA\n"
+  printf "\nUsage: ghNJBS JIRA_number SHA\n"
   printf "  create New JIRA Branch from SHA.\n\n"
   exit
 fi

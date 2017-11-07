@@ -1,6 +1,6 @@
 #!/bin/bash
 # Create a new MISC git branch
-# gitNMB
+# gitNMBD
 
 cd $GIT_ROOT
 
@@ -12,7 +12,7 @@ fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
 
 if [ "$#" -lt 1 ]; then
-  printf "\nUsage: ghNMB branch_name [upstream_release_branch_number]\n"
+  printf "\nUsage: ghNMBD branch_name [upstream_release_branch_number]\n"
   printf "  default upstream_branch = 'development'\n"
   printf "  Create new origin branch from upstream branch.\n\n"
   exit

@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create a new Misc branch from a SHA
-# alias = ghNMBFSHA
+# alias = ghNMBS
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNMBFSHA misc_branch SHA\n"
+  printf "\nUsage: ghNMBS misc_branch SHA\n"
   printf "  create New Misc Branch From SHA.\n\n"
   exit
 fi

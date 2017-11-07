@@ -1,15 +1,15 @@
 #!/bin/bash
 # Create a New Misc branch from upstream epic branch
-# alias = ghNMBFE
+# alias = ghNMBE
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNJBFE misc_branch_name epic_JIRA_number\n"
+  printf "\nUsage: ghNMBE misc_branch_name epic_JIRA_number\n"
   printf "  create New Misc Branch from upstream epic.\n\n"
   exit
 fi
 
 if ! [[ $2 =~ $REGULAR_EXPRESSION ]] ; then
-    printf "\n    ERROR: Argument 2 is not a JIRA number.\n\n"
+    printf "\n    ERROR: Argument 2 (epic) is not a JIRA number.\n\n"
     exit 1
 fi
 
