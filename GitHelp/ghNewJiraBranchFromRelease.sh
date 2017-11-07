@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create a New JIRA branch from upstream release branch
-# alias = ghNJBFR
+# alias = ghNJBR
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNJBFE JIRA_number release_number\n"
+  printf "\nUsage: ghNJBR JIRA_number release_number\n"
   printf "  create New JIRA Branch from upstream release.\n\n"
   exit
 fi

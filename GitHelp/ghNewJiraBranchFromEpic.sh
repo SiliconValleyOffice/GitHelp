@@ -1,9 +1,9 @@
 #!/bin/bash
 # Create a New JIRA branch from upstream epic branch
-# alias = ghNJBFE
+# alias = ghNJBE
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNJBFE JIRA_number epic_JIRA_number\n"
+  printf "\nUsage: ghNJBE JIRA_number epic_JIRA_number\n"
   printf "  create New JIRA Branch from upstream epic.\n\n"
   exit
 fi

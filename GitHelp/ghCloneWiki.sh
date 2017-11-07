@@ -34,7 +34,7 @@ fi
 
 echo
 cd "$LOCAL_PARENT_DIRECTORY"
-git clone "https://$UPSTREAM"
+git clone "$UPSTREAM"
 if [ $? -eq 0 ]; then
     cd $REPO_NAME
     git config --global push.default simple
