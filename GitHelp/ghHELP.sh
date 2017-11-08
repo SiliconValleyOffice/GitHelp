@@ -4,14 +4,6 @@
 GITHELP_VERSION=`$GITHELP_HOME/ghVERSION.sh`
 printf "\n$GITHELP_VERSION\n"
 
-if [ "$1" == "-s" ]; then
-    printf "gitHELP Silent commands:\n"
-    printf "$HELP_MESSAGE    ghSBP  -  Save Bash Profile\n"
-    printf "$HELP_MESSAGE    ghCGR  -  Copy GitHelp to Repo\n\n"
-    printf "$HELP_MESSAGE    ghCUR  -  Clone Upstream Repo (not a Fork)\n\n"
-    exit
-fi
-
 ${GITHELP_HOME}/ghCONFIG.sh
 
 if [ "$1" == "-x" ]; then
@@ -51,14 +43,12 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ======= C =========  Update Branch  =================\n"
     printf "$HELP_MESSAGE    ghUBUD    -  Update current Branch with Upstream Development\n"
     printf "$HELP_MESSAGE    ghUBUR    -  Update current Branch with Upstream Release Branch\n"
-    printf "$HELP_MESSAGE    ghUBUM    -  Update current Branch with Upstream Misc Branch\n"
     printf "$HELP_MESSAGE    ghUBUE    -  Update current Branch with Upstream Epic Branch\n"
     printf "$HELP_MESSAGE    ghRSHA    -  Revert current branch to SHA\n"
     printf "$HELP_MESSAGE    ghLMC     -  List Merge Conflicts\n"
     printf "$HELP_MESSAGE    ======= D =========  Pull Requests  =================\n"
     printf "$HELP_MESSAGE    ghNPRD    -  New Pull Request (PR) for the upstream Development branch\n"
     printf "$HELP_MESSAGE    ghNPRR    -  New Pull Request (PR) for an upstream Release branch\n"
-    printf "$HELP_MESSAGE    ghNPRM    -  New Pull Request (PR) for an upstream Misc branch\n"
     printf "$HELP_MESSAGE    ghNPRE    -  New Pull Request (PR) for an upstream Epic branch\n"
     printf "$HELP_MESSAGE    ghNPRF    -  New Pull Request (PR) for a Fork branch\n"
     printf "$HELP_MESSAGE    ghRPRU    -  Review Pull Requests for upstream\n"
@@ -84,7 +74,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghCPOB    -  Cherry Pick sha from Origin Branch into the current branch\n"
     printf "$HELP_MESSAGE    ghLMC     -  List Merge Conflicts\n"
     printf "$HELP_MESSAGE    ======= J =========  SHAs  ==========================\n"
-    printf "$HELP_MESSAGE    ghR2SHA   -  Revert current branch to SHA\n"
+    printf "$HELP_MESSAGE    ghRTS     -  Revert current branch to SHA\n"
     printf "$HELP_MESSAGE    ghNJBFSHA -  New JIRA Branch From SHA\n"
     printf "$HELP_MESSAGE    ghNMBFSHA -  New Misc Branch From SHA\n"
     printf "$HELP_MESSAGE    ghCPOB    -  Cherry Pick sha from Origin Branch into the current branch\n"
@@ -135,14 +125,12 @@ else
     printf "$HELP_MESSAGE    ======= C =========  Update Branch  =================\n"
     printf "$HELP_MESSAGE    ghUBUD    -  Update current Branch with Upstream Development\n"
     printf "$HELP_MESSAGE    ghUBUR    -  Update current Branch with Upstream Release Branch\n"
-    printf "$HELP_MESSAGE    ghUBUM    -  Update current Branch with Upstream Misc Branch\n"
     printf "$HELP_MESSAGE    ghUBUE    -  Update current Branch with Upstream Epic Branch\n"
     printf "$HELP_MESSAGE    ghRSHA    -  Revert current branch to SHA\n"
     printf "$HELP_MESSAGE    ghLMC     -  List Merge Conflicts\n"
     printf "$HELP_MESSAGE    ======= D =========  Pull Requests  =================\n"
     printf "$HELP_MESSAGE    ghNPRD    -  New Pull Request (PR) for the upstream Development branch\n"
     printf "$HELP_MESSAGE    ghNPRR    -  New Pull Request (PR) for an upstream Release branch\n"
-    printf "$HELP_MESSAGE    ghNPRM    -  New Pull Request (PR) for an upstream Misc branch\n"
     printf "$HELP_MESSAGE    ghNPRE    -  New Pull Request (PR) for an upstream Epic branch\n"
     printf "$HELP_MESSAGE    ghNPRF    -  New Pull Request (PR) for a Fork branch\n"
     printf "$HELP_MESSAGE    ghRPRU    -  Review Pull Requests for upstream\n"
