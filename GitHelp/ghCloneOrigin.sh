@@ -1,12 +1,12 @@
 #!/bin/bash
-# Clone fork
-# alias = ghCF
+# Clone Origin
+# alias = ghCO
 
 
 
 if [ "$#" -ne 3 ]; then
-    printf "\nUsage: ghCF github_fork_clone_string upstream_owner JIRA_ticket_prefix\n"
-    printf "    Clone a fork.\n"
+    printf "\nUsage: ghCO github_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
+    printf "    Clone Origin (developer fork).\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
     exit
 fi
@@ -23,13 +23,13 @@ GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
 REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
 if [ -z $GITHUB_USER -o -z $REPO_NAME ]; then
   printf "\nBad clone string.\n"
-  printf "Copy this string from the GitHub page for the Fork.\n\n"
+  printf "Copy this string from the GitHub page for the Origin (developer fork).\n\n"
   exit
 fi
 
 if [ $UPSTREAM_OWNER != "NONE" ] && [ $GITHUB_USER = $UPSTREAM_OWNER ]; then
-  printf "\nYou copied the clone string from an upstream repository,\n    not a Fork.\n"
-  printf "Copy this string from the GitHub page for the Fork.\n\n"
+  printf "\nYou copied the clone string from an upstream repository,\n    not a fork (origin).\n"
+  printf "Copy this string from the GitHub page for the Origin (developer fork).\n\n"
   exit
 fi
 
@@ -63,7 +63,7 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
     fi
 fi
 
-printf "\nClone Fork\n    from\n        $ORIGIN\n    into\n        $REPO_ROOT\n"
+printf "\nClone Origin\n    from\n        $ORIGIN\n    into\n        $REPO_ROOT\n"
 if [ $UPSTREAM_OWNER != "NONE" ]; then
     printf "    setting upstream to\n        $UPSTREAM\n"
 else

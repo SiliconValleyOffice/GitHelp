@@ -87,7 +87,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghDLBNOO  -  Delete Local Branches Not On Origin\n"
     printf "$HELP_MESSAGE    ghDAOBED  -  Destroy All Origin Branches Except Development\n"
     printf "$HELP_MESSAGE    ghDOBNOL  -  Destroy Origin Branches Not On Local, Except Development\n"
-    printf "$HELP_MESSAGE    ghCF      -  Clone Fork\n"
+    printf "$HELP_MESSAGE    ghCO      -  Clone Origin\n"
 else
     printf "gitHELP frequently used commands:\n"
     printf "$HELP_MESSAGE    gh        -  This help message\n"

@@ -6,7 +6,7 @@ if [ -a ~/.githelp_profile ] ; then
 else
     printf "\nGitHelp installation:\n"
     printf "    No Forks have been cloned.\n"
-    printf "    Use ghCF to Clone your first Fork.\n\n"
+    printf "    Use ghCO to Clone your Origin (developer fork).\n\n"
 fi
 
 alias gh="$GITHELP_HOME/ghHELP.sh"
@@ -131,6 +131,6 @@ alias ghDAOBED="$GITHELP_HOME/ghDestroyAllOriginBranchesExceptDevelopment.sh"
 alias ghDestroyAllOriginBranchesExceptDevelopment="$GITHELP_HOME/ghDestroyAllOriginBranchesExceptDevelopment.sh"
 alias ghDOBNOL="$GITHELP_HOME/ghDestroyOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghDestroyOriginBranchesNotOnLocal="$GITHELP_HOME/ghDestroyOriginBranchesNotOnLocalExceptDevelopment.sh"
-alias ghCF="$GITHELP_HOME/ghCloneFork.sh"
+alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
 
 #=====  GitHelp - END  =======
