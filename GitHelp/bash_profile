@@ -132,5 +132,6 @@ alias ghDestroyAllOriginBranchesExceptDevelopment="$GITHELP_HOME/ghDestroyAllOri
 alias ghDOBNOL="$GITHELP_HOME/ghDestroyOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghDestroyOriginBranchesNotOnLocal="$GITHELP_HOME/ghDestroyOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
+alias ghPRUNE="$GITHELP_HOME/ghPruneOriginBranches.sh"
 
 #=====  GitHelp - END  =======
