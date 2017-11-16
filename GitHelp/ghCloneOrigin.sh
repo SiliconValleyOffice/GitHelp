@@ -115,4 +115,5 @@ if [ $? -eq 1 ]; then
   echo " \n\"" >> ~/.githelp_profile_list
 fi
 
-$GITHELP_HOME/ghPruneOriginBranches.sh
+printf "If this is a clone of a new Origin/fork, run ghPRUNE\n"
+printf "in the new repository after making it active."
