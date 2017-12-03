@@ -86,7 +86,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghDLBNOO  -  Delete Local Branches Not On Origin\n"
     printf "$HELP_MESSAGE    ghDAOBED  -  Destroy All Origin Branches Except Development\n"
-    printf "$HELP_MESSAGE    ghDOBNOL  -  Destroy Origin Branches Not On Local, Except Development\n"
+    printf "$HELP_MESSAGE    ghDOBNOL  -  Destroy Origin Branches Not On Local, except development\n"
     printf "$HELP_MESSAGE    ghCO      -  Clone Origin\n"
     printf "$HELP_MESSAGE    ghPRUNE   -  Prune all Origin branches, except development\n"
 else
