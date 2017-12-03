@@ -4,7 +4,12 @@
 
 source ~/.githelp_profile
 
-printf "\nCurrent GitHub configuration:\n"
+STATUS="Previous"
+if [ $# -eq 0 ]; then
+  STATUS="Currrent"
+fi
+
+printf "\n${STATUS} GitHub configuration:\n"
 printf "    GIT_HOST_URL = '$GIT_HOST_URL' \n"
 printf "    GITHUB_USER = '$GITHUB_USER' \n"
 printf "    GIT_ROOT = '$GIT_ROOT' \n"
