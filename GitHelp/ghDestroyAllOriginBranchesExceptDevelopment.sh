@@ -9,8 +9,6 @@ git remote update origin --prune &> /dev/null
 TEMP_DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/Fetching/d' | sed '/HEAD/d' | sed 's/ //g' | tr '\r\n' ' ')"
 ORIGIN_DELETE_LIST=`echo "$TEMP_DELETE_LIST" | sed "s/development//"`
 
-echo $ORIGIN_DELETE_LIST
-
 if [[ -z $ORIGIN_DELETE_LIST ]]
 then
     printf "\nNo origin branches to delete.\n\n"
