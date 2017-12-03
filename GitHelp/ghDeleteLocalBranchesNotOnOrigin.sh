@@ -5,10 +5,11 @@
 #  git fetch -p  ??????
 
 cd $GIT_ROOT
+IFS=" "
 
 git remote update origin --prune &> /dev/null
-REMOTE_LIST=`$GITHELP_HOME/ghListOriginBranches.sh`
-DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/^development$/d')"
+REMOTE_LIST=`$GITHELP_HOME/ghListOriginBranches.sh | tr '\r\n' ' '`
+DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/^development$/d' | tr '\r\n' ' ')"
 
 for REMOTE in $REMOTE_LIST; do
    DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/$REMOTE//")"
@@ -20,7 +21,6 @@ then
     exit 1
 fi
 
-IFS=" "
 BRANCH_ARRAY=($DELETE_LIST)
 printf "\nLocal branches to be deleted:\n"
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
@@ -40,7 +40,7 @@ fi
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
 
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
-    git branch -d ${BRANCH}
+    git branch -D ${BRANCH}
 done
 
 printf "\nLocal branch state:\n"
