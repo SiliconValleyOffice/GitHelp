@@ -1,11 +1,18 @@
 #!/bin/bash
+<<<<<<< HEAD:GitHelp/ghDestroyAllOriginBranchesExceptDevelopment.sh
 # Destroy all origin branches except development
 # alias = ghDAOBED
+=======
+# Prune all origin branches except development and master
+# alias = ghPAOBED
+>>>>>>> a1aecb9... gh Pruning:GitHelp/ghPruneAllOriginBranchesExceptDevelopment.sh
 
 cd $GIT_ROOT
+IFS=" "
 
 git remote update origin --prune &> /dev/null
-ORIGIN_DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/development/d')"
+TEMP_DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/Fetching/d' | sed '/HEAD/d' | sed 's/ //g' | tr '\r\n' ' ')"
+ORIGIN_DELETE_LIST=`echo "$TEMP_DELETE_LIST" | sed "s/development//"`
 
 if [[ -z $ORIGIN_DELETE_LIST ]]
 then
@@ -13,16 +20,11 @@ then
     exit 1
 fi
 
-IFS=$'\n'
-BRANCH_ARRAY=($ORIGIN_DELETE_LIST)
 printf "\nOrigin branches to be deleted:\n"
-for BRANCH in "${BRANCH_ARRAY[@]}"; do
-    printf "    ${BRANCH}\n"
+for BRANCH in $ORIGIN_DELETE_LIST; do
+    printf "> ${BRANCH}\n"
 done
-printf "\n"
 
-printf "NOTE: It is highly recommended that you start with a clean origin,\n"
-printf "      leaving only the development branch.\n\n"
 printf "\nDESTROY all branches on origin, except development:\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
@@ -33,9 +35,16 @@ then
 fi
 
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+    git checkout development
+    printf "\nOperation canceled.\n\n"
+    exit 1
+fi
 
-for BRANCH in "${BRANCH_ARRAY[@]}"; do
+for BRANCH in $ORIGIN_DELETE_LIST; do
     git push origin --delete $BRANCH
+    git branch -D $BRANCH
 done
 
 printf "\nOrigin branch state:\n"
