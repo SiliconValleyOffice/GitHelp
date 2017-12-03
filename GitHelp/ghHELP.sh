@@ -85,6 +85,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ======= M =========  Maintenance  ===================\n"
     printf "$HELP_MESSAGE    ghCO      -  Clone Origin\n"
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
+    printf "$HELP_MESSAGE    ghPLB     -  Prune Local Branches except development\n"
     printf "$HELP_MESSAGE    ghPLBNOO  -  Prune Local Branches Not On Origin\n"
     printf "$HELP_MESSAGE    ghPAOBED  -  Prune All Origin Branches Except Development\n"
     printf "$HELP_MESSAGE    ghPOBNOL  -  Prune Origin Branches Not On Local, except development\n"

@@ -131,5 +131,7 @@ alias ghPAOBED="$GITHELP_HOME/ghPruneAllOriginBranchesExceptDevelopment.sh"
 alias ghPruneAllOriginBranchesExceptDevelopment="$GITHELP_HOME/ghPruneAllOriginBranchesExceptDevelopment.sh"
 alias ghPOBNOL="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
+alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
+alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
 #=====  GitHelp - END  =======
