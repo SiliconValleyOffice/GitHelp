@@ -1,6 +1,6 @@
 #!/bin/bash
-# remove tracking branches that no longer exist on Origin
-# alias = ghDLBNOO
+# Prune Local Branches Not On Origin
+# alias = ghPLBNOO
 
 #  git fetch -p  ??????
 
