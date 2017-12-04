@@ -1,11 +1,6 @@
 #!/bin/bash
-<<<<<<< HEAD:GitHelp/ghDestroyAllOriginBranchesExceptDevelopment.sh
-# Destroy all origin branches except development
-# alias = ghDAOBED
-=======
 # Prune all origin branches except development and master
 # alias = ghPAOBED
->>>>>>> a1aecb9... gh Pruning:GitHelp/ghPruneAllOriginBranchesExceptDevelopment.sh
 
 cd $GIT_ROOT
 IFS=" "
