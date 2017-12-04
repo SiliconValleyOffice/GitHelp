@@ -141,4 +141,4 @@ alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnL
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
-#=====  GitHelp - END  =======
+#!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!
