@@ -97,6 +97,10 @@ alias ghFFMB="$GITHELP_HOME/ghFetchForkMiscBranch.sh"
 alias ghFetchForkMiscBranch="$GITHELP_HOME/ghFetchForkMiscBranch.sh"
 alias ghUBFB="$GITHELP_HOME/ghUpdateBranchWithForkBranch.sh"
 alias ghUpdateBranchForkBranch="$GITHELP_HOME/ghUpdateBranchWithForkBranch.sh"
+###  Need new category ######
+alias ghLFRB="$GITHELP_HOME/ghListForeignRepoBranches.sh"
+alias ghListForeignRepoBranches="$GITHELP_HOME/ghListForeignRepoBranches.sh"
+
 ###  G  ######
 alias ghFUDB="$GITHELP_HOME/ghFetchUpstreamDevelopmentBranch.sh"
 alias ghFetchUpstreamDevelopmentBranch="$GITHELP_HOME/ghFetchUpstreamDevelopmentBranch.sh"
