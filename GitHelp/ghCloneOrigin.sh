@@ -116,4 +116,4 @@ if [ $? -eq 1 ]; then
 fi
 
 printf "If this is a clone of a new Origin/fork, run 'ghPruneOrigin'\n"
-printf "in the new repository after making it active."
+printf "or 'ghPO' in the new repository after making it active."
