@@ -84,6 +84,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghUW      -  Update Wiki with local changes\n"
     printf "$HELP_MESSAGE    ======= M =========  Maintenance  ===================\n"
     printf "$HELP_MESSAGE    ghCO      -  Clone Origin\n"
+    printf "$HELP_MESSAGE    ghPO      -  Prune Origin, deleting all branches except development\n"
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghPLB     -  Prune Local Branches except development\n"
     printf "$HELP_MESSAGE    ghPLBNOO  -  Prune Local Branches Not On Origin\n"
@@ -148,6 +149,12 @@ else
     printf "$HELP_MESSAGE    ghFFJB    -  Fetch Fork JIRA Branch\n"
     printf "$HELP_MESSAGE    ghFFMB    -  Fetch Fork Misc Branch\n"
     printf "$HELP_MESSAGE    ghUBFB    -  Update current Branch with Fork Branch\n"
+    printf "$HELP_MESSAGE    ======= M =========  Maintenance  ===================\n"
+    printf "$HELP_MESSAGE    ghCO      -  Clone Origin\n"
+    printf "$HELP_MESSAGE    ghPO      -  Prune Origin, deleting all branches except development\n"
+    printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
+    printf "$HELP_MESSAGE    ghPLB     -  Prune Local Branches except development\n"
+    printf "$HELP_MESSAGE    ghPLBNOO  -  Prune Local Branches Not On Origin\n"
 fi
 
 printf "$HELP_MESSAGE\n"

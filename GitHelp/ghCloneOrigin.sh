@@ -116,4 +116,6 @@ if [ $? -eq 1 ]; then
 fi
 
 printf "If this is a clone of a new Origin/fork, run 'ghPruneOrigin'\n"
-printf "or 'ghPO' in the new repository after making it active."
+printf "or 'ghPO' in the new repository before creating your own branches\n\n"
+printf "NOTE:\n"
+printf "    Don't forget to run 'source ~/.bash_profile' and ghROOT first.\n\n"
