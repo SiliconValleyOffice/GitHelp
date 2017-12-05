@@ -73,6 +73,6 @@ if [[ "$MERGE_RESULTS" = *"Already"* ]] ; then
 fi
 
 printf "Operation canceled.\n"
-printf "Fix merge errors and \"git commit\".\n\n"
+printf "Fix merge errors and add/commit/push to origin.\n\n"
 printf "$MERGE_RESULTS \n\n"
 exit 1;
