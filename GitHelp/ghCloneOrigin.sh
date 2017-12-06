@@ -115,7 +115,7 @@ if [ $? -eq 1 ]; then
   echo " \n\"" >> ~/.githelp_profile_list
 fi
 
-printf "If this is a clone of a new Origin/fork, run 'ghPruneOrigin'\n"
-printf "or 'ghPO' in the new repository before creating your own branches\n\n"
+printf "If this is a clone of a new Origin/fork, run 'ghPruneOriginBranches'\n"
+printf "or 'ghPOB' in the new repository before creating your own branches\n\n"
 printf "NOTE:\n"
 printf "    Don't forget to run 'source ~/.bash_profile' and ghROOT first.\n\n"
