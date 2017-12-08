@@ -24,6 +24,7 @@ alias ghP="git push"
 alias ghL="git log"
 alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
+alias ghCancelMerge="git reset --merge"
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
 alias ghNewMiscBranchDevelopment="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
@@ -122,8 +123,8 @@ alias ghStashChangesDropClean="$GITHELP_HOME/ghStashChangesAndDropAndClean.sh"
 ###  J  ######
 alias ghCMTF="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
 alias ghCommitModifiedTrackedFiles="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
-alias ghCPOB="$GITHELP_HOME/ghCherryPickOriginBranch.sh"
-alias ghCherryPickOriginBranch="$GITHELP_HOME/ghCherryPickOriginBranch.sh"
+alias ghCPSHA="$GITHELP_HOME/ghCherryPickSha.sh"
+alias ghCherryPickSha="$GITHELP_HOME/ghCherryPickSha.sh"
 alias ghLMC="$GITHELP_HOME/ghListMergeConflicts.sh"
 alias ghListMergeConflicts="$GITHELP_HOME/ghListMergeConflicts.sh"
 ###  K  ######

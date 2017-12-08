@@ -10,9 +10,9 @@ if [ "$#" -ne 2 ]; then
   exit
 fi
 
-DEVELOPER_LOGIN_ID=$1
-DEVELOPER_FORK_BRANCH=$2
-DEV_FORK=`git config --get remote.origin.url | sed "s/$GITHUB_USER/$DEVELOPER_LOGIN_ID/"`
+FORK_OWNER=$1
+FORK_BRANCH=$2
+DEV_FORK=`git config --get remote.origin.url | sed "s/$GITHUB_USER/$FORK_OWNER/"`
 
 git rev-parse --show-toplevel &> /dev/null
 if [ $? -ne 0 ]; then
@@ -40,26 +40,26 @@ if [ $? -ne 0 ] ; then
     exit 1;
 fi
 
-if [[ `git remote` != *"$DEVELOPER_LOGIN_ID"* ]] ; then
-    printf "\nCreating a remote for \"$DEVELOPER_LOGIN_ID\"\n"
-    git remote add $DEVELOPER_LOGIN_ID $DEV_FORK
+if [[ `git remote` != *"$FORK_OWNER"* ]] ; then
+    printf "\nCreating a remote for \"$FORK_OWNER\"\n"
+    git remote add $FORK_OWNER $DEV_FORK
 fi
 
-$GITHELP_HOME/ghForkBranchExists.sh ${DEVELOPER_LOGIN_ID} ${DEVELOPER_FORK_BRANCH}
+$GITHELP_HOME/ghForkBranchExists.sh ${FORK_OWNER} ${FORK_BRANCH}
 if [[ $? -ne 0 ]] ; then
-    printf "\nERROR:  The branch named \"${DEVELOPER_FORK_BRANCH}\" does not exist on the fork owned by \"${DEVELOPER_LOGIN_ID}\".\n\n"
+    printf "\nERROR:  The branch named \"${FORK_BRANCH}\" does not exist on the fork owned by \"${FORK_OWNER}\".\n\n"
     exit 1;
 fi
 
-MERGE_RESULTS="$(git merge ${DEVELOPER_LOGIN_ID}/${DEVELOPER_FORK_BRANCH})"
+MERGE_RESULTS="$(git merge ${FORK_OWNER}/${FORK_BRANCH})"
 if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
-    printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "up-to-date" with ${DEVELOPER_LOGIN_ID}/${DEVELOPER_FORK_BRANCH}.\n"
-    printf "    Run \"ghUBFB ${DEVELOPER_LOGIN_ID} ${DEVELOPER_FORK_BRANCH}\" and try again.\n\n"
+    printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "up-to-date" with ${FORK_OWNER}/${FORK_BRANCH}.\n"
+    printf "    Run \"ghUBFB ${FORK_OWNER} ${FORK_BRANCH}\" and try again.\n\n"
     exit 1;
 fi
 
-printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"${DEVELOPER_LOGIN_ID}\\${DEVELOPER_FORK_BRANCH}\".\n\n"
-printf "Create a Pull Request (PR) from origin branch named \"$CURRENT_BRANCH\"\ninto branch named \"$DEVELOPER_FORK_BRANCH\" in Fork \"${DEVELOPER_LOGIN_ID}\".\n"
+printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"${FORK_OWNER}\\${FORK_BRANCH}\".\n\n"
+printf "Create a Pull Request (PR) from origin branch named \"$CURRENT_BRANCH\"\ninto branch named \"$FORK_BRANCH\" in Fork \"${FORK_OWNER}\".\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
 echo
@@ -71,8 +71,7 @@ fi
 
 printf "\n"
 
-UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${DEVELOPER_FORK_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
-UPSTREAM_URL=`echo $UPSTREAM_URL | sed "s/BreakthroughBehavioralInc/$DEVELOPER_LOGIN_ID/"`
+UPSTREAM_URL="$(git config --get remote.$FORK_OWNER.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${FORK_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
 if which google-chrome > /dev/null
 then
   google-chrome "$UPSTREAM_URL"

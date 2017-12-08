@@ -39,7 +39,6 @@ fi
 
 for BRANCH in $ORIGIN_DELETE_LIST; do
     git push origin --delete $BRANCH
-    git branch -D $BRANCH
 done
 
 printf "\nOrigin branch state:\n"
