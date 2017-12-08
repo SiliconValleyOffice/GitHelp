@@ -1,5 +1,6 @@
 #!/bin/bash
-# cherry pick SHA from another origin branch
+# cherry pick SHA into branche
+# ghCPSHA
 
 git rev-parse --show-toplevel &> /dev/null
 if [ $? -ne 0 ]; then
@@ -9,7 +10,8 @@ fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: $0 [sha]\n\n"
+  printf "\nUsage: ghCPSHA [sha]\n"
+  printf "    Cherry Pick SHA into branch\n\n"
   exit
 fi
 

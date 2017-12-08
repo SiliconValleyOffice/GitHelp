@@ -3,7 +3,8 @@
 # alias = ghCJB
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghCJB JIRA_number\n\n"
+  printf "\nUsage: ghCJB JIRA_number\n"
+  printf "    Checkout JIRA Branch\n\n"
   exit
 fi
 

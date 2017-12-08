@@ -3,7 +3,8 @@
 # alias = ghCMB
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghCMB branch_name\n\n"
+  printf "\nUsage: ghCMB branch_name\n"
+  printf "    Checkout Misc Branch\n\n"
   exit
 fi
 
