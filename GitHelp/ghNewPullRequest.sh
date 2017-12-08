@@ -81,7 +81,7 @@ fi
 
 printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
 
-git push
+git push >>/dev/null
 
 if [[ "$IS_DEVELOPMENT_BRANCH" == "NO" ]] ; then
   printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
