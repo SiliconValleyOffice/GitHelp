@@ -1,4 +1,4 @@
-#=====  GitHelp - START  =====
+#=====  GitHelp - START  ===== !!! MAKE ALL MODIFICATIONS ABOVE THIS LINE !!!
 export GITHELP_HOME=~/GitHelp
 
 if [ -a ~/.githelp_profile ] ; then
