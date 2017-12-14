@@ -14,6 +14,7 @@ alias ghROOT="cd $GIT_ROOT; pwd; git branch"
 alias ghCONFIG="$GITHELP_HOME/ghCONFIG.sh"
 alias ghEDITOR="$GITHELP_HOME/ghEDITOR.sh"
 alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
+
 ###  Convenience Commands  ######
 alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
 alias ghS="git status"
@@ -24,6 +25,7 @@ alias ghL="git log"
 alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
+
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
 alias ghNewMiscBranchDevelopment="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
@@ -41,6 +43,7 @@ alias ghDMB="$GITHELP_HOME/ghDestroyMiscBranch.sh"
 alias ghDestroyMiscBranch="$GITHELP_HOME/ghDestroyMiscBranch.sh"
 alias ghDCB="$GITHELP_HOME/ghDestroyCurrentBranch.sh"
 alias ghDestroyCurrentBranch="$GITHELP_HOME/ghDestroyCurrentBranch.sh"
+
 ###  B  ######
 alias ghNJBD="$GITHELP_HOME/ghNewJiraBranchFromDevelopment.sh"
 alias ghNewJiraBranchDevelopment="$GITHELP_HOME/ghNewJiraBranchFromDevelopment.sh"
@@ -57,6 +60,7 @@ alias ghReviewJiraTicket="$GITHELP_HOME/ghReviewJiraTicket.sh"
 alias ghCJB="$GITHELP_HOME/ghCheckoutJiraBranch.sh"
 alias ghDJB="$GITHELP_HOME/ghDestroyJiraBranch.sh"
 alias ghDestroyJiraBranch="$GITHELP_HOME/ghDestroyJiraBranch.sh"
+
 ###  C  ######
 alias ghUBUD="$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh"
 alias ghUpdateBranchUpstreamDevelopment="$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh"
@@ -66,6 +70,7 @@ alias ghUBUE="$GITHELP_HOME/ghUpdateBranchWithUpstreamEpic.sh"
 alias ghUpdateBranchUpstreamEpic="$GITHELP_HOME/ghUpdateBranchWithUpstreamEpic.sh"
 alias ghRTS="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
 alias ghRevertToSha="$GITHELP_HOME/ghRevertCurrentBranchToSha.sh"
+
 ###  D  ######
 alias ghNPRD="$GITHELP_HOME/ghNewPullRequestForDevelopment.sh"
 alias ghNewPullRequestDevelopment="$GITHELP_HOME/ghNewPullRequestForDevelopment.sh"
@@ -83,6 +88,7 @@ alias ghRPRF="$GITHELP_HOME/ghReviewPullRequestsForFork.sh"
 alias ghReviewPullRequestsFork="$GITHELP_HOME/ghReviewPullRequestsForFork.sh"
 alias ghFPRB="$GITHELP_HOME/ghFetchPullRequestBranch.sh"
 alias ghFetchPullRequestBranch="$GITHELP_HOME/ghFetchPullRequestBranch.sh"
+
 ###  E  ######
 alias ghLOB="$GITHELP_HOME/ghListOriginBranches.sh"
 alias ghListOriginBranches="$GITHELP_HOME/ghListOriginBranches.sh"
@@ -90,6 +96,7 @@ alias ghFOB="$GITHELP_HOME/ghFetchOriginBranch.sh"
 alias ghFetchOriginBranch="$GITHELP_HOME/ghFetchOriginBranch.sh"
 alias ghLUB="$GITHELP_HOME/ghListUpstreamBranches.sh"
 alias ghListUpstreamBranches="$GITHELP_HOME/ghListUpstreamBranches.sh"
+
 ###  F  ######
 alias ghLFB="$GITHELP_HOME/ghListForkBranches.sh"
 alias ghListForkBranches="$GITHELP_HOME/ghListForkBranches.sh"
@@ -112,6 +119,7 @@ alias ghLRB="$GITHELP_HOME/ghListReleaseBranches.sh"
 alias ghListReleaseBranches="$GITHELP_HOME/ghListReleaseBranches.sh"
 alias ghLEB="$GITHELP_HOME/ghListEpicBranches.sh"
 alias ghListEpicBranches="$GITHELP_HOME/ghListEpicBranches.sh"
+
 ###  H  ######
 alias ghCUF="$GITHELP_HOME/ghCleanUntrackedFiles.sh"
 alias ghCleanUntrackedFiles="$GITHELP_HOME/ghCleanUntrackedFiles.sh"
@@ -119,6 +127,7 @@ alias ghCUFCB="$GITHELP_HOME/ghCleanUntrackedFilesAndCheckoutBranch.sh"
 alias ghCleanUntrackedFilesCheckoutBranch="$GITHELP_HOME/ghCleanUntrackedFilesAndCheckoutBranch.sh"
 alias ghSCDC="$GITHELP_HOME/ghStashChangesAndDropAndClean.sh"
 alias ghStashChangesDropClean="$GITHELP_HOME/ghStashChangesAndDropAndClean.sh"
+
 ###  J  ######
 alias ghCMTF="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
 alias ghCommitModifiedTrackedFiles="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
@@ -126,12 +135,14 @@ alias ghCPSHA="$GITHELP_HOME/ghCherryPickSha.sh"
 alias ghCherryPickSha="$GITHELP_HOME/ghCherryPickSha.sh"
 alias ghLMC="$GITHELP_HOME/ghListMergeConflicts.sh"
 alias ghListMergeConflicts="$GITHELP_HOME/ghListMergeConflicts.sh"
+
 ###  K  ######
 alias ghCW="$GITHELP_HOME/ghCloneWiki.sh"
 alias ghCloneWiki="$GITHELP_HOME/ghCloneWiki.sh"
 alias ghPW="$GITHELP_HOME/ghPullWiki.sh"
 alias ghPullWiki="$GITHELP_HOME/ghPullWiki.sh"
 alias ghUpdateWiki="$GITHELP_HOME/ghUpdateWiki.sh"
+
 ###  M  ######
 alias ghREMOTE="git remote -v"
 alias ghPLBNOO="$GITHELP_HOME/ghPruneLocalBranchesNotOnOrigin.sh"
