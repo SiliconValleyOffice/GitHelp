@@ -18,7 +18,7 @@ if [[ -a ~/.bash_profile ]]; then
     BACKUP_NAME=".bash_profile-"`date '+%Y-%m-%d-%R'`
     cp ~/.bash_profile ~/$BACKUP_NAME
     printf "\nYour current .bash_profile has been backed up to $BACKUP_NAME\n\n"
-    cat $BACKUP_NAME | sed '/#=====  GitHelp - START  =====/,$d' > ~/.bash_profile
+    cat ~/$BACKUP_NAME | sed '/#=====  GitHelp - START  =====/,$d' > ~/.bash_profile
     cat GitHelp/bash_profile >> ~/.bash_profile
 else
     cp GitHelp/bash_profile ~/.bash_profile
