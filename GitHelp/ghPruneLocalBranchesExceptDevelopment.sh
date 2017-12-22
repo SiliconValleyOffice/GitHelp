@@ -17,13 +17,12 @@ then
 fi
 
 BRANCH_ARRAY=($DELETE_LIST)
-printf "\nBbranches to be deleted locally and on origin:\n"
+printf "\nBranches to be deleted locally and on origin:\n"
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
     printf "    ${BRANCH}\n"
 done
 
-printf "\nDELETE local branches locally and on origin:\n"
-printf "    WARNING:  NO RECOVERY\n"
+printf "\n    WARNING:  NO RECOVERY !!!\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -37,7 +36,3 @@ $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
     $GITHELP_HOME/ghDestroyMiscBranch.sh ${BRANCH}
 done
-
-printf "\nLocal branch state:\n"
-git branch
-printf "\n"

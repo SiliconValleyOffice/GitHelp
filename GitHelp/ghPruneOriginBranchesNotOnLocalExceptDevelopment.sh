@@ -22,7 +22,7 @@ then
 fi
 
 printf "\nDESTROY branches on origin that are not local, except master and development:\n"
-printf "    WARNING:  NO RECOVERY\n"
+printf "    WARNING:  NO RECOVERY !!!\n"
 
 printf "\nOrigin branches to be deleted:\n"
 for BRANCH in "${DELETE_LIST}"; do

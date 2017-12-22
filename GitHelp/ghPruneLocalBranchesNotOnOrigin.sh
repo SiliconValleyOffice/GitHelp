@@ -28,7 +28,7 @@ for BRANCH in "${BRANCH_ARRAY[@]}"; do
 done
 
 printf "\nDELETE local branches which are not on origin:\n"
-printf "    WARNING:  NO RECOVERY\n"
+printf "    WARNING:  NO RECOVERY !!!\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]

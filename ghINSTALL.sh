@@ -1,10 +1,15 @@
 #!/bin/bash
 # Install GITHELP
 
-printf "\nInstall GitHelp?\n"
 if [[ -d ~/GitHelp ]]; then
-    printf "    Existing installation will be upgraded.\n"
+    CURRENT_VERSION=`~/GitHelp/ghVERSION.sh`
+    NEW_VERSION=`./GitHelp/ghVERSION.sh`
+    printf "\nUpgrade GitHelp?\n"
+    printf "    From $CURRENT_VERSION\n"
+    printf "    To $NEW_VERSION\n\n"
     printf "    GitHelp repository configurations will be preserved.\n"
+else
+    printf "\nInstall GitHelp?\n"
 fi
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
