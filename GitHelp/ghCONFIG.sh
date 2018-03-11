@@ -6,7 +6,15 @@ source ~/.githelp_profile
 
 STATUS="Previous"
 if [ $# -eq 0 ]; then
-  STATUS="Currrent"
+
+  if [ -a ~/.githelp_profile ] ; then
+    STATUS="Currrent"
+  else
+      printf "\nGitHelp installation:\n"
+      printf "    No Origins have been cloned.\n"
+      printf "    Use ghCO to Clone an Origin (a developer fork).\n\n"
+      exit 1
+  fi
 fi
 
 printf "\n${STATUS} GitHub configuration:\n"

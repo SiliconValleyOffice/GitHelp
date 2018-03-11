@@ -5,8 +5,8 @@ if [ -a ~/.githelp_profile ] ; then
     source ~/.githelp_profile
 else
     printf "\nGitHelp installation:\n"
-    printf "    No Forks have been cloned.\n"
-    printf "    Use ghCO to Clone your Origin (developer fork).\n\n"
+    printf "    No Origins have been cloned.\n"
+    printf "    Use ghCO to Clone an Origin (a developer fork).\n\n"
 fi
 
 alias gh="$GITHELP_HOME/ghHELP.sh"
@@ -25,6 +25,7 @@ alias ghL="git log"
 alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
+alias ghRH="git reset --hard"
 
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
