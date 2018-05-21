@@ -34,9 +34,5 @@ fi
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
 
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
-    MERGE_RESULTS="$($GITHELP_HOME/ghDestroyMiscBranch.sh ${BRANCH})"
-    if [[ "$MERGE_RESULTS" == *"ERROR"* ]]
-    then
-        printf "You may want to use ghPLBNOO - Prune Lobal Branches Not On Origin\n\n"
-    fi
+    $GITHELP_HOME/ghDestroyMiscBranch.sh ${BRANCH}
 done
