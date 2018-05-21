@@ -35,4 +35,8 @@ $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
 
 for BRANCH in "${BRANCH_ARRAY[@]}"; do
     $GITHELP_HOME/ghDestroyMiscBranch.sh ${BRANCH}
+    if [[ $? -ne 0 ]]
+    then
+        printf "You may want to use ghPLBNOO - Prune Lobal Branches Not On Origin\n\n"
+    fi
 done
