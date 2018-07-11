@@ -8,6 +8,7 @@ if [ "$#" -ne 2 ]; then
   exit
 fi
 
+REGULAR_EXPRESSION='^[0-9]+$'
 if ! [[ $2 =~ $REGULAR_EXPRESSION ]] ; then
     printf "\n    ERROR: Argument 2 (epic) is not a JIRA number.\n\n"
     exit 1
