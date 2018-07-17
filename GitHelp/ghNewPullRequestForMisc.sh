@@ -48,10 +48,10 @@ if [[ $? -ne 0 ]] ; then
 fi
 
 MERGE_RESULTS="$(git merge upstream/${UPSTREAM_BRANCH})"
-if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
+if [[ "$MERGE_RESULTS"  != *"lready up"* ]] ; then
   git push
   MERGE_RESULTS="$(git merge upstream/${UPSTREAM_BRANCH})"
-  if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
+  if [[ "$MERGE_RESULTS"  != *"lready up"* ]] ; then
       printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "up-to-date" with upstream/${UPSTREAM_BRANCH}.\n"
       printf "    Run \"ghUBUB ${UPSTREAM_BRANCH}\" and try again.\n\n"
       exit 1;
