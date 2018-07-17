@@ -52,7 +52,7 @@ if [[ $? -ne 0 ]] ; then
 fi
 
 MERGE_RESULTS="$(git merge ${FORK_OWNER}/${FORK_BRANCH})"
-if [[ "$MERGE_RESULTS"  != *"Already up-to-date"* ]] ; then
+if [[ "$MERGE_RESULTS"  != *"lready up"* ]] ; then
     printf "\nERROR:  \"${CURRENT_BRANCH}\" branch is not "up-to-date" with ${FORK_OWNER}/${FORK_BRANCH}.\n"
     printf "    Run \"ghUBFB ${FORK_OWNER} ${FORK_BRANCH}\" and try again.\n\n"
     exit 1;
