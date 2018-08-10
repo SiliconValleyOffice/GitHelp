@@ -12,7 +12,7 @@ REMOTE_LIST=`$GITHELP_HOME/ghListOriginBranches.sh | tr '\r\n' ' '`
 DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/^development$/d' | tr '\r\n' ' ')"
 
 for REMOTE in $REMOTE_LIST; do
-   DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/$REMOTE//")"
+   DELETE_LIST="$(eval echo $DELETE_LIST | sed "s#$REMOTE##")"
 done
 
 if [[ -z $DELETE_LIST ]]
