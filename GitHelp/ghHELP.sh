@@ -91,6 +91,9 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghPOBNOL  -  Prune Origin Branches Not On Local, except development\n"
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghEDITOR  -  Default editor configuration for git\n"
+    printf "$HELP_MESSAGE    ======= Z =========  DANGER  ===================\n"
+    printf "$HELP_MESSAGE    ghCW      -  Car Wash\n"
+    printf "$HELP_MESSAGE    ghRH      -  Reset Hard\n"
 else
     printf "gitHELP frequently used commands:\n"
     printf "$HELP_MESSAGE    gh        -  This help message\n"
@@ -157,6 +160,9 @@ else
     printf "$HELP_MESSAGE    ghPLBNOO  -  Prune Local Branches Not On Origin\n"
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghEDITOR  -  Default editor configuration for git\n"
+    printf "$HELP_MESSAGE    ======= Z =========  DANGER  ===================\n"
+    printf "$HELP_MESSAGE    ghCW      -  Car Wash\n"
+    printf "$HELP_MESSAGE    ghRH      -  Reset Hard\n"
 fi
 
 printf "$HELP_MESSAGE\n"
