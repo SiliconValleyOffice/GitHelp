@@ -29,3 +29,10 @@ then
     exit 1
 fi
 
+git reset --hard
+
+git fetch upstream &>/dev/null
+git checkout development &>/dev/null
+git reset --hard upstream/development &>/dev/null
+git push origin development --force
+

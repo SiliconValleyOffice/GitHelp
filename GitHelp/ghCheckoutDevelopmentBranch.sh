@@ -14,12 +14,10 @@ if [ $? -ne 0 ] ; then
     exit 1;
 fi
 
-$GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
-if [ $? -ne 0 ] ; then
-  exit 1;
-fi
-
-$GITHELP_HOME/ghUpdateBranchWithUpstreamDevelopment.sh -push
+git fetch upstream &>/dev/null
+git checkout development &>/dev/null
+git reset --hard upstream/development &>/dev/null
+git push origin development --force
 
 echo
 git branch
