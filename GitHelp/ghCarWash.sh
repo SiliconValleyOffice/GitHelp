@@ -29,6 +29,9 @@ then
     exit 1
 fi
 
+printf "\nFeature not yet implemented.\n\n"
+exit 1
+
 git reset --hard
 
 git fetch upstream &>/dev/null
