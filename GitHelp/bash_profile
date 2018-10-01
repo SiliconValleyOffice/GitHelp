@@ -25,7 +25,7 @@ alias ghL="git log"
 alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
-alias ghRH="git reset --hard"
+alias ghRH="$GITHELP_HOME/ghResetHard.sh"
 
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
@@ -157,4 +157,5 @@ alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnL
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
+alias ghCW="$GITHELP_HOME/ghCarWash.sh"
 #!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!
