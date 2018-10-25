@@ -2,7 +2,7 @@
 # local git CONFIGuration
 # alias = ghCONFIG
 
-source ~/.githelp_profile
+source ~/.githelp_profile 2>&1
 
 STATUS="Previous"
 if [ $# -eq 0 ]; then
