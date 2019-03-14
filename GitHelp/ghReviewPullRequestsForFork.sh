@@ -10,7 +10,10 @@ if [ $# -ne 1 ]; then
 fi
 
 DEVELOPER_LOGIN_ID=$1
-DEV_FORK=`git config --get remote.origin.url | sed "s/$GITHUB_USER/$DEVELOPER_LOGIN_ID/"`
+
+GITHUB_USER_TO_LOWER=`echo $GITHUB_USER | tr '[:upper:]' '[:lower:]'`
+
+DEV_FORK=`git config --get remote.origin.url | tr '[:upper:]' '[:lower:]' | sed "s/$GITHUB_USER_TO_LOWER/$DEVELOPER_LOGIN_ID/"`
 
 git ls-remote --exit-code $DEV_FORK &> /dev/null
 if [ $? -ne 0 ]; then
