@@ -18,7 +18,7 @@ fi
 
 GITHUB_USER_TO_LOWER=`echo $GITHUB_USER | tr '[:upper:]' '[:lower:]'`
 
-DEV_FORK=`git config --get remote.origin.url | tr '[:upper:]' '[:lower:]' | sed "s/$GITHUB_USER_TO_LOWER`/$1/"`
+DEV_FORK=`git config --get remote.origin.url | tr '[:upper:]' '[:lower:]' | sed "s/$GITHUB_USER_TO_LOWER/$1/"`
 
 git ls-remote --exit-code $DEV_FORK &> /dev/null
 if [ $? -ne 0 ]; then
