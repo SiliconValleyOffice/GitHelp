@@ -12,7 +12,10 @@ fi
 
 FORK_OWNER=$1
 FORK_BRANCH=$2
-DEV_FORK=`git config --get remote.origin.url | sed "s/$GITHUB_USER/$FORK_OWNER/"`
+
+GITHUB_USER_TO_LOWER=`echo $GITHUB_USER | tr '[:upper:]' '[:lower:]'`
+
+DEV_FORK=`git config --get remote.origin.url | tr '[:upper:]' '[:lower:]' | sed "s/$GITHUB_USER_TO_LOWER/$FORK_OWNER/"`
 
 git rev-parse --show-toplevel &> /dev/null
 if [ $? -ne 0 ]; then
