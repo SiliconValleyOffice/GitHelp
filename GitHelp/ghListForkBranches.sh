@@ -14,7 +14,9 @@ if [ $? -ne 0 ]; then
     exit 1;
 fi
 
-FORK=`git config --get remote.origin.url | sed "s/$GITHUB_USER/$1/"`
+GITHUB_USER_TO_LOWER=`echo $GITHUB_USER | tr '[:upper:]' '[:lower:]'`
+
+FORK=`git config --get remote.origin.url | tr '[:upper:]' '[:lower:]' | sed "s/$GITHUB_USER_TO_LOWER/$1/"`
 printf "\nFork = $FORK\n"
 git ls-remote --exit-code $FORK &> /dev/null
 if [ $? -ne 0 ]; then

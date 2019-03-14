@@ -18,7 +18,10 @@ else
     LOCAL_BRANCH_PREFIX="DF"
 fi
 LOCAL_DF_BRANCH="${LOCAL_BRANCH_PREFIX}-$DEVELOPER_LOGIN_ID/$BRANCH_NAME"
-DEV_FORK=`git config --get remote.origin.url | sed "s/$GITHUB_USER/$DEVELOPER_LOGIN_ID/"`
+
+GITHUB_USER_TO_LOWER=`echo $GITHUB_USER | tr '[:upper:]' '[:lower:]'`
+
+DEV_FORK=`git config --get remote.origin.url | tr '[:upper:]' '[:lower:]' | sed "s/$GITHUB_USER_TO_LOWER/$DEVELOPER_LOGIN_ID/"`
 
 if [[ `git branch` == *"${LOCAL_DF_BRANCH}"* ]] ; then
     printf "\nFatal Error:  The branch named \"${BRANCH_NAME}\" already exists locally.\n"
