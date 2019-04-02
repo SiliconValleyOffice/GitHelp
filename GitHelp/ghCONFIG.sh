@@ -2,11 +2,12 @@
 # local git CONFIGuration
 # alias = ghCONFIG
 
-source ~/.githelp_profile 2>&1
+if [ -a ~/.githelp_profile ] ; then
+  source ~/.githelp_profile 2>&1
+fi
 
 STATUS="Previous"
 if [ $# -eq 0 ]; then
-
   if [ -a ~/.githelp_profile ] ; then
     STATUS="Currrent"
   else
