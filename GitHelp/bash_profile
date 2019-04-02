@@ -1,6 +1,16 @@
 #=====  GitHelp - START  ===== !!! MAKE ALL MODIFICATIONS ABOVE THIS LINE !!!
 export GITHELP_HOME=~/GitHelp
 
+ghCONFIG() {
+  $GITHELP_HOME/ghCONFIG.sh $@
+  if [ $? -eq 0 ] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT
+    pwd
+    git branch
+  fi
+}
+
 if [ -a ~/.githelp_profile ] ; then
     source ~/.githelp_profile
 else
@@ -11,7 +21,6 @@ fi
 
 alias gh="$GITHELP_HOME/ghHELP.sh"
 alias ghROOT="cd $GIT_ROOT; pwd; git branch"
-alias ghCONFIG="$GITHELP_HOME/ghCONFIG.sh"
 alias ghEDITOR="$GITHELP_HOME/ghEDITOR.sh"
 alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 

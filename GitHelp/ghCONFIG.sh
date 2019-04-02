@@ -58,6 +58,3 @@ printf "    GITHUB_USER = '$GITHUB_USER' \n"
 printf "    GIT_ROOT = '$GIT_ROOT' \n"
 printf "    JIRA_TICKET_PREFIX = '$JIRA_TICKET_PREFIX' \n\n"
 
-printf "\nWARNING:\n    Don't forget to update environment variables by running\n    source ~/.bash_profile\n\n"
-
-printf "Use ghROOT to change directory to the new git root of\n    $GIT_ROOT.\n\n"
