@@ -11,6 +11,16 @@ ghCONFIG() {
   fi
 }
 
+ghCR() {
+  $GITHELP_HOME/ghChangeRepo.sh $@
+  if [ $? -eq 0 ] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT
+    pwd
+    git branch
+  fi
+}
+
 if [ -a ~/.githelp_profile ] ; then
     source ~/.githelp_profile
 else
@@ -26,7 +36,6 @@ alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 
 ###  Convenience Commands  ######
 alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
-alias ghCR="$GITHELP_HOME/ghChangeRepo.sh"
 alias ghS="git status"
 alias ghAA="git add -A"
 alias ghACP="$GITHELP_HOME/ghAddCommitPush.sh"
