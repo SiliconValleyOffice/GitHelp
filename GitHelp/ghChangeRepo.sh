@@ -15,10 +15,15 @@ if [ $# -eq 0 ]; then
   if [ $? -ne 0 ] ; then
     printf "\nNo local repositories.\n\n"
   else
+    printf "\nAvailable repositories:\n"
     for REPO in "${REPO_LIST[@]}"; do
       printf "${REPO}"
     done
-    printf "\n\nghCR repository_name\n    will change repositories\n\n"
+    printf "\n\nCurrent repository:\n"
+    cd $GIT_ROOT
+    pwd
+    printf "\nBranches:\n"
+    git branch
   fi
   exit 1
 fi
