@@ -114,7 +114,7 @@ if [ $? -eq 1 ]; then
 fi
 
 
-printf "NOTE:\n
+printf "NOTE:\n"
 printf "    If this is a clone of a new Origin/fork, you must also\n"
 printf "    run 'ghPOB' (ghPruneOriginBranches) in the new repository\n"
 printf "    before creating any of your own branches\n\n"
