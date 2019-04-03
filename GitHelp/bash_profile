@@ -26,6 +26,7 @@ alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 
 ###  Convenience Commands  ######
 alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
+alias ghCR="$GITHELP_HOME/ghChangeRepo.sh"
 alias ghS="git status"
 alias ghAA="git add -A"
 alias ghACP="$GITHELP_HOME/ghAddCommitPush.sh"
