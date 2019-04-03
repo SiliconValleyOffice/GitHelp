@@ -11,8 +11,18 @@ ghCONFIG() {
   fi
 }
 
-ghCR() {
+ghChangeRepo() {
   $GITHELP_HOME/ghChangeRepo.sh $@
+  if [ $? -eq 0 ] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT
+    pwd
+    git branch
+  fi
+}
+
+ghCloneOrigin() {
+  $GITHELP_HOME/ghCloneOrigin.sh $@
   if [ $? -eq 0 ] ; then
     source ~/.bash_profile
     cd $GIT_ROOT
@@ -36,6 +46,7 @@ alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 
 ###  Convenience Commands  ######
 alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
+alias ghCR=ghChangeRepo
 alias ghS="git status"
 alias ghAA="git add -A"
 alias ghACP="$GITHELP_HOME/ghAddCommitPush.sh"
@@ -175,6 +186,6 @@ alias ghPOBNOL="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.s
 alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
-alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
+alias ghCO=ghCloneOrigin
 alias ghCW="$GITHELP_HOME/ghCarWash.sh"
 #!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!

@@ -2,8 +2,6 @@
 # Clone Origin
 # alias = ghCO
 
-
-
 if [ "$#" -ne 3 ]; then
     printf "\nUsage: ghCO github_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
     printf "    Clone Origin (developer fork).\n"
@@ -116,10 +114,8 @@ if [ $? -eq 1 ]; then
 fi
 
 
-printf "NOTE:\n"
-printf "    Run 'source ~/.bash_profile' and ghROOT now.\n\n"
-printf "    ALSO:\n"
-printf "        If this is a clone of a new Origin/fork, you must also\n"
-printf "        run 'ghPOB' (ghPruneOriginBranches) in the new repository\n"
-printf "        before creating any of your own branches\n\n"
+printf "NOTE:\n
+printf "    If this is a clone of a new Origin/fork, you must also\n"
+printf "    run 'ghPOB' (ghPruneOriginBranches) in the new repository\n"
+printf "    before creating any of your own branches\n\n"
 
