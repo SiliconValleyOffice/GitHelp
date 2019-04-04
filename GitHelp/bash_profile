@@ -65,7 +65,7 @@ alias ghCR='
     source ~/.bash_profile
     cd $GIT_ROOT
     pwd
-    git branch
+    $GITHELP_HOME/ghBranchList
   fi
 '
 alias ghChangeRepo=ghCR
