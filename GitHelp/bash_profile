@@ -40,7 +40,6 @@ else
 fi
 
 alias gh="$GITHELP_HOME/ghHELP.sh"
-alias ghROOT="cd $GIT_ROOT; pwd; git branch"
 alias ghEDITOR="$GITHELP_HOME/ghEDITOR.sh"
 alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 
@@ -71,6 +70,8 @@ alias ghCR='
 alias ghChangeRepo=ghCR
 alias ghCO="xxCloneOrigin; ghROOT"
 alias ghCloneOrigin=ghCO
+alias ghROOT="cd $GIT_ROOT; pwd; git branch"
+alias ghCD=ghROOT
 
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"

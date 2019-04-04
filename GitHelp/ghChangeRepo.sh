@@ -13,17 +13,15 @@ cd $HOME/REPO
 if [ $# -eq 0 ] ; then
   REPO_LIST=`ls -d */ 2>/dev/null`
   if [ $? -ne 0 ] ; then
-    printf "\nNo local repositories.\n\n"
+    printf "No local repositories.\n\n"
   else
-    printf "\nAvailable repositories:\n"
+    printf "Available repositories:\n"
     for REPO in "${REPO_LIST[@]}"; do
-      printf "${REPO}"
+      echo "${REPO}" | tr -d '/'
     done
-    printf "\n\nCurrent repository:\n"
-    cd $GIT_ROOT
-    pwd
-    printf "\nBranches:\n"
-    git branch
+    printf "\nCurrent repository:\n"
+    CURRENT_REPO=`echo $GIT_ROOT | rev | cut -d/ -f1 | rev`
+    printf "  $CURRENT_REPO\n"
   fi
   exit 1
 fi
@@ -36,7 +34,7 @@ if [ $# -ne 1 ] ; then
   printf "      * move to that repository directory\n\n"
   printf "    ghCR without any arguments\n"
   printf "      * list available repositories\n"
-  printf "      * move to the active repository directory\n\n"
+  printf "      * print name of active repository\n\n"
   exit 1
 fi
 
