@@ -45,7 +45,8 @@ alias ghEDITOR="$GITHELP_HOME/ghEDITOR.sh"
 alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 
 ###  Convenience Commands  ######
-alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
+alias ghBUD="$GITHELP_HOME/ghBrowseUpstreamDevelopment.sh"
+alias ghBrowseUpstreamDevelopment=ghBUD
 alias ghCR=ghChangeRepo
 alias ghS="git status"
 alias ghAA="git add -A"
