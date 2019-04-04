@@ -1,7 +1,7 @@
 #=====  GitHelp - START  ===== !!! MAKE ALL MODIFICATIONS ABOVE THIS LINE !!!
 export GITHELP_HOME=~/GitHelp
 
-ghCONFIG() {
+xxCONFIG() {
   $GITHELP_HOME/ghCONFIG.sh $@
   if [ $? -eq 0 ] ; then
     source ~/.bash_profile
@@ -47,7 +47,6 @@ alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 ###  Convenience Commands  ######
 alias ghBUD="$GITHELP_HOME/ghBrowseUpstreamDevelopment.sh"
 alias ghBrowseUpstreamDevelopment=ghBUD
-alias ghCR=ghChangeRepo
 alias ghS="git status"
 alias ghAA="git add -A"
 alias ghACP="$GITHELP_HOME/ghAddCommitPush.sh"
@@ -57,6 +56,21 @@ alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
 alias ghRH="$GITHELP_HOME/ghResetHard.sh"
+
+###  Repository Commands  ######
+alias ghCONFIG="xxCONFIG; ghROOT"
+alias ghCR='
+  $GITHELP_HOME/ghChangeRepo.sh $@
+  if [ $? -eq 0 ] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT
+    pwd
+    git branch
+  fi
+'
+alias ghChangeRepo=ghCR
+alias ghCO="xxCloneOrigin; ghROOT"
+alias ghCloneOrigin=ghCO
 
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
@@ -187,6 +201,5 @@ alias ghPOBNOL="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.s
 alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
-alias ghCO=ghCloneOrigin
 alias ghCW="$GITHELP_HOME/ghCarWash.sh"
 #!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!
