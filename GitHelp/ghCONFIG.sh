@@ -52,7 +52,7 @@ echo -e "$NEW_PROFILE" > ~/.githelp_profile
 
 source ~/.githelp_profile
 
-printf "\nNew GitHub configuration:\n"
+printf "New GitHub configuration:\n"
 printf "    GIT_HOST_URL = '$GIT_HOST_URL' \n"
 printf "    GITHUB_USER = '$GITHUB_USER' \n"
 printf "    GIT_ROOT = '$GIT_ROOT' \n"

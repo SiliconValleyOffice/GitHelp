@@ -1,36 +1,6 @@
 #=====  GitHelp - START  ===== !!! MAKE ALL MODIFICATIONS ABOVE THIS LINE !!!
 export GITHELP_HOME=~/GitHelp
 
-xxCONFIG() {
-  $GITHELP_HOME/ghCONFIG.sh $@
-  if [ $? -eq 0 ] ; then
-    source ~/.bash_profile
-    cd $GIT_ROOT
-    pwd
-    git branch
-  fi
-}
-
-ghChangeRepo() {
-  $GITHELP_HOME/ghChangeRepo.sh $@
-  if [ $? -eq 0 ] ; then
-    source ~/.bash_profile
-    cd $GIT_ROOT
-    pwd
-    git branch
-  fi
-}
-
-ghCloneOrigin() {
-  $GITHELP_HOME/ghCloneOrigin.sh $@
-  if [ $? -eq 0 ] ; then
-    source ~/.bash_profile
-    cd $GIT_ROOT
-    pwd
-    git branch
-  fi
-}
-
 if [ -a ~/.githelp_profile ] ; then
     source ~/.githelp_profile
 else
@@ -57,20 +27,34 @@ alias ghCancelMerge="git reset --merge"
 alias ghRH="$GITHELP_HOME/ghResetHard.sh"
 
 ###  Repository Commands  ######
-alias ghCONFIG="xxCONFIG; ghROOT"
-alias ghCR='
+alias ghROOT="cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh"
+xxChangeRepository() {
   $GITHELP_HOME/ghChangeRepo.sh $@
-  if [ $? -eq 0 ] ; then
+  if [[ "$?" -eq 0 ]] ; then
     source ~/.bash_profile
-    cd $GIT_ROOT
-    pwd
-    $GITHELP_HOME/ghBranchList
+    cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh
   fi
-'
+}
+xxCONFIG() {
+  $GITHELP_HOME/ghCONFIG.sh $@
+  if [[ "$?" -eq 0 ]] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh
+  fi
+}
+xxCloneOrigin() {
+  $GITHELP_HOME/ghCloneOrigin.sh $@
+  if [[ "$?" -eq 0 ]] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh
+  fi
+}
+
+alias ghCR=xxChangeRepository
 alias ghChangeRepo=ghCR
-alias ghCO="xxCloneOrigin; ghROOT"
+alias ghCO=xxCloneOrigin
 alias ghCloneOrigin=ghCO
-alias ghROOT="cd $GIT_ROOT; pwd; git branch"
+alias ghCONFIG=xxCONFIG
 alias ghCD=ghROOT
 
 ###  A  ######

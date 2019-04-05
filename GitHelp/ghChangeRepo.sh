@@ -10,7 +10,7 @@ fi
 
 cd $HOME/REPO
 
-if [ $# -eq 0 ] ; then
+if [[ $# -eq 0 ]] ; then
   REPO_LIST=`ls -d */ 2>/dev/null`
   if [ $? -ne 0 ] ; then
     printf "No local repositories.\n\n"
@@ -26,7 +26,7 @@ if [ $# -eq 0 ] ; then
   exit 1
 fi
 
-if [ $# -ne 1 ] ; then
+if [[ $# -ne 1 ]] ; then
   printf "Usage:\n"
   printf "    ghCR - Change Repository\n\n"
   printf "    ghCR repository_name\n"
@@ -39,7 +39,7 @@ if [ $# -ne 1 ] ; then
 fi
 
 REPO_CONFIG=`grep REPO/$1 $HOME/.githelp_profile_list`
-if [ $? -ne 0 ] ; then
+if [[ $? -ne 0 ]] ; then
   printf "\nFatal error:  No configuration for $1\n\n"
   exit 1
 fi
