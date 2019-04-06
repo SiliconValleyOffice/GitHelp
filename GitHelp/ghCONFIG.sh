@@ -31,6 +31,7 @@ if [ $# -eq 0 ]; then
     printf "\nYou can change the configuration with the following command.\n"
     printf "    Usage: ghCONFIG  Git_Host_URL  GitHub_user  git_root  JIRA_ticket_prefix\n"
     printf "        (\"ghCONFIG \" + copy/paste a row from the GitHelp Configurations list above)\n\n"
+    printf "A much easier method is to use the ghCR command to Change Repository.\n\n"
     exit 1
 fi
 
@@ -40,6 +41,7 @@ if [ $# -ne 4 ]; then
   printf "    ghCONFIG GitHub_user git_root JIRA_ticket_prefix\n"
   printf ""    - to change the GitHelp configuration\n"
   printf "       (\"ghCONFIG \" + copy/paste a row from the GitHelp Configurations list above)\n\n"
+    printf "A much easier method is to use the ghCR command to Change Repository.\n\n"
     exit 1
 fi
 

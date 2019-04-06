@@ -189,4 +189,5 @@ alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnL
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghCW="$GITHELP_HOME/ghCarWash.sh"
+alias ghCarWash="$GITHELP_HOME/ghCarWash.sh"
 #!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!
