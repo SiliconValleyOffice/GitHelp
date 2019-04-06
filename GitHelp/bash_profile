@@ -25,6 +25,7 @@ alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
 alias ghRH="$GITHELP_HOME/ghResetHard.sh"
+alias ghResetHard="$GITHELP_HOME/ghResetHard.sh"
 
 ###  Repository Commands  ######
 alias ghROOT="cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh"
