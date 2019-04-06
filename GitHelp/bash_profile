@@ -10,13 +10,12 @@ else
 fi
 
 alias gh="$GITHELP_HOME/ghHELP.sh"
-alias ghROOT="cd $GIT_ROOT; pwd; git branch"
-alias ghCONFIG="$GITHELP_HOME/ghCONFIG.sh"
 alias ghEDITOR="$GITHELP_HOME/ghEDITOR.sh"
 alias ghVERSION="$GITHELP_HOME/ghVERSION.sh"
 
 ###  Convenience Commands  ######
-alias ghCD="$GITHELP_HOME/ghCheckoutDevelopmentBranch.sh"
+alias ghBUD="$GITHELP_HOME/ghBrowseUpstreamDevelopment.sh"
+alias ghBrowseUpstreamDevelopment=ghBUD
 alias ghS="git status"
 alias ghAA="git add -A"
 alias ghACP="$GITHELP_HOME/ghAddCommitPush.sh"
@@ -26,6 +25,40 @@ alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
 alias ghRH="$GITHELP_HOME/ghResetHard.sh"
+alias ghResetHard="$GITHELP_HOME/ghResetHard.sh"
+
+###  Repository Commands  ######
+alias ghROOT="cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh"
+alias ghCD=ghROOT
+
+xxChangeRepository() {
+  $GITHELP_HOME/ghChangeRepo.sh $@
+  if [[ "$?" -eq 0 ]] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh
+  fi
+}
+xxCONFIG() {
+  $GITHELP_HOME/ghCONFIG.sh $@
+  if [[ "$?" -eq 0 ]] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh
+  fi
+}
+xxCloneOrigin() {
+  $GITHELP_HOME/ghCloneOrigin.sh $@
+  if [[ "$?" -eq 0 ]] ; then
+    source ~/.bash_profile
+    cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh
+  fi
+}
+
+alias ghCR=xxChangeRepository
+alias ghChangeRepo=xxChangeRepository
+alias ghCO=xxCloneOrigin
+alias ghCloneOrigin=xxCloneOrigin
+alias ghCONFIG=xxCONFIG
+alias ghCD=ghROOT
 
 ###  A  ######
 alias ghNMBD="$GITHELP_HOME/ghNewMiscBranchFromDevelopment.sh"
@@ -156,6 +189,6 @@ alias ghPOBNOL="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.s
 alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
 alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
-alias ghCO="$GITHELP_HOME/ghCloneOrigin.sh"
 alias ghCW="$GITHELP_HOME/ghCarWash.sh"
+alias ghCarWash="$GITHELP_HOME/ghCarWash.sh"
 #!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!

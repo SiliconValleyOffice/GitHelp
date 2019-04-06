@@ -2,11 +2,12 @@
 # local git CONFIGuration
 # alias = ghCONFIG
 
-source ~/.githelp_profile 2>&1
+if [ -a ~/.githelp_profile ] ; then
+  source ~/.githelp_profile 2>&1
+fi
 
 STATUS="Previous"
 if [ $# -eq 0 ]; then
-
   if [ -a ~/.githelp_profile ] ; then
     STATUS="Currrent"
   else
@@ -30,6 +31,7 @@ if [ $# -eq 0 ]; then
     printf "\nYou can change the configuration with the following command.\n"
     printf "    Usage: ghCONFIG  Git_Host_URL  GitHub_user  git_root  JIRA_ticket_prefix\n"
     printf "        (\"ghCONFIG \" + copy/paste a row from the GitHelp Configurations list above)\n\n"
+    printf "A much easier method is to use the ghCR command to Change Repository.\n\n"
     exit 1
 fi
 
@@ -39,6 +41,7 @@ if [ $# -ne 4 ]; then
   printf "    ghCONFIG GitHub_user git_root JIRA_ticket_prefix\n"
   printf ""    - to change the GitHelp configuration\n"
   printf "       (\"ghCONFIG \" + copy/paste a row from the GitHelp Configurations list above)\n\n"
+    printf "A much easier method is to use the ghCR command to Change Repository.\n\n"
     exit 1
 fi
 
@@ -51,12 +54,9 @@ echo -e "$NEW_PROFILE" > ~/.githelp_profile
 
 source ~/.githelp_profile
 
-printf "\nNew GitHub configuration:\n"
+printf "New GitHub configuration:\n"
 printf "    GIT_HOST_URL = '$GIT_HOST_URL' \n"
 printf "    GITHUB_USER = '$GITHUB_USER' \n"
 printf "    GIT_ROOT = '$GIT_ROOT' \n"
 printf "    JIRA_TICKET_PREFIX = '$JIRA_TICKET_PREFIX' \n\n"
 
-printf "\nWARNING:\n    Don't forget to update environment variables by running\n    source ~/.bash_profile\n\n"
-
-printf "Use ghROOT to change directory to the new git root of\n    $GIT_ROOT.\n\n"
