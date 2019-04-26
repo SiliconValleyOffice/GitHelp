@@ -67,6 +67,15 @@ if [[ "$MERGE_RESULTS"  != *"lready up"* ]] ; then
 fi
 
 printf "\nLocal branch \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with upstream branch \"${UPSTREAM_BRANCH}\".\n\n"
+
+
+$GITHELP_HOME/ghStaticAnalysis.sh
+if [ $? -ne 0 ] ; then
+    printf "\nFATAL ERROR:  You must fix errors before creating a PR.\n"
+    printf "\nOperation canceled.\n\n"
+    exit 1
+fi
+
 printf "Create a Pull Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n"
 printf "into the upstream branch \"${UPSTREAM_BRANCH}\"?\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n"

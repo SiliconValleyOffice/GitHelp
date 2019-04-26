@@ -57,6 +57,8 @@ alias ghCR=xxChangeRepository
 alias ghChangeRepo=xxChangeRepository
 alias ghCO=xxCloneOrigin
 alias ghCloneOrigin=xxCloneOrigin
+alias ghSA="$GITHELP_HOME/ghStaticAnalysis.sh"
+alias ghStaticAnalysis="$GITHELP_HOME/ghStaticAnalysis.sh"
 alias ghCONFIG=xxCONFIG
 alias ghCD=ghROOT
 
