@@ -2,6 +2,8 @@
 # Static Analysis
 # alias = ghSA
 
+cd $GIT_ROOT
+
 ./gradlew tasks 2> /dev/null | grep detekt &> /dev/null
 RUN_DETEKT=$?
 
