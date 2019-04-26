@@ -62,6 +62,14 @@ if [[ "$MERGE_RESULTS"  != *"lready up"* ]] ; then
 fi
 
 printf "\nBranch named \"$CURRENT_BRANCH\" has no local changes\nand is up-to-date with \"${FORK_OWNER}\\${FORK_BRANCH}\".\n\n"
+
+$GITHELP_HOME/ghStaticAnalysis.sh
+if [ $? -ne 0 ] ; then
+    printf "\nFATAL ERROR:  You must fix errors before creating a PR.\n"
+    printf "\nOperation canceled.\n\n"
+    exit 1
+fi
+
 printf "Create a Pull Request (PR) from origin branch named \"$CURRENT_BRANCH\"\ninto branch named \"$FORK_BRANCH\" in Fork \"${FORK_OWNER}\".\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n           do that before proceeding.\n"
 read -p "Continue?  (y/n)   " -n 1 -r
