@@ -25,7 +25,7 @@ else
 fi
 
 if [ "$RUN_LINT_DEBUG" -eq 0 ] ; then
-    printf "\nStatic analysis - linkDebug\n"
+    printf "\nStatic analysis - lintDebug\n"
     ./gradlew lintDebug
     LINT_DEBUG_RESULTS=$?
 else
