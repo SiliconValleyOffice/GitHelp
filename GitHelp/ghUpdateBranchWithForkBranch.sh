@@ -10,8 +10,8 @@ fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghUBFB github_user_id branch_name\n"
-  printf "    github_user_id = owner of the Fork\n"
+  printf "\nUsage: ghUBFB git_user_id branch_name\n"
+  printf "    git_user_id = owner of the Fork\n"
   printf "    Update Branch with Fork Branch\n\n"
   exit
 fi

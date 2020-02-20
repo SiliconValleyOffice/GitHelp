@@ -4,7 +4,7 @@
 
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghCMR github_clone_string\n"
+  printf "\nUsage: ghCMR git_clone_string\n"
   printf "    Clone My Repository\n\n"
   exit
 fi

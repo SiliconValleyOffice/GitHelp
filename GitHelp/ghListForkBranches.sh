@@ -3,7 +3,7 @@
 # alias = ghLFB
 
 if [ $# -ne 1 ]; then
-    printf "\nUsage: ghLFB github_user_name\n"
+    printf "\nUsage: ghLFB git_user_name\n"
     printf "    List Fork Branches\n\n"
     exit
 fi
