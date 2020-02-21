@@ -3,7 +3,7 @@
 # alias = ghCO
 
 if [ "$#" -ne 3 ]; then
-    printf "\nUsage: ghCO github_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
+    printf "\nUsage: ghCO git_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
     printf "    Clone Origin (developer fork).\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
     exit

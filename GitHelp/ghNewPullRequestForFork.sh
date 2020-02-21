@@ -3,8 +3,8 @@
 # alias = ghNPRF
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNPRF github_user_name branch_name\n"
-  printf "    github_user_id = owner of the Fork\n\n"
+  printf "\nUsage: ghNPRF git_user_name branch_name\n"
+  printf "    git_user_id = owner of the Fork\n\n"
   printf "    New Pull Request for the current branch\n"
   printf "    against a branch in another Fork.\n\n"
   exit
