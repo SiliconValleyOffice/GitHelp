@@ -10,15 +10,34 @@ if [ "$#" -ne 3 ]; then
 fi
 
 CLONE_STRING=$1
-GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
+
+echo $CLONE_STRING | grep "gitlab" 1>/dev/null 2>&1
+IS_GITHUB=$?
+
+if [ $IS_GITHUB -eq 1 ]; then
+    GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
+else
+    GIT_HOST=`echo $CLONE_STRING | cut -f 2 -d'@' | cut -f 1 -d':'`
+fi
+
 GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
 
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
-GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
-REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
+if [ $IS_GITHUB -eq 1 ]; then
+    GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
+else
+    GITHUB_USER=`echo $CLONE_STRING | awk -F ':' '{print $2}' | awk -F "/" '{print $1}'`
+fi
+
+if [ $IS_GITHUB -eq 1 ]; then
+    REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
+else
+    REPO_NAME=`echo $CLONE_STRING | awk -F ':' '{print $2}' | awk -F "/" '{print $2}'| cut -f 1 -d'.'`
+fi
+
 if [ -z $GITHUB_USER -o -z $REPO_NAME ]; then
   printf "\nBad clone string.\n"
   printf "Copy this string from the GitHub page for the Origin (developer fork).\n\n"
@@ -96,7 +115,7 @@ git fetch origin &> /dev/null
 
 PROFILE_ENTRY="$GIT_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
-printf "\nRunning ghCONFIG to make this your active REPO...\n\n"
+printf "\nRunning ghCONFIG to make this your active REPO...\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY
 
 if [ ! -f ~/.githelp_profile_list ]; then
@@ -113,9 +132,11 @@ if [ $? -eq 1 ]; then
   echo " \n\"" >> ~/.githelp_profile_list
 fi
 
-
 printf "NOTE:\n"
 printf "    If this is a clone of a new Origin/fork, you must also\n"
 printf "    run 'ghPOB' (ghPruneOriginBranches) in the new repository\n"
 printf "    before creating any of your own branches\n\n"
 
+printf "Run the following commands to use this new repository...\n"
+printf "    source ~/.bash_profile\n"
+printf "    ghCD\n\n"

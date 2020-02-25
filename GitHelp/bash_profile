@@ -29,7 +29,7 @@ alias ghResetHard="$GITHELP_HOME/ghResetHard.sh"
 
 ###  Repository Commands  ######
 alias ghROOT="cd $GIT_ROOT; pwd; $GITHELP_HOME/ghBranchList.sh"
-alias ghCD=ghROOT
+alias ghCD="ghROOT"
 
 xxChangeRepository() {
   $GITHELP_HOME/ghChangeRepo.sh $@
