@@ -20,6 +20,33 @@ else
     GIT_HOST=`echo $CLONE_STRING | cut -f 2 -d'@' | cut -f 1 -d':'`
 fi
 
+printf "\nValidating SSH configuration...\n"
+# read -p "Have you updated $GIT_HOST with your public SSH key?  (y/n)  " -n 1 -r
+# echo
+# if [[ ! $REPLY =~ ^[Yy]$ ]]
+# then
+    # printf "\nUpdate $GIT_HOST with your public SSH key, then run\n"
+    # printf "the following command to complete and verify the configuration\n"
+    # printf "before running this script again.\n"
+    # printf "    ssh -T git@$GIT_HOST\n"
+    # printf "\nOperation canceled.\n\n"
+    # exit 1
+# fi
+
+printf "ssh -T git@$GIT_HOST\n"
+ssh -T git@$GIT_HOST 1>/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    printf "\nInvalid SSH configuration for git@$GIT_HOST !!!\n"
+    printf "    GitHelp scripts require an SSH configuration.\n"
+    printf "\n    Update $GIT_HOST with your public SSH key, then run\n"
+    printf "    the following command to complete and verify the configuration\n"
+    printf "    before running this script again.\n"
+    printf "        ssh -T git@$GIT_HOST\n"
+    printf "\nOperation canceled.\n\n"
+    exit 1
+fi
+
+
 GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
@@ -105,7 +132,6 @@ while [ $? -ne 0 ]; do
 done
 cd $REPO_NAME
 git config --global push.default simple
-git config credential.helper store
 
 if [ $UPSTREAM_OWNER != "NONE" ]; then
     git remote add upstream $UPSTREAM
