@@ -8,8 +8,8 @@ fi
 
 UPSTREAM_BRANCH=$1
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+CURRENT_USER=`git config --get remote.origin.url | awk -F/ '{print $4}' | sed s/\.git//`
 UPSTREAM_PROJECT=`git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//'`
-ORIGIN_PROJECT=`git config --get remote.origin.url | awk -F/ '{print $4 "/" $5}' | sed s/\.git//`
 
-echo "$UPSTREAM_PROJECT/compare/${UPSTREAM_BRANCH}...$ORIGIN_PROJECT:$CURRENT_BRANCH?expand=1"
+echo "$UPSTREAM_PROJECT/compare/${UPSTREAM_BRANCH}...$CURRENT_USER:$CURRENT_BRANCH?expand=1"
 
