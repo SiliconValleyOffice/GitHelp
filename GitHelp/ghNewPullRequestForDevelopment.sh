@@ -94,10 +94,8 @@ printf "\n"
 if [ $IS_GITLAB -eq 0 ]; then
     UPSTREAM_URL=`$GITHELP_HOME/ghGitLabMergeRequestUrl.sh $UPSTREAM_BRANCH`
 else
-    UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${UPSTREAM_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
+    UPSTREAM_URL=`$GITHELP_HOME/ghGitHubMergeRequestUrl.sh $UPSTREAM_BRANCH`
 fi
-echo $UPSTREAM_URL
-exit 1
 
 if which google-chrome > /dev/null ; then
     google-chrome "$UPSTREAM_URL"
@@ -105,7 +103,7 @@ else
     open "$UPSTREAM_URL"
 fi
 
-printf "\nBe sure to review changed files in PR before clicking button to create.\n\n"
+printf "\nBe sure to review changed files in Pull/Merge Request before clicking button to create.\n\n"
 
 if [[ "$IS_RELEASE_BRANCH" == "YES" ]] ; then
     printf "\nDo you also want to submit a PR against \"upstream\\development\"?\n"
