@@ -16,6 +16,9 @@ if [ $? -ne 0 ]; then
 fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
 
+$GITHELP_HOME/ghIsGitLab.sh
+IS_GITLAB=$?
+
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 if [[ $CURRENT_BRANCH = "development" ]]; then
   printf "\nCannot create a Pull Request for the \"development\" branch on origin.\n"
