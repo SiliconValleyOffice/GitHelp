@@ -12,12 +12,13 @@ fi
 CLONE_STRING=$1
 
 echo $CLONE_STRING | grep "gitlab" 1>/dev/null 2>&1
-IS_GITHUB=$?
+IS_GITLAB=$?
+# 0=true   :-)
 
-if [ $IS_GITHUB -eq 1 ]; then
-    GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
-else
+if [ $IS_GITLAB -eq 0 ]; then
     GIT_HOST=`echo $CLONE_STRING | cut -f 2 -d'@' | cut -f 1 -d':'`
+else
+    GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
 fi
 
 printf "\nValidating SSH configuration...\n"
@@ -53,16 +54,16 @@ JIRA_TICKET_PREFIX=$3
 
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
-if [ $IS_GITHUB -eq 1 ]; then
-    GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
-else
+if [ $IS_GITLAB -eq 0 ]; then
     GITHUB_USER=`echo $CLONE_STRING | awk -F ':' '{print $2}' | awk -F "/" '{print $1}'`
+else
+    GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
 fi
 
-if [ $IS_GITHUB -eq 1 ]; then
-    REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
-else
+if [ $IS_GITLAB -eq 0 ]; then
     REPO_NAME=`echo $CLONE_STRING | awk -F ':' '{print $2}' | awk -F "/" '{print $2}'| cut -f 1 -d'.'`
+else
+    REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
 fi
 
 if [ -z $GITHUB_USER -o -z $REPO_NAME ]; then

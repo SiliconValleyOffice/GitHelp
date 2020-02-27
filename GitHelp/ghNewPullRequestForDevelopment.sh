@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 # Create a Pull Request
 # alias = ghNPR
 
@@ -16,6 +15,9 @@ if [ $? -ne 0 ]; then
     exit 1;
 fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
+
+$GITHELP_HOME/ghIsGitLab.sh
+IS_GITLAB=$?
 
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 if [[ $CURRENT_BRANCH = "development" ]]; then
@@ -89,7 +91,14 @@ fi
 
 printf "\n"
 # ToDo - provide option to collapse commits into a single, and provide a message for that commit
-UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${UPSTREAM_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
+if [ $IS_GITLAB -eq 0 ]; then
+    UPSTREAM_URL=`$GITHELP_HOME/ghGitLabMergeRequestUrl.sh $UPSTREAM_BRANCH`
+else
+    UPSTREAM_URL="$(git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${UPSTREAM_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
+fi
+echo $UPSTREAM_URL
+exit 1
+
 if which google-chrome > /dev/null ; then
     google-chrome "$UPSTREAM_URL"
 else
