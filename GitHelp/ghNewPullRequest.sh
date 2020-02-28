@@ -2,12 +2,13 @@
 # Create a Pull Request
 # alias = ghNPR
 
-if [ "$#" -gt 1 ]; then
-  printf "\nUsage: ghNPR [upstream_release_branch_number]\n"
+if [ "$#" -ne 1 ]; then
+  printf "\nUsage: ghNPR [upstream_branch]\n"
   printf "    create a Pull Request for the current branch\n"
-  printf "    default upstream_branch = development\n\n"
+  printf "    into the upstream_branch\n\n"
   exit
 fi
+UPSTREAM_BRANCH=$1
 
 git rev-parse --show-toplevel &> /dev/null
 if [ $? -ne 0 ]; then
