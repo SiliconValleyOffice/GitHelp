@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90c144bb-abcc-4f60-b9bd-81279711b17e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh" afterDir="false" />
-    </list>
+    <list default="true" id="90c144bb-abcc-4f60-b9bd-81279711b17e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="116">
+              <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -63,6 +61,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>IS_DEVELOPMENT_BRANCH</find>
+      <find>on the upstream repository</find>
+      <find>UPSTREAM_BRANCH</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -186,10 +186,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequestForDevelopment.sh.SAVE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="116">
+          <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
         </state>
       </provider>
     </entry>
