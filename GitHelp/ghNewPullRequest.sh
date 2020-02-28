@@ -65,7 +65,7 @@ printf "\nOperation canceled.\n\n"
 exit 1
 fi
 
-printf "Create a Pull Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n"
+printf "Create a Pull/Merge Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n"
 printf "into the upstream branch \"${UPSTREAM_BRANCH}\"?\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n"
 printf "           do that before proceeding.\n"
