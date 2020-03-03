@@ -22,21 +22,23 @@ else
 fi
 
 if [ $IS_GITLAB -eq 0 ]; then
-    GIT_URL="git@$GIT_HOST:"
+    SSH_URL="git@$GIT_HOST"
+    GIT_URL="$SSH_URL:"
 else
-    GIT_URL="https://$GIT_HOST/"
+    SSH_URL="https://$GIT_HOST/"
+    GIT_URL="$SSH_URL"
 fi
 
 printf "\nValidating SSH configuration...\n"
-printf "ssh -T $GIT_URL\n"
-ssh -T $GIT_URL 1>/dev/null 2>&1
+printf "ssh -T $SSH_URL\n"
+ssh -T $SSH_URL &>/dev/null
 if [ $? -ne 0 ]; then
-    printf "\nInvalid SSH configuration for git@$GIT_HOST !!!\n"
+    printf "\nInvalid SSH configuration for $SSH_URL !!!\n"
     printf "    GitHelp scripts require an SSH configuration.\n"
-    printf "\n    Update $GIT_HOST with your public SSH key, then run\n"
+    printf "\n    Update $SSH_URL with your public SSH key, then run\n"
     printf "    the following command to complete and verify the configuration\n"
     printf "    before running this script again.\n"
-    printf "        ssh -T git@$GIT_HOST\n"
+    printf "        ssh -T git@$SSH_URL\n"
     printf "\nOperation canceled.\n\n"
     exit 1
 fi
@@ -137,7 +139,8 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-PROFILE_ENTRY="$GIT_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
+PROFILE_URL=`echo $GIT_URL | sed 's/git@/https:\/\//'`
+PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
 printf "\nRunning ghCONFIG to make this your active REPO...\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY

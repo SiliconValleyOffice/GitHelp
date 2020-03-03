@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90c144bb-abcc-4f60-b9bd-81279711b17e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GitHelp/bash_profile" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/bash_profile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GitHelp/ghNewPullRequestForEpic.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/ghNewPullRequestForEpic.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GitHelp/ghNewPullRequestForFork.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/ghNewPullRequestForFork.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GitHelp/ghNewPullRequestForRelease.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GitHelp/ghNewPullRequestForRelease.sh" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +16,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="75" column="74" selection-start-line="75" selection-start-column="74" selection-end-line="75" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequestForDevelopment.sh">
           <provider selected="true" editor-type-id="text-editor">
@@ -39,11 +43,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GitHelp/ghNewMergeRequestForFork.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
               <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="742">
+              <caret line="141" column="33" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -58,10 +71,12 @@
       <find>IS_GITLAB</find>
       <find>ghNPR</find>
       <find>Pull</find>
-      <find>GIT_URL</find>
-      <find>ORIGIN</find>
       <find>GITLA</find>
       <find>FORK_PROJECT</find>
+      <find>GIT_URL</find>
+      <find>config</find>
+      <find>ORIGIN</find>
+      <find>sed</find>
     </findStrings>
     <replaceStrings>
       <replace>FORK_PROJECT</replace>
@@ -82,10 +97,10 @@
         <option value="$PROJECT_DIR$/GitHelp/ghNewPullRequestForRelease.sh" />
         <option value="$PROJECT_DIR$/GitHelp/ghNewMergeRequestForRelease.sh" />
         <option value="$PROJECT_DIR$/GitHelp/ghNewMergeRequestForForkJiraBranch.sh" />
-        <option value="$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh" />
         <option value="$PROJECT_DIR$/GitHelp/ghNewPullRequestForFork.sh" />
         <option value="$PROJECT_DIR$/GitHelp/ghNewMergeRequestForDevelopment.sh" />
         <option value="$PROJECT_DIR$/GitHelp/ghNewMergeRequestForFork.sh" />
+        <option value="$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh" />
       </list>
     </option>
   </component>
@@ -248,13 +263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1302">
-          <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GitHelp/bash_profile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3103">
@@ -276,24 +284,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="887">
-          <caret line="89" column="55" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GitHelp/ghNewMergeRequestForDevelopment.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequestForDevelopment.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -308,6 +302,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GitHelp/ghCloneOrigin.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="141" column="33" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequestForDevelopment.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GitHelp/ghNewPullRequest.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="75" column="74" selection-start-line="75" selection-start-column="74" selection-end-line="75" selection-end-column="74" />
         </state>
       </provider>
     </entry>
