@@ -1,10 +1,10 @@
 #!/bin/bash
-# New Pull Request for a Release branch
-# alias = ghNPRR
+# New Merge Request for a Release branch
+# alias = ghNMRR
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghNPRR upstream_release_branch_number\n"
-  printf "    Create a Pull Request for the current branch\n"
+  printf "\nUsage: ghNMRR upstream_release_branch_number\n"
+  printf "    Create a Merge Request for the current branch\n"
   printf "    against an upstream Release branch.\n\n"
   exit
 fi

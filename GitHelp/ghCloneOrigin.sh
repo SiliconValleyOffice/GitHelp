@@ -21,21 +21,15 @@ else
     GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
 fi
 
-printf "\nValidating SSH configuration...\n"
-# read -p "Have you updated $GIT_HOST with your public SSH key?  (y/n)  " -n 1 -r
-# echo
-# if [[ ! $REPLY =~ ^[Yy]$ ]]
-# then
-    # printf "\nUpdate $GIT_HOST with your public SSH key, then run\n"
-    # printf "the following command to complete and verify the configuration\n"
-    # printf "before running this script again.\n"
-    # printf "    ssh -T git@$GIT_HOST\n"
-    # printf "\nOperation canceled.\n\n"
-    # exit 1
-# fi
+if [ $IS_GITLAB -eq 0 ]; then
+    GIT_URL="git@$GIT_HOST:"
+else
+    GIT_URL="https://$GIT_HOST/"
+fi
 
-printf "ssh -T git@$GIT_HOST\n"
-ssh -T git@$GIT_HOST 1>/dev/null 2>&1
+printf "\nValidating SSH configuration...\n"
+printf "ssh -T $GIT_URL\n"
+ssh -T $GIT_URL 1>/dev/null 2>&1
 if [ $? -ne 0 ]; then
     printf "\nInvalid SSH configuration for git@$GIT_HOST !!!\n"
     printf "    GitHelp scripts require an SSH configuration.\n"
@@ -47,8 +41,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-
-GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
 
@@ -89,8 +81,13 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}.git"
-eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+if [ $IS_GITLAB -eq 0 ]; then
+    eval ORIGIN="${GIT_URL}${GITHUB_USER}/${REPO_NAME}.git"
+    eval UPSTREAM="${GIT_URL}${UPSTREAM_OWNER}/${REPO_NAME}.git"
+else
+    eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}.git"
+    eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+fi
 
 git config --global credential.helper cache
 
