@@ -21,17 +21,16 @@ else
     GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
 fi
 
+SSH_URL="git@$GIT_HOST"
 if [ $IS_GITLAB -eq 0 ]; then
-    SSH_URL="git@$GIT_HOST"
     GIT_URL="$SSH_URL:"
 else
-    SSH_URL="https://$GIT_HOST/"
-    GIT_URL="$SSH_URL"
+    GIT_URL="https://$GIT_HOST/"
 fi
 
 printf "\nValidating SSH configuration...\n"
 printf "ssh -T $SSH_URL\n"
-ssh -T $SSH_URL &>/dev/null
+$GITHELP_HOME/ghValidateSsh.sh $SSH_URL
 if [ $? -ne 0 ]; then
     printf "\nInvalid SSH configuration for $SSH_URL !!!\n"
     printf "    GitHelp scripts require an SSH configuration.\n"
@@ -85,10 +84,12 @@ fi
 
 if [ $IS_GITLAB -eq 0 ]; then
     eval ORIGIN="${GIT_URL}${GITHUB_USER}/${REPO_NAME}.git"
+    eval PROFILE_URL="${GIT_URL}${GITHUB_USER}/${REPO_NAME}"
     eval UPSTREAM="${GIT_URL}${UPSTREAM_OWNER}/${REPO_NAME}.git"
 else
-    eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}.git"
-    eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+    eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}"
+    eval PROFILE_URL="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}"
+    eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}"
 fi
 
 git config --global credential.helper cache
@@ -139,7 +140,6 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-PROFILE_URL=`echo $GIT_URL | sed 's/git@/https:\/\//'`
 PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
 printf "\nRunning ghCONFIG to make this your active REPO...\n"
