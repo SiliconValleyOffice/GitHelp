@@ -8,7 +8,7 @@ fi
 
 UPSTREAM_BRANCH=$1
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-CURRENT_USER=`git config --get remote.origin.url | awk -F/ '{print $4}' | sed s/\.git//`
+CURRENT_USER=`git config --get remote.origin.url | awk -F/ '{print $5}' | sed s/\.git//`
 UPSTREAM_PROJECT=`git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//'`
 
 echo "$UPSTREAM_PROJECT/compare/${UPSTREAM_BRANCH}...$CURRENT_USER:$CURRENT_BRANCH?expand=1"
