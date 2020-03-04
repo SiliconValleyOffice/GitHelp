@@ -10,6 +10,18 @@ if [ "$#" -ne 1 ]; then
 fi
 
 CLONE_STRING=$1
+
+echo $CLONE_STRING | grep "gitlab" 1>/dev/null 2>&1
+IS_GITLAB=$?
+# 0=true   :-)
+
+if [ $IS_GITLAB -eq 0 ]; then
+    Printf "\n\nThis command only supports GitHub repositories in this release.\n"
+    $GITHELP_HOME/ghVERSION.sh
+    echo
+    exit 1
+fi
+
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
 GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
