@@ -21,34 +21,27 @@ else
     GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
 fi
 
-printf "\nValidating SSH configuration...\n"
-# read -p "Have you updated $GIT_HOST with your public SSH key?  (y/n)  " -n 1 -r
-# echo
-# if [[ ! $REPLY =~ ^[Yy]$ ]]
-# then
-    # printf "\nUpdate $GIT_HOST with your public SSH key, then run\n"
-    # printf "the following command to complete and verify the configuration\n"
-    # printf "before running this script again.\n"
-    # printf "    ssh -T git@$GIT_HOST\n"
-    # printf "\nOperation canceled.\n\n"
-    # exit 1
-# fi
+SSH_URL="git@$GIT_HOST"
+if [ $IS_GITLAB -eq 0 ]; then
+    GIT_URL="$SSH_URL:"
+else
+    GIT_URL="https://$GIT_HOST/"
+fi
 
-printf "ssh -T git@$GIT_HOST\n"
-ssh -T git@$GIT_HOST 1>/dev/null 2>&1
+printf "\nValidating SSH configuration...\n"
+printf "ssh -T $SSH_URL\n"
+$GITHELP_HOME/ghValidateSsh.sh $SSH_URL
 if [ $? -ne 0 ]; then
-    printf "\nInvalid SSH configuration for git@$GIT_HOST !!!\n"
+    printf "\nInvalid SSH configuration for $SSH_URL !!!\n"
     printf "    GitHelp scripts require an SSH configuration.\n"
-    printf "\n    Update $GIT_HOST with your public SSH key, then run\n"
+    printf "\n    Update $SSH_URL with your public SSH key, then run\n"
     printf "    the following command to complete and verify the configuration\n"
     printf "    before running this script again.\n"
-    printf "        ssh -T git@$GIT_HOST\n"
+    printf "        ssh -T git@$SSH_URL\n"
     printf "\nOperation canceled.\n\n"
     exit 1
 fi
 
-
-GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
 JIRA_TICKET_PREFIX=$3
 
@@ -89,8 +82,15 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}.git"
-eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+if [ $IS_GITLAB -eq 0 ]; then
+    eval ORIGIN="${GIT_URL}${GITHUB_USER}/${REPO_NAME}.git"
+    eval PROFILE_URL="${GIT_URL}${GITHUB_USER}/${REPO_NAME}"
+    eval UPSTREAM="${GIT_URL}${UPSTREAM_OWNER}/${REPO_NAME}.git"
+else
+    eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}"
+    eval PROFILE_URL="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}"
+    eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}"
+fi
 
 git config --global credential.helper cache
 
@@ -140,7 +140,7 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-PROFILE_ENTRY="$GIT_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
+PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
 
 printf "\nRunning ghCONFIG to make this your active REPO...\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY

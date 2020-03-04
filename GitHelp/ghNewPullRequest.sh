@@ -20,11 +20,17 @@ cd $(git rev-parse --show-toplevel) &> /dev/null
 $GITHELP_HOME/ghIsGitLab.sh
 IS_GITLAB=$?
 
+if [ $IS_GITLAB -eq 0 ]; then
+    PULL_OR_MERGE="Merge"
+else
+    PULL_OR_MERGE="Pull"
+fi
+
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 if [[ $CURRENT_BRANCH = "development" ]]; then
-  printf "\nCannot create a Pull Request for the \"development\" branch on origin.\n"
+  printf "\nCannot create a ${PULL_OR_MERGE} Request for the \"development\" branch on origin.\n"
   printf "    \"origin/development\" is only for review and research of upstream.\n"
-  printf "    Create a Derived branch and use that to create a Pull Request.\n\n"
+  printf "    Create a Derived branch and use that to create a ${PULL_OR_MERGE} Request.\n\n"
   exit 1
 fi
 
@@ -65,7 +71,7 @@ printf "\nOperation canceled.\n\n"
 exit 1
 fi
 
-printf "Create a Pull/Merge Request (PR) from the origin branch \"$CURRENT_BRANCH\"\n"
+printf "Create a ${PULL_OR_MERGE} Request from the origin branch \"$CURRENT_BRANCH\"\n"
 printf "into the upstream branch \"${UPSTREAM_BRANCH}\"?\n"
 printf "    Note:  If you are not already logged into GitHub in the browser,\n"
 printf "           do that before proceeding.\n"
@@ -90,7 +96,7 @@ else
   open "$UPSTREAM_URL"
 fi
 
-printf "\nBe sure to review changed files in Pull/Merge Request before clicking button to create.\n\n"
+printf "\nBe sure to review changed files in ${PULL_OR_MERGE} Request before clicking button to create.\n\n"
 
 git push &>/dev/null
 

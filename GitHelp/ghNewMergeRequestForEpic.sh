@@ -1,10 +1,10 @@
 #!/bin/bash
-# New Pull Request for a Epic branch
-# alias = ghNPRE
+# New Merge Request for a Epic branch
+# alias = ghNMRE
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghNPRR JIRA_number\n"
-  printf "    Create a Pull Request for the current branch\n"
+  printf "\nUsage: ghNMRE JIRA_number\n"
+  printf "    Create a Merge Request for the current branch\n"
   printf "    against an upstream Epic branch.\n\n"
   exit
 fi
