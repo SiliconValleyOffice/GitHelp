@@ -1,5 +1,8 @@
 # GitHelp
 
+### NOTICE:  GitHelp supports both GitHub and GitLab starting with Version 4.0
+
+
 ### Command line scripts to support a simple and reliable development flow on *Developer Forks*.
 
 <br><font color=blue>Check out the wiki for a detailed description of how to use these scripts in your *Developer Fork*.</font>
