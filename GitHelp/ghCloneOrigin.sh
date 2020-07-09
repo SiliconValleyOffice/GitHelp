@@ -2,9 +2,10 @@
 # Clone Origin
 # alias = ghCO
 
-if [ "$#" -ne 3 ]; then
-    printf "\nUsage: ghCO github_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
+if [ "$#" -lt 3 ]; then
+    printf "\nUsage: ghCO github_origin_clone_string upstream_owner development_branch [JIRA_ticket_prefix]\n"
     printf "    Clone Origin (developer fork).\n"
+    printf "    JIRA_ticket_prefix default = NOJIRA\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
     exit
 fi
@@ -13,7 +14,12 @@ CLONE_STRING=$1
 GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
 GIT_URL="https://"$GIT_HOST
 UPSTREAM_OWNER=$2
-JIRA_TICKET_PREFIX=$3
+DEVELOPMENT_BRANCH=$3
+if [ "$#" -eq 3 ]; then
+    JIRA_TICKET_PREFIX="NOJIRA"
+else
+    JIRA_TICKET_PREFIX=$4
+fi
 
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
@@ -29,6 +35,12 @@ if [ $UPSTREAM_OWNER != "NONE" ] && [ $GITHUB_USER = $UPSTREAM_OWNER ]; then
   printf "\nYou copied the clone string from an upstream repository,\n    not a fork (origin).\n"
   printf "Copy this string from the GitHub page for the Origin (developer fork).\n\n"
   exit
+fi
+
+$GITHELP_HOME/ghUpstreamBranchExists.sh ${DEVELOPMENT_BRANCH}  &> /dev/null
+if [[ $? -ne 0 ]] ; then
+    printf "\nERROR:  The branch named \"${DEVELOPMENT_BRANCH}\" does not exist on upstream\n\n"
+    exit 1;
 fi
 
 REPO_ROOT=$LOCAL_PARENT_DIRECTORY/$REPO_NAME
