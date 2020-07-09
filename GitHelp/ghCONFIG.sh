@@ -22,20 +22,21 @@ printf "\n${STATUS} GitHub configuration:\n"
 printf "    GIT_HOST_URL = '$GIT_HOST_URL' \n"
 printf "    GITHUB_USER = '$GITHUB_USER' \n"
 printf "    GIT_ROOT = '$GIT_ROOT' \n"
-printf "    JIRA_TICKET_PREFIX = '$JIRA_TICKET_PREFIX' \n\n"
+printf "    JIRA_TICKET_PREFIX = '$JIRA_TICKET_PREFIX' \n"
+printf "    DEVELOPMENT_BRANCH = '$DEVELOPMENT_BRANCH' \n\n"
 
 if [ $# -eq 0 ]; then
     if [ -a ~/.githelp_profile_list ]; then
       ~/.githelp_profile_list
     fi
     printf "\nYou can change the configuration with the following command.\n"
-    printf "    Usage: ghCONFIG  Git_Host_URL  GitHub_user  git_root  JIRA_ticket_prefix\n"
+    printf "    Usage: ghCONFIG  Git_Host_URL  GitHub_user  git_root  JIRA_ticket_prefix  DEVELOPMENT_BRANCH\n"
     printf "        (\"ghCONFIG \" + copy/paste a row from the GitHelp Configurations list above)\n\n"
     printf "A much easier method is to use the ghCR command to Change Repository.\n\n"
     exit 1
 fi
 
-if [ $# -ne 4 ]; then
+if [ $# -ne 5 ]; then
   printf "Usage:\n"
   printf ""    ghCONFIG\n    - to see the current GitHelp configuration\n\n"
   printf "    ghCONFIG GitHub_user git_root JIRA_ticket_prefix\n"
@@ -50,6 +51,7 @@ NEW_PROFILE="$NEW_PROFILE \nexport GIT_HOST_URL=$1"
 NEW_PROFILE="$NEW_PROFILE \nexport GITHUB_USER=$2"
 NEW_PROFILE="$NEW_PROFILE \nexport GIT_ROOT=$3"
 NEW_PROFILE="$NEW_PROFILE \nexport JIRA_TICKET_PREFIX=$4"
+NEW_PROFILE="$NEW_PROFILE \nexport DEVELOPMENT_BRANCH=$5"
 echo -e "$NEW_PROFILE" > ~/.githelp_profile
 
 source ~/.githelp_profile
@@ -58,5 +60,6 @@ printf "New GitHub configuration:\n"
 printf "    GIT_HOST_URL = '$GIT_HOST_URL' \n"
 printf "    GITHUB_USER = '$GITHUB_USER' \n"
 printf "    GIT_ROOT = '$GIT_ROOT' \n"
-printf "    JIRA_TICKET_PREFIX = '$JIRA_TICKET_PREFIX' \n\n"
+printf "    JIRA_TICKET_PREFIX = '$JIRA_TICKET_PREFIX' \n"
+printf "    DEVELOPMENT_BRANCH = '$DEVELOPMENT_BRANCH' \n\n"
 
