@@ -37,12 +37,6 @@ if [ $UPSTREAM_OWNER != "NONE" ] && [ $GITHUB_USER = $UPSTREAM_OWNER ]; then
   exit
 fi
 
-$GITHELP_HOME/ghUpstreamBranchExists.sh ${DEVELOPMENT_BRANCH}  &> /dev/null
-if [[ $? -ne 0 ]] ; then
-    printf "\nERROR:  The branch named \"${DEVELOPMENT_BRANCH}\" does not exist on upstream\n\n"
-    exit 1;
-fi
-
 REPO_ROOT=$LOCAL_PARENT_DIRECTORY/$REPO_NAME
 
 if [ ! -d $LOCAL_PARENT_DIRECTORY ]; then
@@ -79,6 +73,7 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 else
   printf "    with no upstream upstream repository\n"
 fi
+printf "    setting development branch to\n        $DEVELOPMENT_BRANCH\n"
 printf "    and the JIRA ticket prefix will be\n        $JIRA_TICKET_PREFIX\n\n"
 
 read -p "Are you sure?  (y/n)   " -n 1 -r
@@ -106,7 +101,7 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-PROFILE_ENTRY="$GIT_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
+PROFILE_ENTRY="$GIT_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX  $DEVELOPMENT_BRANCH"
 
 printf "\nRunning ghCONFIG to make this your active REPO...\n\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY

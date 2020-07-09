@@ -1,3 +1,3 @@
-GITHELP_VERSION="3.2"
+GITHELP_VERSION="4.0-canary"
 
 echo "GitHelp - Version $GITHELP_VERSION"
