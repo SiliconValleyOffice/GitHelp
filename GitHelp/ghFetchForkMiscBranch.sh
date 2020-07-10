@@ -3,8 +3,8 @@
 # alias = ghFFMB
 
 if [[ $# -lt 2 || $# -gt 3 ]]; then
-    printf "\nUsage: ghFFMB github_user_name branch_name [local_branch_prefix]\n"
-    printf "    github_user_id = owner of the Fork\n"
+    printf "\nUsage: ghFFMB git_user_name branch_name [local_branch_prefix]\n"
+    printf "    git_user_id = owner of the Fork\n"
     printf "    default local_branch_prefix = \"DF\"\n"
     printf "    Fetch Fork Misc Branch\n\n"
     exit 1

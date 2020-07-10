@@ -2,13 +2,8 @@
 # Clone Origin
 # alias = ghCO
 
-<<<<<<< HEAD
 if [ "$#" -lt 3 ]; then
     printf "\nUsage: ghCO github_origin_clone_string upstream_owner development_branch [JIRA_ticket_prefix]\n"
-=======
-if [ "$#" -ne 3 ]; then
-    printf "\nUsage: ghCO git_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
->>>>>>> upstream/development
     printf "    Clone Origin (developer fork).\n"
     printf "    JIRA_ticket_prefix default = NOJIRA\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
@@ -152,12 +147,8 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
-<<<<<<< HEAD
 PROFILE_URL=`echo $CLONE_STRING | sed 's/\.git//'`
 PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX  $DEVELOPMENT_BRANCH"
-=======
-PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
->>>>>>> upstream/development
 
 printf "\nRunning ghCONFIG to make this your active REPO...\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY

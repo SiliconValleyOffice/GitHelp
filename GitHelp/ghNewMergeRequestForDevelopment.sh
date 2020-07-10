@@ -1,9 +1,9 @@
 #!/bin/bash
-# Create a Pull Request
-# alias = ghNPR
+# Create a Merge Request for Development
+# alias = ghNMRD
 
 if [ "$#" -gt 0 ]; then
-  printf "\nUsage: ghNPRD\n"
+  printf "\nUsage: ghNMRD\n"
   printf "    no arguments accepted\n"
   printf "    upstream_branch = development\n\n"
   exit 1

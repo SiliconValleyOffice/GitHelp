@@ -3,8 +3,8 @@
 # alias ghRPRF
 
 if [ $# -ne 1 ]; then
-    printf "\nUsage: ghRPRF github_user_name\n"
-    printf "    github_user_id = owner of the Fork\n"
+    printf "\nUsage: ghRPRF git_user_name\n"
+    printf "    git_user_id = owner of the Fork\n"
     printf "    Review Pull Requests for a Fork\n\n"
     exit 1
 fi

@@ -3,8 +3,8 @@
 # alias = ghUBFJB
 
 if [ $# -ne 2 ]; then
-    printf "\nUsage: ghUBFJB github_user_name JIRA_number\n"
-    printf "    github_user_id = owner of the Fork\n"
+    printf "\nUsage: ghUBFJB git_user_name JIRA_number\n"
+    printf "    git_user_id = owner of the Fork\n"
     printf "    Update Branch with Fork JIRA Branch\n\n"
     exit 1
 fi
