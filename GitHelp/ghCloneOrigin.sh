@@ -2,8 +2,13 @@
 # Clone Origin
 # alias = ghCO
 
+<<<<<<< HEAD
 if [ "$#" -lt 3 ]; then
     printf "\nUsage: ghCO github_origin_clone_string upstream_owner development_branch [JIRA_ticket_prefix]\n"
+=======
+if [ "$#" -ne 3 ]; then
+    printf "\nUsage: ghCO git_origin_clone_string upstream_owner JIRA_ticket_prefix\n"
+>>>>>>> upstream/development
     printf "    Clone Origin (developer fork).\n"
     printf "    JIRA_ticket_prefix default = NOJIRA\n"
     printf "    set upstream_owner = NONE if there is no upstream REPO\n\n"
@@ -11,8 +16,38 @@ if [ "$#" -lt 3 ]; then
 fi
 
 CLONE_STRING=$1
-GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
-GIT_URL="https://"$GIT_HOST
+
+echo $CLONE_STRING | grep "gitlab" 1>/dev/null 2>&1
+IS_GITLAB=$?
+# 0=true   :-)
+
+if [ $IS_GITLAB -eq 0 ]; then
+    GIT_HOST=`echo $CLONE_STRING | cut -f 2 -d'@' | cut -f 1 -d':'`
+else
+    GIT_HOST=`echo $CLONE_STRING | cut -d/ -f3 `
+fi
+
+SSH_URL="git@$GIT_HOST"
+if [ $IS_GITLAB -eq 0 ]; then
+    GIT_URL="$SSH_URL:"
+else
+    GIT_URL="https://$GIT_HOST/"
+fi
+
+printf "\nValidating SSH configuration...\n"
+printf "ssh -T $SSH_URL\n"
+$GITHELP_HOME/ghValidateSsh.sh $SSH_URL
+if [ $? -ne 0 ]; then
+    printf "\nInvalid SSH configuration for $SSH_URL !!!\n"
+    printf "    GitHelp scripts require an SSH configuration.\n"
+    printf "\n    Update $SSH_URL with your public SSH key, then run\n"
+    printf "    the following command to complete and verify the configuration\n"
+    printf "    before running this script again.\n"
+    printf "        ssh -T git@$SSH_URL\n"
+    printf "\nOperation canceled.\n\n"
+    exit 1
+fi
+
 UPSTREAM_OWNER=$2
 DEVELOPMENT_BRANCH=$3
 if [ "$#" -eq 3 ]; then
@@ -23,8 +58,18 @@ fi
 
 LOCAL_PARENT_DIRECTORY="$HOME/REPO"
 
-GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
-REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
+if [ $IS_GITLAB -eq 0 ]; then
+    GITHUB_USER=`echo $CLONE_STRING | awk -F ':' '{print $2}' | awk -F "/" '{print $1}'`
+else
+    GITHUB_USER=`echo $CLONE_STRING | awk -F '/' '{print $4}'`
+fi
+
+if [ $IS_GITLAB -eq 0 ]; then
+    REPO_NAME=`echo $CLONE_STRING | awk -F ':' '{print $2}' | awk -F "/" '{print $2}'| cut -f 1 -d'.'`
+else
+    REPO_NAME=`echo $CLONE_STRING | awk -F '/' '{print $5}' | cut -f 1 -d'.'`
+fi
+
 if [ -z $GITHUB_USER -o -z $REPO_NAME ]; then
   printf "\nBad clone string.\n"
   printf "Copy this string from the GitHub page for the Origin (developer fork).\n\n"
@@ -48,8 +93,15 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}.git"
-eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+if [ $IS_GITLAB -eq 0 ]; then
+    eval ORIGIN="${GIT_URL}${GITHUB_USER}/${REPO_NAME}.git"
+    eval PROFILE_URL="${GIT_URL}${GITHUB_USER}/${REPO_NAME}"
+    eval UPSTREAM="${GIT_URL}${UPSTREAM_OWNER}/${REPO_NAME}.git"
+else
+    eval ORIGIN="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}"
+    eval PROFILE_URL="${GIT_URL}/${GITHUB_USER}/${REPO_NAME}"
+    eval UPSTREAM="${GIT_URL}/${UPSTREAM_OWNER}/${REPO_NAME}"
+fi
 
 git config --global credential.helper cache
 
@@ -93,7 +145,6 @@ while [ $? -ne 0 ]; do
 done
 cd $REPO_NAME
 git config --global push.default simple
-git config credential.helper store
 
 if [ $UPSTREAM_OWNER != "NONE" ]; then
     git remote add upstream $UPSTREAM
@@ -101,10 +152,14 @@ if [ $UPSTREAM_OWNER != "NONE" ]; then
 fi
 git fetch origin &> /dev/null
 
+<<<<<<< HEAD
 PROFILE_URL=`echo $CLONE_STRING | sed 's/\.git//'`
 PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX  $DEVELOPMENT_BRANCH"
+=======
+PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $JIRA_TICKET_PREFIX"
+>>>>>>> upstream/development
 
-printf "\nRunning ghCONFIG to make this your active REPO...\n\n"
+printf "\nRunning ghCONFIG to make this your active REPO...\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY
 
 if [ ! -f ~/.githelp_profile_list ]; then
@@ -121,9 +176,11 @@ if [ $? -eq 1 ]; then
   echo " \n\"" >> ~/.githelp_profile_list
 fi
 
-
 printf "NOTE:\n"
 printf "    If this is a clone of a new Origin/fork, you must also\n"
 printf "    run 'ghPOB' (ghPruneOriginBranches) in the new repository\n"
 printf "    before creating any of your own branches\n\n"
 
+printf "Run the following commands to use this new repository...\n"
+printf "    source ~/.bash_profile\n"
+printf "    ghCD\n\n"
