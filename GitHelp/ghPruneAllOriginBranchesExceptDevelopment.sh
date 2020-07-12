@@ -7,7 +7,7 @@ IFS=" "
 
 git remote update origin --prune &> /dev/null
 TEMP_DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/Fetching/d' | sed '/HEAD/d' | sed 's/ //g' | tr '\r\n' ' ')"
-ORIGIN_DELETE_LIST=`echo "$TEMP_DELETE_LIST" | sed "s/development//"`
+ORIGIN_DELETE_LIST=`echo "$TEMP_DELETE_LIST" | sed "s/${DEVELOPMENT_BRANCH}//"`
 
 if [[ -z $ORIGIN_DELETE_LIST ]]
 then
@@ -33,7 +33,7 @@ fi
 $GITHELP_HOME/ghCheckoutOriginDevelopmentBranch.sh
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
-    git checkout development
+    git checkout ${DEVELOPMENT_BRANCH}
     printf "\nOperation canceled.\n\n"
     exit 1
 fi

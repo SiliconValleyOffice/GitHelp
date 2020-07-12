@@ -28,7 +28,7 @@ fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
 
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-if [[ $CURRENT_BRANCH = "development" ]]; then
+if [[ $CURRENT_BRANCH = "${DEVELOPMENT_BRANCH}" ]]; then
   printf "\nCannot create a Pull Request for the \"development\" branch on origin.\n"
   printf "    \"origin/development\" is only for review and research of upstream.\n"
   printf "    Create a Derived branch and use that to create a Pull Request.\n\n"

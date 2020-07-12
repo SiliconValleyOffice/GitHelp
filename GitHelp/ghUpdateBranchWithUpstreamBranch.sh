@@ -38,7 +38,6 @@ then
     exit 1
 fi
 
-
 git fetch upstream
 
 MERGE_RESULTS="$(git merge $STRATEGY_OPTION upstream/${UPSTREAM_BRANCH})"
