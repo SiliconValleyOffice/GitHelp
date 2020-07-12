@@ -8,7 +8,7 @@ cd $GIT_ROOT
 IFS=" "
 
 git remote update origin --prune &> /dev/null
-DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/^development$/d' | tr '\r\n' ' ')"
+DELETE_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | sed '/^${DEVELOPMENT_BRANCH}$/d' | tr '\r\n' ' ')"
 
 if [[ -z $DELETE_LIST ]]
 then

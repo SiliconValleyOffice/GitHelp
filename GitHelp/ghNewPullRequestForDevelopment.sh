@@ -6,7 +6,7 @@
 if [ "$#" -gt 1 ]; then
   printf "\nUsage: ghNPR [upstream_release_branch_number]\n"
   printf "    create a Pull Request for the current branch\n"
-  printf "    default upstream_branch = development\n\n"
+  printf "    default upstream_branch = ${DEVELOPMENT_BRANCH}\n\n"
   exit
 fi
 
@@ -18,7 +18,7 @@ fi
 cd $(git rev-parse --show-toplevel) &> /dev/null
 
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-if [[ $CURRENT_BRANCH = "development" ]]; then
+if [[ $CURRENT_BRANCH = "${DEVELOPMENT_BRANCH}" ]]; then
   printf "\nCannot create a Pull Request for the \"development\" branch on origin.\n"
   printf "    \"origin/development\" is only for review and research of upstream.\n"
   printf "    Create a Derived branch and use that to create a Pull Request.\n\n"
@@ -46,7 +46,7 @@ if [ $# -eq 1 ]; then
       exit 1;
     fi
 else
-    UPSTREAM_BRANCH="development"
+    UPSTREAM_BRANCH="${DEVELOPMENT_BRANCH}"
 fi
 
 $GITHELP_HOME/ghUpstreamBranchExists.sh ${UPSTREAM_BRANCH} &> /dev/null

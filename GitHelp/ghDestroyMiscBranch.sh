@@ -9,7 +9,7 @@ fi
 
 BRANCH_NAME="$1"
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-if [[ $BRANCH_NAME = "development" ]]; then
+if [[ $BRANCH_NAME = "${DEVELOPMENT_BRANCH}" ]]; then
   printf "\nCannot destroy your \"development\" branch.\n\n"
   exit 1
 fi
