@@ -28,7 +28,7 @@ fi
 
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 if [[ $CURRENT_BRANCH = "${DEVELOPMENT_BRANCH}" ]]; then
-  printf "\nCannot create a Pull Request for the \"development\" branch on origin.\n"
+  printf "\nCannot create a ${PULL_OR_MERGE} Request for the \"development\" branch on origin.\n"
   printf "    \"origin/development\" is only for review and research of upstream.\n"
   printf "    Create a Derived branch and use that to create a ${PULL_OR_MERGE} Request.\n\n"
   exit 1
@@ -43,14 +43,6 @@ fi
 $GITHELP_HOME/ghVerifyCleanBranch.sh
 if [ $? -ne 0 ] ; then
     exit 1;
-fi
-
-IS_DEVELOPMENT_BRANCH="YES"
-if [ $# -eq 1 ]; then
-    IS_DEVELOPMENT_BRANCH="NO"
-    UPSTREAM_BRANCH="$1"
-else
-    UPSTREAM_BRANCH="${DEVELOPMENT_BRANCH}"
 fi
 
 $GITHELP_HOME/ghUpstreamBranchExists.sh ${UPSTREAM_BRANCH} &> /dev/null
