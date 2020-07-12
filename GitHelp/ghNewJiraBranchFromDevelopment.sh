@@ -4,7 +4,7 @@
 
 if [ "$#" -lt 1 ]; then
   printf "\nUsage: ghNJBD JIRA_number [upstream_release_branch_number]\n"
-  printf "  default upstream_branch = 'development'\n"
+  printf "  default upstream_branch = '${DEVELOPMENT_BRANCH}'\n"
   printf "  Create new origin branch from upstream branch.\n\n"
   exit
 fi

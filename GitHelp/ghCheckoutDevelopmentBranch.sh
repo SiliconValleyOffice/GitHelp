@@ -15,9 +15,9 @@ if [ $? -ne 0 ] ; then
 fi
 
 git fetch upstream &>/dev/null
-git checkout development &>/dev/null
-git reset --hard upstream/development &>/dev/null
-git push origin development --force
+git checkout ${DEVELOPMENT_BRANCH} &>/dev/null
+git reset --hard upstream/${DEVELOPMENT_BRANCH} &>/dev/null
+git push origin ${DEVELOPMENT_BRANCH} --force
 
 echo
 git branch

@@ -1,18 +1,18 @@
 #!/bin/bash
 # Checkout development branch
 
-$GITHELP_HOME/ghOriginBranchExists.sh development
+$GITHELP_HOME/ghOriginBranchExists.sh ${DEVELOPMENT_BRANCH}
 if [ $? -ne 0 ]; then
     # create branch
-    if [[ `git branch` != *"development"* ]] ; then
+    if [[ `git branch` != *"${DEVELOPMENT_BRANCH}"* ]] ; then
         git fetch upstream &> /dev/null
-        git checkout upstream/development &> /dev/null
-        git checkout -b development
+        git checkout upstream/${DEVELOPMENT_BRANCH} &> /dev/null
+        git checkout -b ${DEVELOPMENT_BRANCH}
     fi
-    git push origin development &> /dev/null
+    git push origin ${DEVELOPMENT_BRANCH} &> /dev/null
 fi
 
-git checkout development &>/dev/null
+git checkout ${DEVELOPMENT_BRANCH} &>/dev/null
 RESULT=$?
 
 $GITHELP_HOME/ghCleanUntrackedFiles.sh

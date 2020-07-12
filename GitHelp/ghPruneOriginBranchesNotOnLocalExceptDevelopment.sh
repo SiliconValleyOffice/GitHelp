@@ -9,7 +9,7 @@ DELETE_LIST="$($GITHELP_HOME/ghListOriginBranches.sh | sed '/Fetching/d' | sed '
 LOCAL_LIST="$(git branch | sed 's/\*/ /' | sed 's/ //g' | tr '\r\n' ' ')"
 
 DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/master//")"
-DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/development//")"
+DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/${DEVELOPMENT_BRANCH}//")"
 
 for LOCAL in $LOCAL_LIST; do
    DELETE_LIST="$(eval echo $DELETE_LIST | sed "s/$LOCAL//")"

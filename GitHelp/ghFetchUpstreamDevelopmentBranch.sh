@@ -2,7 +2,7 @@
 # fetch upstream development branch
 # alias = ghFUDB
 
-BRANCH_NAME=development
+BRANCH_NAME=${DEVELOPMENT_BRANCH}
 
 if [[ `git branch` == *"$BRANCH_NAME"* ]] ; then
     printf "\nFatal Error:  The branch named \"${BRANCH_NAME}\" already exists locally.\n"
