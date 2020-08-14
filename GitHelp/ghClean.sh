@@ -9,7 +9,7 @@ if [ -z "$RESULTS" ] ; then
 fi
 
 printf "\nCLEAN !!!\n"
-printf "    All \"Untracked\" files will be lost.\n"
+printf "    All \"Untracked\" files will be deleted.\n"
 printf "    This is non-recoverable!\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
@@ -19,7 +19,7 @@ then
     exit 1
 fi
 
-printf "\nThe following \"Untracked\" files will be lost:\n"
+printf "\nThe following \"Untracked\" files will be deleted:\n"
 git clean -d -n | sed 's/Would remove /    /g'
 
 read -p "\nAre you REALLY sure?  (y/n)   " -n 1 -r
