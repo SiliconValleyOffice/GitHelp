@@ -2,6 +2,12 @@
 # Clean
 # alias = ghClean
 
+RESULTS=`git clean -d -n`
+if [ -z "$RESULTS" ] ; then
+    printf "\nNothing to CLEAN.\n"
+    exit 0
+fi
+
 printf "\nCLEAN !!!\n"
 printf "    All changes that have not been \"Added\" will be lost.\n"
 printf "    This is non-recoverable!\n"
