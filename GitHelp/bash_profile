@@ -24,6 +24,7 @@ alias ghL="git log"
 alias ghLRA="$GITHELP_HOME/ghLintReportForAndroid.sh"
 alias ghB="git branch"
 alias ghCancelMerge="git reset --merge"
+alias ghClean="$GITHELP_HOME/ghClean.sh"
 alias ghRH="$GITHELP_HOME/ghResetHard.sh"
 alias ghResetHard="$GITHELP_HOME/ghResetHard.sh"
 
