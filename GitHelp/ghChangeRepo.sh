@@ -38,7 +38,7 @@ if [[ $# -ne 1 ]] ; then
   exit 1
 fi
 
-REPO_CONFIG=`grep REPO/$1 $HOME/.githelp_profile_list`
+REPO_CONFIG=`grep "REPO/$1 " $HOME/.githelp_profile_list`
 if [[ $? -ne 0 ]] ; then
   printf "\nFatal error:  No configuration for $1\n\n"
   exit 1
