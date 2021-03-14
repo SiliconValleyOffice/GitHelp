@@ -48,7 +48,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghUBUD    -  Update current Branch with Upstream Development\n"
     printf "$HELP_MESSAGE    ghUBUR    -  Update current Branch with Upstream Release Branch\n"
     printf "$HELP_MESSAGE    ghUBUE    -  Update current Branch with Upstream Epic Branch\n"
-    printf "$HELP_MESSAGE    ghRSHA    -  Revert current branch to SHA\n"
+    printf "$HELP_MESSAGE    ghRTS    -  Revert current branch To SHA\n"
     printf "$HELP_MESSAGE    ghLMC     -  List Merge Conflicts\n"
     printf "$HELP_MESSAGE    ======= D1 =========  Pull Requests  =================\n"
     printf "$HELP_MESSAGE    ghNPRD    -  New Pull Request (PR) for the upstream Development branch\n"
