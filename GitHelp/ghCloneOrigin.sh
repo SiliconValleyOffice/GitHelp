@@ -133,6 +133,7 @@ fi
 
 echo
 cd "$LOCAL_PARENT_DIRECTORY"
+echo $ORIGIN
 git clone $ORIGIN
 while [ $? -ne 0 ]; do
     printf "\n Try again...\n\n"
