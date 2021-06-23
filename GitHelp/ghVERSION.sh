@@ -1,3 +1,3 @@
-GITHELP_VERSION="4.1.0"
+GITHELP_VERSION="4.1.1"
 
 echo "GitHelp - Version $GITHELP_VERSION"
