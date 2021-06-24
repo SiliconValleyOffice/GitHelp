@@ -1,15 +1,23 @@
 #!/bin/bash
 # Create a GitHub Merge Request URL
 
-if [ "$#" -ne 1 ]; then
-printf "\nUsage: ghGitLabMergeRequestUrl upstream_branch\n\n"
-exit 1
+if [ "$#" -lt 1 ]; then
+    printf "\nUsage: ghGitHubMergeRequestUrl target_branch target_project_owner\n\n"
+    printf "    target_project_owner = Fork project owner or defaults to upstream as project owner "
+    exit 1
 fi
 
-UPSTREAM_BRANCH=$1
+TARGET_BRANCH=$1
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 CURRENT_USER=`git config --get remote.origin.url | awk -F/ '{print $5}' | sed s/\.git//`
-UPSTREAM_PROJECT=`git config --get remote.upstream.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//'`
 
-echo "$UPSTREAM_PROJECT/compare/${UPSTREAM_BRANCH}...$CURRENT_USER:$CURRENT_BRANCH?expand=1"
+if [ "$#" -eq 2 ]; then
+    TARGET_PROJECT_OWNER=$2
+else
+    TARGET_PROJECT_OWNER=upstream
+fi
+
+TARGET_PROJECT=`git config --get remote.$TARGET_PROJECT_OWNER.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//'`
+
+echo "$TARGET_PROJECT/compare/${TARGET_BRANCH}...$CURRENT_USER:$CURRENT_BRANCH?expand=1"
 
