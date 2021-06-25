@@ -2,7 +2,7 @@
 # Create a GitLab Merge Request URL
 
 if [ "$#" -lt 1 ]; then
-    printf "\nUsage: ghGitLabMergeRequestUrl target_branch target_project_owner\n\n"
+    printf "\nUsage: ghGitLabMergeRequestUrl target_branch [target_project_owner]\n\n"
     printf "    target_project_owner = Fork project owner or defaults to upstream as project owner "
     exit 1
 fi
