@@ -1,5 +1,5 @@
 #!/bin/bash
-# New Pull Request for a Release branch
+# New Pull Request for a Fork branch
 # alias = ghNPRF
 
 if [ "$#" -ne 2 ]; then
@@ -86,16 +86,9 @@ fi
 printf "\n"
 
 if [ $IS_GITLAB -eq 0 ]; then
-    # UNTESTED !!!
-    UPSTREAM_BRANCH=$1
-    CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-    ORIGIN_PROJECT_WITH_HTTP=`git config --get remote.origin.url | sed 's/git@//' | sed 's/com:/com\//'`
-    ORIGIN_PROJECT=`git config --get remote.origin.url | awk -F/ '{print $4 "/" $5}' | sed 's/\.git//'`
-    FORK_PROJECT=`git config --get remote.upstream.url | awk -F/ '{print $4 "/" $5}' | sed 's/\.git//' | sed s/$GITHUB_USER/$FORK_OWNER/`
-
-    echo "${ORIGIN_PROJECT_WITH_HTTP}/merge_requests/new?merge_request%5Bsource_branch%5D=${CURRENT_BRANCH}&merge_request%5Bsource_project_id%5D=${ORIGIN_PROJECT}&merge_request%5Btarget_branch%5D=${UPSTREAM_BRANCH}&merge_request%5Btarget_project_id%5D=$FORK_PROJECT"
+    UPSTREAM_URL=`$GITHELP_HOME/ghGitLabMergeRequestUrl.sh $FORK_BRANCH $FORK_OWNER`
 else
-    UPSTREAM_URL="$(git config --get remote.$FORK_OWNER.url | sed 's/git@//' | sed 's/com:/com\//' | sed 's/\.git//')/compare/${FORK_BRANCH}...${GITHUB_USER}:${CURRENT_BRANCH}?expand=1"
+    UPSTREAM_URL=`$GITHELP_HOME/ghGitHubMergeRequestUrl.sh $FORK_BRANCH $FORK_OWNER`
 fi
 
 if which google-chrome > /dev/null
