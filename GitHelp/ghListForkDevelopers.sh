@@ -16,11 +16,13 @@ fi
 
 DEV_LIST=$GIT_ROOT/.gitHelp/forkDevelopers.ini
 
-# Verify dev list file exists and contains more than whitespace
-if [[ -f $DEV_LIST ]] && grep -q '[^[:space:]]' $DEV_LIST; then
+$GITHELP_HOME/ghProjectConfigExists.sh $DEV_LIST
+DEV_LIST_EXISTS=$?
+
+if [ $DEV_LIST_EXISTS -eq 0 ]; then
     printf "\nDevelopers with a Fork:\n\n"
     cut -d ' ' -f1 $DEV_LIST
 else
-    printf "\nNo fork developers configured.\n"
+    printf "\nNo fork developers configured."
     printf "\nTo configure, add developers' usernames to $DEV_LIST.\n"
 fi
