@@ -71,6 +71,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghLEB     -  List Epic Branches\n"
     printf "$HELP_MESSAGE    ======= F =========  Forks (not yours)  =============\n"
     printf "$HELP_MESSAGE    ghLFB     -  List Fork Branches\n"
+    printf "$HELP_MESSAGE    ghLFD     -  List Fork Developers\n"
     printf "$HELP_MESSAGE    ghFFJB    -  Fetch Fork JIRA Branch\n"
     printf "$HELP_MESSAGE    ghFFMB    -  Fetch Fork Misc Branch\n"
     printf "$HELP_MESSAGE    ghUBFJB   -  Update current Branch with Fork JIRA Branch\n"

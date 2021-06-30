@@ -148,6 +148,7 @@ alias ghListUpstreamBranches="$GITHELP_HOME/ghListUpstreamBranches.sh"
 
 ###  F  ######
 alias ghLFB="$GITHELP_HOME/ghListForkBranches.sh"
+alias ghLFD="$GITHELP_HOME/ghListForkDevelopers.sh"
 alias ghListForkBranches="$GITHELP_HOME/ghListForkBranches.sh"
 alias ghFFJB="$GITHELP_HOME/ghFetchForkJiraBranch.sh"
 alias ghFetchForkJiraBranch="$GITHELP_HOME/ghFetchForkJiraBranch.sh"
