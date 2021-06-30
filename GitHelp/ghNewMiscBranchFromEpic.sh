@@ -3,15 +3,9 @@
 # alias = ghNMBE
 
 if [ "$#" -ne 2 ]; then
-  printf "\nUsage: ghNMBE misc_branch_name epic_JIRA_number\n"
+  printf "\nUsage: ghNMBE misc_branch_name epic_id\n"
   printf "  create New Misc Branch from upstream epic.\n\n"
   exit
-fi
-
-REGULAR_EXPRESSION='^[0-9]+$'
-if ! [[ $2 =~ $REGULAR_EXPRESSION ]] ; then
-    printf "\n    ERROR: Argument 2 (epic) is not a JIRA number.\n\n"
-    exit 1
 fi
 
 MISC_BRANCH="${1}"

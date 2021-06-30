@@ -1,20 +1,24 @@
 #!/bin/bash
-# Checkout JIRA branch
-# alias = ghCJB
+# Checkout Ticket branch
+# alias = ghCTB
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghCJB JIRA_number\n"
-  printf "    Checkout JIRA Branch\n\n"
+  printf "\nUsage: ghCTB ticket_id\n"
+  printf "    Checkout Ticket Branch\n\n"
   exit
 fi
 
-REGULAR_EXPRESSION='^[0-9]+$'
-if ! [[ $1 =~ $REGULAR_EXPRESSION ]] ; then
-    printf "\n    ERROR: First argument is not a JIRA number.\n\n"
+TICKET_ID=$1
+
+$GITHELP_HOME/ghValidateTicketId.sh $TICKET_ID
+IS_VALID_ID=$?
+
+if ! [[ $IS_VALID_ID -eq 0 ]] ; then
+    printf "\n    ERROR: Argument is not a valid $TICKET_TYPE ticket ID.\n\n"
     exit 1
 fi
 
-BRANCH_NAME="${JIRA_TICKET_PREFIX}-${1}"
+BRANCH_NAME="${TICKET_PREFIX}-${TICKET_ID}"
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
 if [[ $BRANCH_NAME = $CURRENT_BRANCH ]]; then
     printf "WARNING:  Already on the branch named \"${BRANCH_NAME}\".\n\n"

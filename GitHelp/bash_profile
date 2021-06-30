@@ -179,8 +179,6 @@ alias ghSCDC="$GITHELP_HOME/ghStashChangesAndDropAndClean.sh"
 alias ghStashChangesDropClean="$GITHELP_HOME/ghStashChangesAndDropAndClean.sh"
 
 ###  J  ######
-alias ghCMTF="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
-alias ghCommitModifiedTrackedFiles="$GITHELP_HOME/ghCommitModifiedTrackedFiles.sh"
 alias ghCPSHA="$GITHELP_HOME/ghCherryPickSha.sh"
 alias ghCherryPickSha="$GITHELP_HOME/ghCherryPickSha.sh"
 alias ghLMC="$GITHELP_HOME/ghListMergeConflicts.sh"

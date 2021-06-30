@@ -84,7 +84,6 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghCUCB    -  Clean Untracked files and Checkout Branch\n"
     printf "$HELP_MESSAGE    ghSCDC    -  Stash Changes and Drop and Clean\n"
     printf "$HELP_MESSAGE    ======= H =========  Misc Updates  ==================\n"
-    printf "$HELP_MESSAGE    ghCMTF    -  Commit Modified Tracked Files in the current branch\n"
     printf "$HELP_MESSAGE    ghCPSHA   -  Cherry Pick SHA into the current branch\n"
     printf "$HELP_MESSAGE    ghLMC     -  List Merge Conflicts\n"
     printf "$HELP_MESSAGE    ======= J =========  SHAs  ==========================\n"
