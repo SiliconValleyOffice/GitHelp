@@ -14,7 +14,7 @@ $GITHELP_HOME/ghValidateTicketId.sh $TICKET_ID
 IS_VALID_ID=$?
 
 if ! [[ $IS_VALID_ID -eq 0 ]] ; then
-    printf "\n    ERROR: Argument is not a valid $TICKET_TYPE ticket ID.\n\n"
+    printf "\n    ERROR: Argument is not a valid $TICKET_SOURCE ticket ID.\n\n"
     exit 1
 fi
 

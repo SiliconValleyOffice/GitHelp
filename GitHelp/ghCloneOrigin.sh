@@ -3,9 +3,9 @@
 # alias = ghCO
 
 if [ "$#" -lt 5 ]; then
-    printf "\nUsage: ghCO github_origin_clone_string upstream_owner development_branch ticket_type ticket_base_url [ticket_prefix]\n"
+    printf "\nUsage: ghCO github_origin_clone_string upstream_owner development_branch ticket_source ticket_base_url [ticket_prefix]\n"
     printf "    Clone Origin (developer fork).\n"
-    printf "    ticket_type supports 'ClickUp', 'GitHub', 'GitLab', and 'Jira'\n"
+    printf "    ticket_source supports 'ClickUp', 'GitHub', 'GitLab', and 'Jira'\n"
     printf "    ticket_base_url is the url (with trailing '/') to which a ticket ID is appended to access a particular ticket\n"
     printf "        Ex: https://github.com/SiliconValleyOffice/GitHelp/issues/\n"
     printf "    ticket_prefix default = NOTICKET\n"
@@ -13,11 +13,11 @@ if [ "$#" -lt 5 ]; then
     exit
 fi
 
-# Validate ticket_type is a supported type
-TICKET_TYPE=$4
-if [[ $TICKET_TYPE != 'ClickUp' && $TICKET_TYPE != 'GitHub' && $TICKET_TYPE != 'GitLab' && $TICKET_TYPE != 'Jira ']]; then
-    printf "Invalid ticket type.\n"
-    printf "Supported ticket types: 'ClickUp', 'GitHub', 'GitLab', and 'Jira'\n"
+# Validate ticket_source is a supported source
+TICKET_SOURCE=$4
+if [[ $TICKET_SOURCE != 'ClickUp' && $TICKET_SOURCE != 'GitHub' && $TICKET_SOURCE != 'GitLab' && $TICKET_SOURCE != 'Jira ']]; then
+    printf "Invalid ticket source.\n"
+    printf "Supported ticket sources: 'ClickUp', 'GitHub', 'GitLab', and 'Jira'\n"
     printf "\nOperation canceled.\n\n"
     exit 1
 fi
@@ -108,7 +108,7 @@ else
   printf "    with no upstream upstream repository\n"
 fi
 printf "    setting development branch to\n        $DEVELOPMENT_BRANCH\n"
-printf "    and the $TICKET_TYPE ticket prefix will be\n        $TICKET_PREFIX\n\n"
+printf "    and the $TICKET_SOURCE ticket prefix will be\n        $TICKET_PREFIX\n\n"
 printf "    with the base ticket URL as $TICKET_BASE_URL"
 
 read -p "Are you sure?  (y/n)   " -n 1 -r
@@ -137,7 +137,7 @@ fi
 git fetch origin &> /dev/null
 
 PROFILE_URL=`echo $CLONE_STRING | sed 's/\.git//'`
-PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $TICKET_TYPE $TICKET_BASE_URL $TICKET_PREFIX $DEVELOPMENT_BRANCH"
+PROFILE_ENTRY="$PROFILE_URL  $GITHUB_USER  $REPO_ROOT  $TICKET_SOURCE $TICKET_BASE_URL $TICKET_PREFIX $DEVELOPMENT_BRANCH"
 
 printf "\nRunning ghCONFIG to make this your active REPO...\n"
 ${GITHELP_HOME}/ghCONFIG.sh $PROFILE_ENTRY

@@ -24,13 +24,13 @@ else
   IS_VALID_TICKET_ID=$?
 
   if ! [[ $IS_VALID_TICKET_ID -eq 0 ]] ; then
-      printf "\n    ERROR: Argument is not a valid $TICKET_TYPE ticket ID.\n\n"
+      printf "\n    ERROR: Argument is not a valid $TICKET_SOURCE ticket ID.\n\n"
       exit 1
   fi
 fi
 
-# Jira is only ticket type with a different url format
-if [[ $TICKET_TYPE == 'Jira' ]]; then
+# Jira is only ticket source with a different url format
+if [[ $TICKET_SOURCE == 'Jira' ]]; then
   TICKET_URL="${TICKET_BASE_URL}${TICKET_PREFIX}-${TICKET_ID}"
 else
   TICKET_URL="${TICKET_BASE_URL}${TICKET_ID}"
