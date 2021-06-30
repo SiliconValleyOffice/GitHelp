@@ -32,7 +32,7 @@ if [ $# -eq 0 ]; then
       ~/.githelp_profile_list
     fi
     printf "\nYou can change the configuration with the following command.\n"
-    printf "    Usage: ghCONFIG  Git_Host_URL  GitHub_user  git_root  ticket_type ticket_base_url ticket_prefix  DEVELOPMENT_BRANCH\n"
+    printf "    Usage: ghCONFIG  Git_Host_URL  GitHub_user  git_root  ticket_type  ticket_base_url  ticket_prefix  DEVELOPMENT_BRANCH\n"
     printf "        (\"ghCONFIG \" + copy/paste a row from the GitHelp Configurations list above)\n\n"
     printf "A much easier method is to use the ghCR command to Change Repository.\n\n"
     exit 1
