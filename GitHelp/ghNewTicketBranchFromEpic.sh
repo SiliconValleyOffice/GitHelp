@@ -20,6 +20,10 @@ fi
 
 TICKET_BRANCH="${TICKET_PREFIX}-${TICKET_ID}"
 UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseEpicBranch.sh $2`
+if [[ $? -ne 0 ]] ; then
+    printf "\nError:  Epic ID invalid.\n\n"
+    exit 1;
+fi
 
 $GITHELP_HOME/ghOriginBranchExists.sh ${TICKET_BRANCH}  &> /dev/null
 if [[ $? -ne 1 ]] ; then

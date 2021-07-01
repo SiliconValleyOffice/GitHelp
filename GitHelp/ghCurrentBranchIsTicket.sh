@@ -9,8 +9,9 @@ if [[ $BRANCH_NAME != *"$TICKET_PREFIX-"* ]]; then
 fi
 
 ID=`cut -d "-" -f 2 <<< "$BRANCH_NAME"`
-REGULAR_EXPRESSION='^[0-9]+$'
-if ! [[ $ID =~ $REGULAR_EXPRESSION ]] ; then
+$GITHELP_HOME/ghValidateTicketId.sh $ID
+IS_VALID_ID=$?
+if ! [[ $IS_VALID_ID -eq 0 ]] ; then
     printf "\nThis is not a valid ticket ID.\n\n"
-    exit 1;
+    exit 1
 fi
