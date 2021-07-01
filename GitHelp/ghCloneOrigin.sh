@@ -15,7 +15,7 @@ fi
 
 # Validate ticket_source is a supported source
 TICKET_SOURCE=$4
-if [[ $TICKET_SOURCE != 'ClickUp' && $TICKET_SOURCE != 'GitHub' && $TICKET_SOURCE != 'GitLab' && $TICKET_SOURCE != 'Jira ']]; then
+if [[ $TICKET_SOURCE != "ClickUp" && $TICKET_SOURCE != "GitHub" && $TICKET_SOURCE != "GitLab" && $TICKET_SOURCE != "Jira" ]]; then
     printf "Invalid ticket source.\n"
     printf "Supported ticket sources: 'ClickUp', 'GitHub', 'GitLab', and 'Jira'\n"
     printf "\nOperation canceled.\n\n"
@@ -108,8 +108,9 @@ else
   printf "    with no upstream upstream repository\n"
 fi
 printf "    setting development branch to\n        $DEVELOPMENT_BRANCH\n"
-printf "    and the $TICKET_SOURCE ticket prefix will be\n        $TICKET_PREFIX\n\n"
-printf "    with the base ticket URL as $TICKET_BASE_URL"
+printf "    setting ticket source to\n        $TICKET_SOURCE\n"
+printf "    with ticket prefix as\n        $TICKET_PREFIX\n"
+printf "    and the base ticket URL as\n        $TICKET_BASE_URL\n\n"
 
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
