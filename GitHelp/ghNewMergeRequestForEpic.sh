@@ -3,7 +3,7 @@
 # alias = ghNMRE
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghNMRE JIRA_number\n"
+  printf "\nUsage: ghNMRE epid_id\n"
   printf "    Create a Merge Request for the current branch\n"
   printf "    against an upstream Epic branch.\n\n"
   exit

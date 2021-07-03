@@ -3,14 +3,14 @@
 # alias = ghUBUE
 
 if [ ! $# -eq 1 ]; then
-    printf "\nUsage: ghUBUE JIRA_number\n"
+    printf "\nUsage: ghUBUE epic_id\n"
     printf "  Update current Branch with Upstream Epic branch.\n\n"
     exit
 fi
 
 UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseEpicBranch.sh $1`
 if [ $? -ne 0 ] ; then
-    printf "\n    ERROR: Argument is not a JIRA number.\n\n"
+    printf "\n    ERROR: Argument is not a valid epic ID.\n\n"
     exit 1;
 fi
 

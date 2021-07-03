@@ -3,15 +3,15 @@
 # alias = ghNPRE
 
 if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghNPRR JIRA_number\n"
+  printf "\nUsage: ghNPRE epic_id\n"
   printf "    Create a Pull Request for the current branch\n"
   printf "    against an upstream Epic branch.\n\n"
   exit
 fi
 
-EPIC=$1
+EPIC_ID=$1
 
-UPSTREAM_BRANCH="$GITHELP_HOME/ghParseEpicBranch.sh ${EPIC}"
+UPSTREAM_BRANCH=`$GITHELP_HOME/ghParseEpicBranch.sh ${EPIC_ID}`
 if [[ $? -ne 0 ]] ; then
     printf "\nError:  Not an Epic branch.\n\n"
     exit 1;
