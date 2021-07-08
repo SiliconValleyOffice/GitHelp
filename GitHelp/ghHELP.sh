@@ -92,9 +92,12 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghNMBFSHA -  New Misc Branch From SHA\n"
     printf "$HELP_MESSAGE    ghCPSHA   -  Cherry Pick sha into the current branch\n"
     printf "$HELP_MESSAGE    ======= K =========  Wiki  ==========================\n"
-    printf "$HELP_MESSAGE    ghCloneWiki\n"
-    printf "$HELP_MESSAGE    ghPullWiki\n"
-    printf "$HELP_MESSAGE    ghUpdateWiki\n"
+    printf "$HELP_MESSAGE    ghCW      -  Clone wiki for current upstream repo\n"
+    printf "$HELP_MESSAGE    ghCWFGG   -  Clone wiki from a Gitlab group\n"
+    printf "$HELP_MESSAGE    ghPW      -  Pull latest changes from upstream wiki\n"
+    printf "$HELP_MESSAGE    ghPWFGG   -  Pull latest wiki changes from a Gitlab group\n"
+    printf "$HELP_MESSAGE    ghUW      -  Push latest changes to upstream wiki\n"
+    printf "$HELP_MESSAGE    ghUWFGG   -  Push changes to the wiki from a Gitlab group\n"
     printf "$HELP_MESSAGE    ======= M =========  Maintenance  ===================\n"
     printf "$HELP_MESSAGE    ghPOB     -  Prune Origin Branches, except development\n"
     printf "$HELP_MESSAGE    ghPLB     -  Prune Local Branches, except development\n"
@@ -103,7 +106,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghEDITOR  -  Default editor configuration for git\n"
     printf "$HELP_MESSAGE    ======= Z =========  DANGER  ===================\n"
-    printf "$HELP_MESSAGE    ghCW      -  Car Wash\n"
+    printf "$HELP_MESSAGE    ghCarWash     -  Car Wash\n"
     printf "$HELP_MESSAGE    ghRH      -  Reset Hard\n"
 else
     printf "gitHELP frequently used commands:\n"
@@ -184,7 +187,7 @@ else
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghEDITOR  -  Default editor configuration for git\n"
     printf "$HELP_MESSAGE    ======= Z =========  DANGER  ===================\n"
-    printf "$HELP_MESSAGE    ghCW      -  Car Wash\n"
+    printf "$HELP_MESSAGE    ghCarWash      -  Car Wash\n"
     printf "$HELP_MESSAGE    ghRH      -  Reset Hard\n"
 fi
 

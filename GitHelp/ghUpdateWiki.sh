@@ -4,13 +4,7 @@
 
 # Assumption - we are working with the wiki for the current githelp repo
 
-
-if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghUW upstream_owner\n\n"
-  exit
-fi
-
-UPSTREAM_OWNER="$1"
+ 
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 BASE_REPO=${GIT_ROOT##*/}
 REPO_NAME="${BASE_REPO}.wiki"
@@ -18,7 +12,7 @@ REPO_ROOT=${GIT_ROOT}.wiki
 
 if [ ! -d $REPO_ROOT ]; then
     printf "\n$REPO_ROOT does not exist.\nOperation canceled.\n\n"
-    printf "Use gitCW to clone the wiki for the current GitHelp repo.\n\n"
+    printf "Use ghCW to clone the wiki for the current GitHelp repo.\n\n"
     exit 1
 fi
 
@@ -35,7 +29,7 @@ fi
 echo
 cd "$REPO_ROOT"
 git add -A
-LINES=`git status | grep "nothing to commit" | wc -l | cut -f1 -d' '`
+LINES=`git status | grep "nothing to commit" | wc -l`
 if [ $LINES != "0" ]; then
   printf "\nNo local changes to push\n\n"
   exit

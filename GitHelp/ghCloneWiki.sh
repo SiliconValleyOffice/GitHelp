@@ -4,24 +4,19 @@
 
 # Assumption - we are cloning the wiki for the current githelp repo
 
-
-if [ "$#" -ne 1 ]; then
-  printf "\nUsage: ghCW upstream_owner\n\n"
-  exit
-fi
-
-UPSTREAM_OWNER="$1"
+ 
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 REPO_NAME="${GIT_ROOT##*/}.wiki"
 REPO_ROOT=${GIT_ROOT}.wiki
 
 if [ -d $REPO_ROOT ]; then
     printf "\n$REPO_ROOT already exists.\nOperation canceled.\n\n"
-    printf "Use gitPW to get the latest wiki files.\n\n"
+    printf "Use ghPW to get the latest wiki files.\n\n"
     exit 1
 fi
 
-eval UPSTREAM="${GIT_HOST_URL}/${UPSTREAM_OWNER}/${REPO_NAME}.git"
+UPSTREAM_PROJECT=`git config --get remote.upstream.url | sed 's/\.git//'`
+eval UPSTREAM="${UPSTREAM_PROJECT}.wiki.git"
 
 printf "\nClone WIKI from $UPSTREAM\n    into $REPO_ROOT\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Destroy all branches on Origin and Local, except development
 # Reset all caches and etc to create a "clean" GitHelp baseline
-# alias = ghCW
+# alias = ghCarWash
 
 printf "\nGitHelp Car Wash\n"
 printf "    Create a 'clean' GitHelp baseline environment\n\n"
