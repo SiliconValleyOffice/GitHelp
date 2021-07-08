@@ -15,7 +15,8 @@ if [ -d $REPO_ROOT ]; then
     exit 1
 fi
 
-eval UPSTREAM="${GIT_HOST_URL}.wiki.git"
+UPSTREAM_PROJECT=`git config --get remote.upstream.url | sed 's/\.git//'`
+eval UPSTREAM="${UPSTREAM_PROJECT}.wiki.git"
 
 printf "\nClone WIKI from $UPSTREAM\n    into $REPO_ROOT\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
