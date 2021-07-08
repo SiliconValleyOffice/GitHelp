@@ -185,9 +185,12 @@ alias ghLMC="$GITHELP_HOME/ghListMergeConflicts.sh"
 alias ghListMergeConflicts="$GITHELP_HOME/ghListMergeConflicts.sh"
 
 ###  K  ######
-alias ghCloneWiki="$GITHELP_HOME/ghCloneWiki.sh"
-alias ghPullWiki="$GITHELP_HOME/ghPullWiki.sh"
-alias ghUpdateWiki="$GITHELP_HOME/ghUpdateWiki.sh"
+alias ghCW="$GITHELP_HOME/ghCloneWiki.sh"
+alias ghCWFGG="$GITHELP_HOME/ghCloneWikiFromGitlabGroup.sh"
+alias ghPW="$GITHELP_HOME/ghPullWiki.sh"
+alias ghPWFGG="$GITHELP_HOME/ghPullWikiFromGitlabGroup.sh" 
+alias ghUW="$GITHELP_HOME/ghUpdateWiki.sh"
+alias ghUWFGG="$GITHELP_HOME/ghUpdateWikiFromGitlabGroup.sh"
 
 ###  M  ######
 alias ghREMOTE="git remote -v"
@@ -200,7 +203,6 @@ alias ghPruneOriginBranches="$GITHELP_HOME/ghPruneAllOriginBranchesExceptDevelop
 alias ghPOBNOL="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghPruneOriginBranchesNotOnLocal="$GITHELP_HOME/ghPruneOriginBranchesNotOnLocalExceptDevelopment.sh"
 alias ghPLB="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
-alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh"
-alias ghCW="$GITHELP_HOME/ghCarWash.sh"
+alias ghPruneLocalBranches="$GITHELP_HOME/ghPruneLocalBranchesExceptDevelopment.sh" 
 alias ghCarWash="$GITHELP_HOME/ghCarWash.sh"
 #!!!!!!!!!!  DO NOT ADD ANYTHING BELOW THIS LINE  !!!!!!!!!!!!!!
