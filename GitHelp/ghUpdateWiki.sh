@@ -29,7 +29,7 @@ fi
 echo
 cd "$REPO_ROOT"
 git add -A
-LINES=`git status | grep "nothing to commit" | wc -l | cut -f1 -d' '`
+LINES=`git status | grep "nothing to commit" | wc -l`
 if [ $LINES != "0" ]; then
   printf "\nNo local changes to push\n\n"
   exit
