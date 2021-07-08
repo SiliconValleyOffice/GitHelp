@@ -12,16 +12,17 @@ GITLAB_GROUP_NAME="$1"
 GITLAB_URL="https://gitlab.com"
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 WIKI_NAME="${GITLAB_GROUP_NAME}.wiki" 
+WIKI_ROOT="$LOCAL_PARENT_DIRECTORY/${GITLAB_GROUP_NAME}.wiki" 
 
-if [ -d $WIKI_NAME ]; then
-    printf "\n$WIKI_NAME already exists.\nOperation canceled.\n\n"
+if [ -d $WIKI_ROOT ]; then
+    printf "\n$WIKI_ROOT already exists.\nOperation canceled.\n\n"
     printf "Use gitPWFGG to get the latest wiki files.\n\n"
     exit 1
 fi
 
-eval UPSTREAM="${GITLAB_URL}/${WIKI_NAME}"
+eval UPSTREAM="$GITLAB_URL/$WIKI_NAME"
 
-printf "\nClone WIKI from $UPSTREAM\n    into $WIKI_NAME\n"
+printf "\nClone WIKI from $UPSTREAM\n    into $WIKI_ROOT\n"
 read -p "Are you sure?  (y/n)   " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]

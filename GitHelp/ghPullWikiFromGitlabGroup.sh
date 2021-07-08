@@ -1,6 +1,6 @@
 #!/bin/bash
-# Clone wiki from Gitlab Group
-# alias = ghCWFGG
+# Pull updates of wiki from Gitlab Group
+# alias = ghPWFGG
  
 
 if [ "$#" -ne 1 ]; then
@@ -11,9 +11,10 @@ fi
 GITLAB_GROUP_NAME="$1" 
 LOCAL_PARENT_DIRECTORY=$(dirname "${GIT_ROOT}")
 WIKI_NAME="${GITLAB_GROUP_NAME}.wiki" 
+WIKI_ROOT="$LOCAL_PARENT_DIRECTORY/${GITLAB_GROUP_NAME}.wiki" 
 
-if [ ! -d $WIKI_NAME ]; then
-    printf "\n$WIKI_NAME does not exist.\nOperation canceled.\n\n"
+if [ ! -d $WIKI_ROOT ]; then
+    printf "\n$WIKI_ROOT does not exist.\nOperation canceled.\n\n"
     printf "Use ghCWFGG to clone the wiki for this Gitlab Group.\n\n"
     exit 1
 fi 
@@ -28,5 +29,5 @@ then
 fi
 
 echo
-cd "$LOCAL_PARENT_DIRECTORY/${WIKI_NAME}" 
+cd "$WIKI_ROOT" 
 git pull
