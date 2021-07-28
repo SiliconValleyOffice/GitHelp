@@ -9,7 +9,7 @@ fi
 
 TARGET_BRANCH=$1
 CURRENT_BRANCH=`$GITHELP_HOME/ghCurrentBranchName.sh`
-CURRENT_USER=`git config --get remote.origin.url | awk -F/ '{print $5}' | sed s/\.git//`
+CURRENT_USER=`git config --get remote.origin.url| sed 's/\/\//\//2' | awk -F/ '{print $4}' | sed s/\.git//`
 
 if [ "$#" -eq 2 ]; then
     TARGET_PROJECT_OWNER=$2
