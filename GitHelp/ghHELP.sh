@@ -100,7 +100,7 @@ if [ "$1" == "-x" ]; then
     printf "$HELP_MESSAGE    ghUWFGG   -  Push changes to the wiki from a Gitlab group\n"
     printf "$HELP_MESSAGE    ======= M =========  Maintenance  ===================\n"
     printf "$HELP_MESSAGE    ghPOB     -  Prune Origin Branches, except development\n"
-    printf "$HELP_MESSAGE    ghPLB     -  Prune Local Branches, except development\n"
+    printf "$HELP_MESSAGE    ghPLB     -  Prune Local & Origin Branches, except development\n"
     printf "$HELP_MESSAGE    ghPLBNOO  -  Prune Local Branches Not On Origin\n"
     printf "$HELP_MESSAGE    ghPOBNOL  -  Prune Origin Branches Not On Local, except development\n"
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
