@@ -182,7 +182,7 @@ else
     printf "$HELP_MESSAGE    ghRPRF    -  Review Pull Requests for a Fork\n"
     printf "$HELP_MESSAGE    ======= M =========  Maintenance  ===================\n"
     printf "$HELP_MESSAGE    ghPOB     -  Prune Origin Branches, except development\n"
-    printf "$HELP_MESSAGE    ghPLB     -  Prune Local Branches, except development\n"
+    printf "$HELP_MESSAGE    ghPLB     -  Prune Local and Origin Branches, except development\n"
     printf "$HELP_MESSAGE    ghPLBNOO  -  Prune Local Branches Not On Origin\n"
     printf "$HELP_MESSAGE    ghREMOTE  -  List verbose remote definitions\n"
     printf "$HELP_MESSAGE    ghEDITOR  -  Default editor configuration for git\n"
